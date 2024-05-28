@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DNAKolor</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .container {
+      background-color: #faf0f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      align-items: center;
+      background-color: #faf0f7;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+
+    @media (max-width: 991px) {
+      .header {
+        max-width: 100%;
+      }
+    }
+
+    .navigation {
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(229, 232, 235, 1);
+      align-self: stretch;
+      display: flex;
+      padding: 12px 40px;
+    }
+
+    @media (max-width: 991px) {
+      .navigation {
+        flex-wrap: wrap;
+        padding: 0 20px;
+      }
+    }
+
+    .logo-container {
+      display: flex;
+      gap: 16px;
+      font-size: 18px;
+      color: #1c0a1a;
+      font-weight: 700;
+      letter-spacing: -0.27px;
+    }
+
+    @media (max-width: 991px) {
+      .logo-container {
+        white-space: initial;
+      }
+    }
+
+    .logo {
+      aspect-ratio: 1;
+      width: 16px;
+    }
+
+    .site-title {
+      font-feature-settings: "dlig" on;
+      font-family: Plus Jakarta Sans, sans-serif;
+      margin: auto 0;
+    }
+
+    .nav-links {
+      justify-content: end;
+      display: flex;
+      padding-left: 80px;
+      gap: 20px;
+      font-size: 14px;
+      line-height: 150%;
+    }
+
+    @media (max-width: 991px) {
+      .nav-links {
+        flex-wrap: wrap;
+      }
+    }
+
+    .nav-item {
+      display: flex;
+      justify-content: center;
+      /* Centers text horizontally */
+      align-items: center;
+      font-feature-settings: "dlig" on;
+      font-family: Plus Jakarta Sans, sans-serif;
+      font-weight: 500;
+      font-size: medium;
+    }
+
+    .button-primary {
+      justify-content: center;
+      border-radius: 20px;
+      background-color: #d421b0;
+      color: #faf0f7;
+      font-weight: 700;
+      letter-spacing: 0.21px;
+      padding: 10px 16px;
+      border: #d421b0 solid 1px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .button-primary:hover {
+      background-color: #faf0f7;
+      color: #d421b0;
+      cursor: pointer;
+    }
+
+    .button-text {
+      font-feature-settings: "dlig" on;
+      font-family: Plus Jakarta Sans, sans-serif;
+    }
+
+    .icon {
+      aspect-ratio: 1;
+      width: 40px;
+    }
+
+    .main-section {
+      align-self: center;
+      display: flex;
+      margin-top: 20px;
+      width: 512px;
+      max-width: 100%;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .main-heading {
+      color: #1c0a1a;
+      text-align: center;
+      font-feature-settings: "dlig" on;
+      letter-spacing: -0.8px;
+      align-self: center;
+      font-size: 32px;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+      color: #a3408f;
+      font-weight: 400;
+      line-height: 150%;
+      margin: 24px 0 164px;
+      padding: 0 16px;
+    }
+
+    @media (max-width: 991px) {
+      .login-form {
+        max-width: 100%;
+        margin-bottom: 40px;
+      }
+    }
+
+    .input-container {
+      margin-top: 24px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .input-field {
+      justify-content: center;
+      align-items: start;
+      border-radius: 12px;
+      border: 1px solid rgba(235, 199, 227, 1);
+      background-color: #faf0f7;
+      padding: 15px;
+    }
+
+    @media (max-width: 991px) {
+      .input-field {
+        max-width: 100%;
+        padding-right: 20px;
+      }
+    }
+
+    .forgot-password,
+    .create-account {
+      font-feature-settings: "dlig" on;
+      margin-top: 16px;
+      font-size: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-decoration: none;
+      color: #a3408f;
+    }
+
+    .forgot-password:hover,
+    .create-account:hover {
+      text-decoration: underline;
+    }
+
+    .login-btn {
+      justify-content: center;
+      align-items: center;
+      border-radius: 24px;
+      background-color: #d421b0;
+      display: flex;
+      margin-top: 24px;
+      color: #faf0f7;
+      font-weight: 700;
+      letter-spacing: 0.24px;
+      padding: 12px 20px;
+      border: #d421b0 solid 1px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background-color: #faf0f7;
+      color: #d421b0;
+      cursor: pointer;
+    }
+
+    @media (max-width: 991px) {
+      .login-btn {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="navigation">
+        <div class="logo-container">
+          <img loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b88a6b0862cc8a9941292e1920c92fa8ffb73d9c2dbda23006eb44f049c6f26b?apiKey=1145a631081a47248438c8ac05c41e7d&"
+            class="logo" alt="DNAKolor logo" />
+          <div class="site-title">DNAKolor</div>
+        </div>
+        <nav class="nav-links">
+          <div class="nav-item">Shop</div>
+          <div class="nav-item">Color Analysis</div>
+          <div class="nav-item">The Studio</div>
+          <button class="button-primary" aria-label="Get Started">
+            <span class="button-text">Get Started</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <section class="main-section">
+      <h1 class="main-heading">Welcome Back</h1>
+      <form class="login-form">
+        <div class="input-container">
+          <label for="usernameInput" class="visually-hidden">Username</label>
+          <input type="email" id="usernameInput" class="input-field" placeholder="Username" aria-label="Username" />
+          <label for="passwordInput" class="visually-hidden">Password</label>
+          <input type="password" id="passwordInput" class="input-field" placeholder="Password" aria-label="Password" />
+        </div>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+        <button type="submit" class="login-btn">Log In</button>
+        <a class="create-account" href="#">Don't have an account? Sign Up</a>
+      </form>
+    </section>
+  </div>
+</body>
+
+</html>

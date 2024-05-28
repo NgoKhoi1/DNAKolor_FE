@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNAKolor</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+            background-color: #faf0f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            align-items: center;
+            background-color: #faf0f7;
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        @media (max-width: 991px) {
+            .header {
+                max-width: 100%;
+            }
+        }
+
+        .navigation {
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(229, 232, 235, 1);
+            align-self: stretch;
+            display: flex;
+            padding: 12px 40px;
+        }
+
+        @media (max-width: 991px) {
+            .navigation {
+                flex-wrap: wrap;
+                padding: 0 20px;
+            }
+        }
+
+        .logo-container {
+            display: flex;
+            gap: 16px;
+            font-size: 18px;
+            color: #1c0a1a;
+            font-weight: 700;
+            letter-spacing: -0.27px;
+        }
+
+        @media (max-width: 991px) {
+            .logo-container {
+                white-space: initial;
+            }
+        }
+
+        .logo {
+            aspect-ratio: 1;
+            width: 16px;
+        }
+
+        .site-title {
+            font-feature-settings: "dlig" on;
+            font-family: Plus Jakarta Sans, sans-serif;
+            margin: auto 0;
+        }
+
+        .nav-links {
+            justify-content: end;
+            display: flex;
+            padding-left: 80px;
+            gap: 20px;
+            font-size: 14px;
+            line-height: 150%;
+        }
+
+        @media (max-width: 991px) {
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        .nav-item {
+            display: flex;
+            justify-content: center;
+            /* Centers text horizontally */
+            align-items: center;
+            font-feature-settings: "dlig" on;
+            font-family: Plus Jakarta Sans, sans-serif;
+            font-weight: 500;
+            font-size: medium;
+        }
+
+        .button-primary {
+            justify-content: center;
+            border-radius: 20px;
+            background-color: #d421b0;
+            color: #faf0f7;
+            font-weight: 700;
+            letter-spacing: 0.21px;
+            padding: 10px 16px;
+            border: #d421b0 solid 1px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button-primary:hover {
+            background-color: #faf0f7;
+            color: #d421b0;
+            cursor: pointer;
+        }
+
+        .button-text {
+            font-feature-settings: "dlig" on;
+            font-family: Plus Jakarta Sans, sans-serif;
+        }
+
+        .icon {
+            aspect-ratio: 1;
+            width: 40px;
+        }
+
+        .main-section {
+            align-self: center;
+            display: flex;
+            margin-top: 20px;
+            width: 512px;
+            max-width: 100%;
+            padding: 20px;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .main-content {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 960px;
+            padding: 40px 16px;
+        }
+
+        @media (max-width: 991px) {
+            .main-content {
+                max-width: 100%;
+            }
+        }
+
+
+        @media (max-width: 991px) {
+            .main-section {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0px;
+            }
+        }
+
+        .main-left {
+            display: flex;
+            flex-direction: column;
+            line-height: normal;
+            width: 55%;
+            margin-left: 0px;
+        }
+
+        @media (max-width: 991px) {
+            .main-left {
+                width: 100%;
+            }
+        }
+
+        .main-left img {
+            aspect-ratio: 1.79;
+            object-fit: auto;
+            object-position: center;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        @media (max-width: 991px) {
+            .main-left img {
+                max-width: 100%;
+                margin-top: 40px;
+            }
+        }
+
+        .main-right {
+            display: flex;
+            flex-direction: column;
+            line-height: normal;
+            width: 45%;
+            margin-left: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .main-right {
+                width: 100%;
+            }
+        }
+
+        .product-description {
+            justify-content: center;
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            font-size: 16px;
+            padding: 4px 0;
+        }
+
+        @media (max-width: 991px) {
+            .product-description {
+                margin-top: 40px;
+            }
+        }
+
+        .shop-title,
+        .shop-subtitle {
+            font-feature-settings: 'dlig' on;
+            font-family: Plus Jakarta Sans, sans-serif;
+        }
+
+        .shop-title {
+            color: #1c0a1a;
+            letter-spacing: -1.58px;
+            font: 800 48px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
+        }
+
+        @media (max-width: 991px) {
+            .shop-title {
+                margin-right: 10px;
+                font-size: 40px;
+            }
+        }
+
+        .shop-subtitle {
+            color: #1c0a1a;
+            font-weight: 400;
+            line-height: 150%;
+            margin-top: 68px;
+        }
+
+        @media (max-width: 991px) {
+            .shop-subtitle {
+                margin: 40px 10px 0 0;
+            }
+        }
+
+        .search-form {
+            border-radius: 32px;
+            background-color: #f2deed;
+            display: flex;
+            margin-top: 56px;
+            gap: 0px;
+            line-height: 150%;
+            padding: 8px 8px 8px 16px;
+        }
+
+        @media (max-width: 991px) {
+            .search-form {
+                margin-top: 40px;
+            }
+        }
+
+        .search-field {
+            display: flex;
+            gap: 16px;
+            color: #a3408f;
+            font-weight: 400;
+            margin: auto 0;
+        }
+
+        .search-field img {
+            aspect-ratio: 1;
+            object-fit: auto;
+            object-position: center;
+            width: 20px;
+            margin: auto 0;
+        }
+
+        .search-button {
+            justify-content: center;
+            border-radius: 24px;
+            background-color: #d421b0;
+            display: flex;
+            flex-direction: column;
+            color: #faf0f7;
+            font-weight: 700;
+            white-space: nowrap;
+            letter-spacing: 0.24px;
+            padding: 12px 20px;
+            margin-left: auto;
+        }
+
+        @media (max-width: 991px) {
+            .search-button {
+                white-space: initial;
+            }
+        }
+
+        .collections {
+            justify-content: center;
+            width: 100%;
+            max-width: 960px;
+            padding: 16px;
+        }
+
+        @media (max-width: 991px) {
+            .collections {
+                max-width: 100%;
+            }
+        }
+
+        .collection-grid {
+            gap: 20px;
+            display: flex;
+        }
+
+        .collection-section {
+            display: flex;
+            flex-direction: column;
+            line-height: normal;
+            width: 25%;
+        }
+
+        @media (max-width: 991px) {
+            .collection-section {
+                width: 100%;
+            }
+        }
+
+        .collection-item {
+            display: flex;
+            flex-grow: 1;
+            padding-bottom: 12px;
+            flex-direction: column;
+            line-height: 150%;
+        }
+
+        .collection-item img {
+            aspect-ratio: 0.75;
+            object-fit: auto;
+            object-position: center;
+            width: 100%;
+        }
+
+        .collection-title,
+        .collection-category {
+            font-feature-settings: 'dlig' on;
+            font-family: Plus Jakarta Sans, sans-serif;
+        }
+
+        .collection-title {
+            color: #1c0a1a;
+            margin-top: 12px;
+            font: 500 16px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
+        }
+
+        .collection-category {
+            color: #a3408f;
+            font: 400 14px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
+        }
+
+        .categories {
+            color: #1c0a1a;
+            font-feature-settings: 'dlig' on;
+            letter-spacing: -0.33px;
+            align-self: start;
+            font: 700 22px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
+        }
+
+        @media (max-width: 991px) {
+            .categories {
+                margin-left: 10px;
+            }
+        }
+
+        .category-list {
+            display: flex;
+            margin: 12px 0;
+            width: 960px;
+            max-width: 100%;
+            gap: 12px;
+            font-size: 14px;
+            color: #1c0a1a;
+            font-weight: 500;
+            white-space: nowrap;
+            line-height: 150%;
+        }
+
+        @media (max-width: 991px) {
+            .category-list {
+                flex-wrap: wrap;
+                padding-right: 20px;
+                white-space: initial;
+            }
+        }
+
+        .category-item {
+            font-family: Plus Jakarta Sans, sans-serif;
+            justify-content: center;
+            border-radius: 16px;
+            background-color: #f2deed;
+            padding: 6px 16px;
+        }
+
+        @media (max-width: 991px) {
+            .category-item {
+                white-space: initial;
+            }
+        }
+
+        .products {
+            display: flex;
+            width: 100%;
+            max-width: 960px;
+            flex-direction: column;
+            padding: 16px;
+        }
+
+        @media (max-width: 991px) {
+            .products {
+                max-width: 100%;
+            }
+        }
+
+        .product-row {
+            display: flex;
+            gap: 12px;
+            white-space: nowrap;
+            line-height: 150%;
+        }
+
+        @media (max-width: 991px) {
+            .product-row {
+                flex-wrap: wrap;
+                white-space: initial;
+            }
+        }
+
+        .product-item {
+            display: flex;
+            padding-bottom: 12px;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        @media (max-width: 991px) {
+            .product-item {
+                white-space: initial;
+            }
+        }
+
+        .product-img {
+            aspect-ratio: 1;
+            object-fit: auto;
+            object-position: center;
+            width: 176px;
+            align-self: center;
+        }
+
+        .product-title,
+        .product-price {
+            font-family: Plus Jakarta Sans, sans-serif;
+        }
+
+        .product-title {
+            color: #1c0a1a;
+            margin-top: 12px;
+            font: 500 16px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
+        }
+
+        .product-price {
+            color: #a3408f;
+            font: 400 14px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
+        }
+
+        .product-extra {
+            margin-top: 12px;
+            width: 552px;
+            max-width: 100%;
+        }
+
+        .product-extra-row {
+            gap: 20px;
+            display: flex;
+        }
+
+        @media (max-width: 991px) {
+            .product-extra-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0px;
+            }
+        }
+
+        .product-extra-item {
+            display: flex;
+            flex-direction: column;
+            line-height: normal;
+            width: 33%;
+        }
+
+        @media (max-width: 991px) {
+            .product-extra-item {
+                width: 100%;
+            }
+        }
+
+        .product-extra-content {
+            display: flex;
+            flex-grow: 1;
+            padding-bottom: 12px;
+            flex-direction: column;
+            white-space: nowrap;
+            line-height: 150%;
+        }
+
+        @media (max-width: 991px) {
+            .product-extra-content {
+                margin-top: 12px;
+                white-space: initial;
+            }
+        }
+
+        #search-text-id, #search-text-id:focus {
+            background-color: #f2deed;
+            font-size: medium;
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <header class="header">
+            <div class="navigation">
+                <div class="logo-container">
+                    <img loading="lazy"
+                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/b88a6b0862cc8a9941292e1920c92fa8ffb73d9c2dbda23006eb44f049c6f26b?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                        class="logo" alt="DNAKolor logo" />
+                    <div class="site-title">DNAKolor</div>
+                </div>
+                <nav class="nav-links">
+                    <div class="nav-item">Shop</div>
+                    <div class="nav-item">Color Analysis</div>
+                    <div class="nav-item">The Studio</div>
+                    <button class="button-primary" aria-label="Get Started" onclick="myFunction()">
+                        <span class="button-text">Get Started</span>
+                    </button>
+                    <img hidden="true" loading="lazy"
+                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                        class="icon" alt="Shopping cart" />
+                </nav>
+            </div>
+        </header>
+        <main class="main-content">
+            <section class="main-section">
+                <div class="main-left">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/252c1006b4916036844796cd13d283f4bf2b90700f4df995c170e73782cb6daa?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                        alt="Main Large Graphic" />
+                </div>
+                <div class="main-right">
+                    <div class="product-description">
+                        <h1 class="shop-title">Shop Our Collection</h1>
+                        <p class="shop-subtitle">Explore the perfect products tailored for your color palette</p>
+                        <form class="search-form">
+                            <div class="search-field">
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/43e46e670d919748d1dd74481df304c43ca2f75e6652e468c7fec8dc1629d334?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                                    alt="Magnifying Glass Icon" />
+                                <input type="text" name="search-text" id="search-text-id" placeholder="Search for products">
+                            </div>
+                            <button class="search-button">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div class="collections">
+            <section class="collection-grid">
+                <div class="collection-section">
+                    <div class="collection-item">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/38c4cd33fcc429ace65b05036b5afb44cde4ba8a05eb3fb3ad89486cbd50b8f0?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                            alt="Soft Summer Collection" />
+                        <span class="collection-title">Soft Summer Collection</span>
+                        <span class="collection-category">Fashion & Beauty</span>
+                    </div>
+                </div>
+                <div class="collection-section">
+                    <div class="collection-item">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/54a28571727e70f2ae584faf644d2c3f8819b082b5bc57b224d5d55adae63582?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                            alt="Deep Winter Collection" />
+                        <span class="collection-title">Deep Winter Collection</span>
+                        <span class="collection-category">Fashion & Beauty</span>
+                    </div>
+                </div>
+                <div class="collection-section">
+                    <div class="collection-item">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/edbdabd87b4ce06f204f9e46fc5b4b68a86f12af5d678a5224246f16f0e68451?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                            alt="Clear Spring Collection" />
+                        <span class="collection-title">Clear Spring Collection</span>
+                        <span class="collection-category">Fashion & Beauty</span>
+                    </div>
+                </div>
+                <div class="collection-section">
+                    <div class="collection-item">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8631dbef9da0837f30770a0e681cca4fce36ad023707ec1de44bb341bdf999b6?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                            alt="Warm Autumn Collection" />
+                        <span class="collection-title">Warm Autumn Collection</span>
+                        <span class="collection-category">Fashion & Beauty</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="products">
+            <h2 class="categories">Categories</h2>
+            <div class="category-list">
+                <div class="category-item">All</div>
+                <div class="category-item">Makeup</div>
+                <div class="category-item">Skincare</div>
+                <div class="category-item">Haircare</div>
+                <div class="category-item">Accessories</div>
+            </div>
+            <div class="product-row">
+                <div class="product-item">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5371cbddfdf8fd6ecf471811d263fb54f71190ebd7be8637f0a370636197044?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                        alt="Lipstick" class="product-img" />
+                    <span class="product-title">Lipstick</span>
+                    <span class="product-price">$20</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d47118254dac52bcd5f52341b08dd84b14b56698a6b846788087376690e1b9fc?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                        alt="Foundation" class="product-img" />
+                    <span class="product-title">Foundation</span>
+                    <span class="product-price">$35</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/73dccf16e2805bdde81f2184509e101818fedd71974a08a516c810cb695fcca3?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                        alt="Moisturizer" class="product-img" />
+                    <span class="product-title">Moisturizer</span>
+                    <span class="product-price">$25</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/db35f905042a6fb9b2ae0fd0cae0c5eb15466736e708371faa03d566331f7453?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                        alt="Serum" class="product-img" />
+                    <span class="product-title">Serum</span>
+                    <span class="product-price">$40</span>
+                </div>
+                <div class="product-item">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/35cf0853917d8a028c58185397c93d9cfb33bb342a4d3bd23c5a6236fbdd86fa?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                        alt="Shampoo" class="product-img" />
+                    <span class="product-title">Shampoo</span>
+                    <span class="product-price">$15</span>
+                </div>
+            </div>
+            <div class="product-extra">
+                <div class="product-extra-row">
+                    <div class="product-extra-item">
+                        <div class="product-extra-content">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                                alt="Conditioner" class="product-img" />
+                            <span class="product-title">Conditioner</span>
+                            <span class="product-price">$15</span>
+                        </div>
+                    </div>
+                    <div class="product-extra-item">
+                        <div class="product-extra-content">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/384443f79f409637dcce1d91ebb15f9c6871f72987ea9d77e7659692226e3195?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                                alt="Hair Oil" class="product-img" />
+                            <span class="product-title">Hair Oil</span>
+                            <span class="product-price">$22</span>
+                        </div>
+                    </div>
+                    <div class="product-extra-item">
+                        <div class="product-extra-content">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/21a9e213857106f3548218369c7cf7f5a809f7c7845972b88bfe6c2df37f94fc?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                                alt="Brush Set" class="product-img" />
+                            <span class="product-title">Brush Set</span>
+                            <span class="product-price">$30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
+
+</html>
