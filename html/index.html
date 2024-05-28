@@ -1,563 +1,645 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DNAKolor</title>
     <style>
-        body {
-            margin: 0;
-        }
+      body {
+        margin: 0;
+      }
 
-        .container {
-            background-color: #faf0f7;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+      .container {
+        background-color: #faf0f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
+      .header {
+        align-items: center;
+        background-color: #faf0f7;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      @media (max-width: 991px) {
         .header {
-            align-items: center;
-            background-color: #faf0f7;
-            display: flex;
-            width: 100%;
-            flex-direction: column;
+          max-width: 100%;
         }
+      }
 
-        @media (max-width: 991px) {
-            .header {
-                max-width: 100%;
-            }
-        }
+      .navigation {
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(229, 232, 235, 1);
+        align-self: stretch;
+        display: flex;
+        padding: 12px 40px;
+      }
 
+      @media (max-width: 991px) {
         .navigation {
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(229, 232, 235, 1);
-            align-self: stretch;
-            display: flex;
-            padding: 12px 40px;
+          flex-wrap: wrap;
+          padding: 0 20px;
         }
+      }
 
-        @media (max-width: 991px) {
-            .navigation {
-                flex-wrap: wrap;
-                padding: 0 20px;
-            }
-        }
+      .logo-container {
+        display: flex;
+        gap: 16px;
+        font-size: 18px;
+        color: #1c0a1a;
+        font-weight: 700;
+        letter-spacing: -0.27px;
+        cursor: pointer;
+      }
 
+      @media (max-width: 991px) {
         .logo-container {
-            display: flex;
-            gap: 16px;
-            font-size: 18px;
-            color: #1c0a1a;
-            font-weight: 700;
-            letter-spacing: -0.27px;
+          white-space: initial;
         }
+      }
 
-        @media (max-width: 991px) {
-            .logo-container {
-                white-space: initial;
-            }
-        }
+      .logo {
+        aspect-ratio: 1;
+        width: 16px;
+      }
 
-        .logo {
-            aspect-ratio: 1;
-            width: 16px;
-        }
+      .site-title {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        margin: auto 0;
+      }
 
-        .site-title {
-            font-feature-settings: "dlig" on;
-            font-family: Plus Jakarta Sans, sans-serif;
-            margin: auto 0;
-        }
+      .nav-links {
+        justify-content: end;
+        display: flex;
+        padding-left: 80px;
+        gap: 20px;
+        font-size: 14px;
+        line-height: 150%;
+      }
 
+      @media (max-width: 991px) {
         .nav-links {
-            justify-content: end;
-            display: flex;
-            padding-left: 80px;
-            gap: 20px;
-            font-size: 14px;
-            line-height: 150%;
+          flex-wrap: wrap;
         }
+      }
 
-        @media (max-width: 991px) {
-            .nav-links {
-                flex-wrap: wrap;
-            }
-        }
+      .nav-item {
+        display: flex;
+        justify-content: center;
+        /* Centers text horizontally */
+        align-items: center;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 500;
+        font-size: medium;
+        color: #1c0a1a;
+        text-decoration: none;
+      }
 
-        .nav-item {
-            display: flex;
-            justify-content: center;
-            /* Centers text horizontally */
-            align-items: center;
-            font-feature-settings: "dlig" on;
-            font-family: Plus Jakarta Sans, sans-serif;
-            font-weight: 500;
-            font-size: medium;
-        }
+      .button-primary {
+        justify-content: center;
+        border-radius: 20px;
+        background-color: #d421b0;
+        color: #faf0f7;
+        font-weight: 700;
+        letter-spacing: 0.21px;
+        padding: 10px 16px;
+        border: #d421b0 solid 1px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
 
-        .button-primary {
-            justify-content: center;
-            border-radius: 20px;
-            background-color: #d421b0;
-            color: #faf0f7;
-            font-weight: 700;
-            letter-spacing: 0.21px;
-            padding: 10px 16px;
-            border: #d421b0 solid 1px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+      .button-primary:hover {
+        background-color: #faf0f7;
+        color: #d421b0;
+        cursor: pointer;
+      }
 
-        .button-primary:hover {
-            background-color: #faf0f7;
-            color: #d421b0;
-            cursor: pointer;
-        }
+      .button-text {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+      }
 
-        .button-text {
-            font-feature-settings: "dlig" on;
-            font-family: Plus Jakarta Sans, sans-serif;
-        }
+      .icon {
+        aspect-ratio: 1;
+        width: 40px;
+      }
 
-        .icon {
-            aspect-ratio: 1;
-            width: 40px;
-        }
+      .main-content {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 960px;
+        padding: 40px 16px;
+      }
 
+      @media (max-width: 991px) {
         .main-content {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 960px;
-            padding: 40px 16px;
+          max-width: 100%;
         }
+      }
 
-        @media (max-width: 991px) {
-            .main-content {
-                max-width: 100%;
-            }
-        }
+      .content-block {
+        gap: 20px;
+        display: flex;
+      }
 
+      @media (max-width: 991px) {
         .content-block {
-            gap: 20px;
-            display: flex;
+          flex-direction: column;
+          gap: 0px;
         }
+      }
 
-        @media (max-width: 991px) {
-            .content-block {
-                flex-direction: column;
-                gap: 0px;
-            }
-        }
+      .column-main {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: 55%;
+      }
 
+      @media (max-width: 991px) {
         .column-main {
-            display: flex;
-            flex-direction: column;
-            line-height: normal;
-            width: 55%;
+          width: 100%;
         }
+      }
 
-        @media (max-width: 991px) {
-            .column-main {
-                width: 100%;
-            }
-        }
+      .column-image {
+        aspect-ratio: 1.79;
+        width: 100%;
+        flex-grow: 1;
+      }
 
+      @media (max-width: 991px) {
         .column-image {
-            aspect-ratio: 1.79;
-            width: 100%;
-            flex-grow: 1;
+          max-width: 100%;
+          margin-top: 40px;
         }
+      }
 
-        @media (max-width: 991px) {
-            .column-image {
-                max-width: 100%;
-                margin-top: 40px;
-            }
-        }
+      .column-side {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: 45%;
+        margin-left: 20px;
+      }
 
+      @media (max-width: 991px) {
         .column-side {
-            display: flex;
-            flex-direction: column;
-            line-height: normal;
-            width: 45%;
-            margin-left: 20px;
+          width: 100%;
         }
+      }
 
-        @media (max-width: 991px) {
-            .column-side {
-                width: 100%;
-            }
-        }
+      .text-area {
+        justify-content: center;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        font-size: 16px;
+        color: #1c0a1a;
+        padding: 12px 0;
+      }
 
+      @media (max-width: 991px) {
         .text-area {
-            justify-content: center;
-            display: flex;
-            flex-grow: 1;
-            flex-direction: column;
-            font-size: 16px;
-            color: #1c0a1a;
-            padding: 12px 0;
+          margin-top: 40px;
         }
+      }
 
-        @media (max-width: 991px) {
-            .text-area {
-                margin-top: 40px;
-            }
-        }
+      .title-large {
+        font-feature-settings: "dlig" on;
+        letter-spacing: -1.58px;
+        font: 800 48px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
+      }
 
+      @media (max-width: 991px) {
         .title-large {
-            font-feature-settings: "dlig" on;
-            letter-spacing: -1.58px;
-            font: 800 48px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
+          font-size: 40px;
         }
+      }
 
-        @media (max-width: 991px) {
-            .title-large {
-                font-size: 40px;
-            }
-        }
+      .description {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 400;
+        line-height: 150%;
+        margin-top: 68px;
+      }
 
+      @media (max-width: 991px) {
         .description {
-            font-feature-settings: "dlig" on;
-            font-family: Plus Jakarta Sans, sans-serif;
-            font-weight: 400;
-            line-height: 150%;
-            margin-top: 68px;
+          margin-top: 40px;
         }
+      }
 
-        @media (max-width: 991px) {
-            .description {
-                margin-top: 40px;
-            }
-        }
+      .button-secondary {
+        justify-content: center;
+        border-radius: 24px;
+        background-color: #d421b0;
+        color: #faf0f7;
+        font-weight: 700;
+        letter-spacing: 0.24px;
+        line-height: 150%;
+        padding: 12px 20px;
+        margin-top: 56px;
+        width: 120px;
+        max-width: 100%;
+        border: #d421b0 solid 1px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
 
+      .button-secondary:hover {
+        background-color: #faf0f7;
+        color: #d421b0;
+        cursor: pointer;
+      }
+
+      @media (max-width: 991px) {
         .button-secondary {
-            justify-content: center;
-            border-radius: 24px;
-            background-color: #d421b0;
-            color: #faf0f7;
-            font-weight: 700;
-            letter-spacing: 0.24px;
-            line-height: 150%;
-            padding: 12px 20px;
-            margin-top: 56px;
-            width: 120px;
-            max-width: 100%;
-            border: #d421b0 solid 1px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+          margin-top: 40px;
         }
+      }
 
-        .button-secondary:hover {
-            background-color: #faf0f7;
-            color: #d421b0;
-            cursor: pointer;
-        }
+      .small-text {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        justify-content: center;
+      }
 
-        @media (max-width: 991px) {
-            .button-secondary {
-                margin-top: 40px;
-            }
-        }
+      .grid-container {
+        justify-content: center;
+        width: 100%;
+        max-width: 960px;
+        padding: 16px;
+      }
 
-        .small-text {
-            font-feature-settings: "dlig" on;
-            font-family: Plus Jakarta Sans, sans-serif;
-            justify-content: center;
-        }
-
+      @media (max-width: 991px) {
         .grid-container {
-            justify-content: center;
-            width: 100%;
-            max-width: 960px;
-            padding: 16px;
+          max-width: 100%;
         }
+      }
 
-        @media (max-width: 991px) {
-            .grid-container {
-                max-width: 100%;
-            }
-        }
+      .grid {
+        gap: 20px;
+        display: flex;
+      }
 
+      @media (max-width: 991px) {
         .grid {
-            gap: 20px;
-            display: flex;
+          flex-direction: column;
+          gap: 0px;
         }
+      }
 
-        @media (max-width: 991px) {
-            .grid {
-                flex-direction: column;
-                gap: 0px;
-            }
-        }
+      .grid-item {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: 25%;
+      }
 
+      @media (max-width: 991px) {
         .grid-item {
-            display: flex;
-            flex-direction: column;
-            line-height: normal;
-            width: 25%;
+          width: 100%;
         }
+      }
 
-        @media (max-width: 991px) {
-            .grid-item {
-                width: 100%;
-            }
-        }
+      .card {
+        display: flex;
+        flex-grow: 1;
+        padding-bottom: 12px;
+        flex-direction: column;
+        line-height: 150%;
+        margin-top: 28px;
+      }
 
-        .card {
-            display: flex;
-            flex-grow: 1;
-            padding-bottom: 12px;
-            flex-direction: column;
-            line-height: 150%;
-            margin-top: 28px;
-        }
+      .card-image {
+        aspect-ratio: 0.75;
+        width: 100%;
+      }
 
-        .card-image {
-            aspect-ratio: 0.75;
-            width: 100%;
-        }
+      .card-title {
+        color: #1c0a1a;
+        font-feature-settings: "dlig" on;
+        margin-top: 12px;
+        font: 500 16px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
+      }
 
-        .card-title {
-            color: #1c0a1a;
-            font-feature-settings: "dlig" on;
-            margin-top: 12px;
-            font: 500 16px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
-        }
+      .card-subtitle {
+        color: #a3408f;
+        font-feature-settings: "dlig" on;
+        font: 400 14px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
+      }
 
-        .card-subtitle {
-            color: #a3408f;
-            font-feature-settings: "dlig" on;
-            font: 400 14px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
-        }
+      .section-title {
+        width: 194.8px;
+        color: #1c0a1a;
+        font-feature-settings: "dlig" on;
+        letter-spacing: -0.33px;
+        align-self: start;
+        margin: 20px 0 0 0;
+        font: 700 22px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
+      }
 
+      @media (max-width: 991px) {
         .section-title {
-            width: 194.8px;
-            color: #1c0a1a;
-            font-feature-settings: "dlig" on;
-            letter-spacing: -0.33px;
-            align-self: start;
-            margin: 20px 0 0 0;
-            font: 700 22px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
+          margin-left: 10px;
         }
+      }
 
-        @media (max-width: 991px) {
-            .section-title {
-                margin-left: 10px;
-            }
-        }
+      .process-content {
+        justify-content: center;
+        margin-top: 12px;
+        width: 100%;
+        max-width: 960px;
+        padding: 16px;
+      }
 
+      @media (max-width: 991px) {
         .process-content {
-            justify-content: center;
-            margin-top: 12px;
-            width: 100%;
-            max-width: 960px;
-            padding: 16px;
+          max-width: 100%;
         }
+      }
 
-        @media (max-width: 991px) {
-            .process-content {
-                max-width: 100%;
-            }
-        }
+      .steps {
+        gap: 20px;
+        display: flex;
+      }
 
+      @media (max-width: 991px) {
         .steps {
-            gap: 20px;
-            display: flex;
-
+          flex-direction: column;
+          gap: 0px;
         }
+      }
 
-        @media (max-width: 991px) {
-            .steps {
-                flex-direction: column;
-                gap: 0px;
-            }
-        }
+      .step {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: 33%;
+        box-sizing: border-box;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+          transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
+      @media (max-width: 991px) {
         .step {
-            display: flex;
-            flex-direction: column;
-            line-height: normal;
-            width: 33%;
-            box-sizing: border-box;
-            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          width: 100%;
         }
+      }
 
-        @media (max-width: 991px) {
-            .step {
-                width: 100%;
-            }
-        }
+      .step-detail {
+        border-radius: 8px;
+        border: 1px solid rgba(235, 199, 227, 1);
+        background-color: #faf0f7;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        width: 100%;
+        padding: 16px;
+        margin-top: 28px;
+        box-sizing: border-box;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+          transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-        .step-detail {
-            border-radius: 8px;
-            border: 1px solid rgba(235, 199, 227, 1);
-            background-color: #faf0f7;
-            display: flex;
-            flex-grow: 1;
-            flex-direction: column;
-            width: 100%;
-            padding: 16px;
-            margin-top: 28px;
-            box-sizing: border-box;
-            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        }
+      .step:hover .step-detail {
+        background-color: #f5e2f0;
+        /* Change background color on hover */
+        border-color: #d421b0;
+        /* Change border color on hover */
+        transform: scale(1.02);
+        /* Slightly scale up the element */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Add a subtle shadow */
+        cursor: pointer;
+      }
 
-        .step:hover .step-detail {
-            background-color: #f5e2f0;
-            /* Change background color on hover */
-            border-color: #d421b0;
-            /* Change border color on hover */
-            transform: scale(1.02);
-            /* Slightly scale up the element */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Add a subtle shadow */
-            cursor: pointer;
-        }
+      .step-icon {
+        aspect-ratio: 1;
+        width: 24px;
+      }
 
-        .step-icon {
-            aspect-ratio: 1;
-            width: 24px;
-        }
+      .step-title {
+        color: #1c0a1a;
+        font-feature-settings: "dlig" on;
+        margin-top: 12px;
+        font: 700 16px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
+      }
 
-        .step-title {
-            color: #1c0a1a;
-            font-feature-settings: "dlig" on;
-            margin-top: 12px;
-            font: 700 16px Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
-        }
-
-        .step-description {
-            color: #a3408f;
-            font-feature-settings: "dlig" on;
-            margin-top: 4px;
-            font: 400 14px/150% Plus Jakarta Sans, -apple-system, Roboto, Helvetica, sans-serif;
-        }
+      .step-description {
+        color: #a3408f;
+        font-feature-settings: "dlig" on;
+        margin-top: 4px;
+        font: 400 14px/150% Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header class="header">
-            <div class="navigation">
-                <div class="logo-container">
-                    <img loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/b88a6b0862cc8a9941292e1920c92fa8ffb73d9c2dbda23006eb44f049c6f26b?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                        class="logo" alt="DNAKolor logo" />
-                    <div class="site-title">DNAKolor</div>
-                </div>
-                <nav class="nav-links">
-                    <div class="nav-item">Shop</div>
-                    <div class="nav-item">Color Analysis</div>
-                    <div class="nav-item">The Studio</div>
-                    <button class="button-primary" aria-label="Get Started" onclick="myFunction()">
-                        <span class="button-text">Get Started</span>
-                    </button>
-                    <img hidden="true" loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                        class="icon" alt="Shopping cart" />
-                </nav>
+      <header class="header">
+        <div class="navigation">
+          <div
+            class="logo-container"
+            tabindex="0"
+            role="button"
+            onclick="redirectHome()"
+          >
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/b88a6b0862cc8a9941292e1920c92fa8ffb73d9c2dbda23006eb44f049c6f26b?apiKey=1145a631081a47248438c8ac05c41e7d&"
+              class="logo"
+              alt="DNAKolor logo"
+            />
+            <div class="site-title">DNAKolor</div>
+          </div>
+          <nav class="nav-links">
+            <a class="nav-item" href="shop.html">Shop</a>
+            <a class="nav-item" href="quiz.html">Color Analysis</a>
+            <div class="nav-item">The Studio</div>
+            <button
+              class="button-primary"
+              aria-label="Get Started"
+              onclick="myFunction()"
+            >
+              <span class="button-text">Get Started</span>
+            </button>
+            <img
+              hidden="true"
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
+              class="icon"
+              alt="Shopping cart"
+            />
+          </nav>
+        </div>
+      </header>
+      <section class="main-content">
+        <div class="content-block">
+          <div class="column-main">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/5bc2781bedf3236fb0763421a80312dbe6e2b4e658801b63b527400911e099f5?apiKey=1145a631081a47248438c8ac05c41e7d&"
+              class="column-image"
+              alt=""
+            />
+          </div>
+          <div class="column-side">
+            <div class="text-area">
+              <h1 class="title-large">Discover your perfect colors</h1>
+              <p class="description">
+                Take our quiz and get personalized color recommendations for
+                fashion and beauty.
+              </p>
+              <button
+                class="button-secondary"
+                aria-label="Start Now"
+                onclick="redirectQuizz()"
+              >
+                <span class="small-text">Start Now</span>
+              </button>
             </div>
-        </header>
-        <section class="main-content">
-            <div class="content-block">
-                <div class="column-main">
-                    <img loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/5bc2781bedf3236fb0763421a80312dbe6e2b4e658801b63b527400911e099f5?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                        class="column-image" alt="" />
-                </div>
-                <div class="column-side">
-                    <div class="text-area">
-                        <h1 class="title-large">Discover your perfect colors</h1>
-                        <p class="description">Take our quiz and get personalized color recommendations for fashion and
-                            beauty.</p>
-                        <button class="button-secondary" aria-label="Start Now" onclick="myFunction()">
-                            <span class="small-text">Start Now</span>
-                        </button>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </section>
+      <section class="grid-container">
+        <div class="grid">
+          <div class="grid-item">
+            <div class="card">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/066cae226d1e09fd1407b774eaec4d86703fb99bb7298e5e725e7e427820e790?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                class="card-image"
+                alt="Soft Summer fashion and beauty"
+              />
+              <div class="card-title">Soft Summer</div>
+              <div class="card-subtitle">Fashion & Beauty</div>
             </div>
-        </section>
-        <section class="grid-container">
-            <div class="grid">
-                <div class="grid-item">
-                    <div class="card">
-                        <img loading="lazy"
-                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/066cae226d1e09fd1407b774eaec4d86703fb99bb7298e5e725e7e427820e790?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                            class="card-image" alt="Soft Summer fashion and beauty" />
-                        <div class="card-title">Soft Summer</div>
-                        <div class="card-subtitle">Fashion & Beauty</div>
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="card">
-                        <img loading="lazy"
-                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/5afda3c01fdad3da1635ed607adb24a1f208ec76052d1269b6bbb5b6601d9673?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                            class="card-image" alt="Deep Winter fashion and beauty" />
-                        <div class="card-title">Deep Winter</div>
-                        <div class="card-subtitle">Fashion & Beauty</div>
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="card">
-                        <img loading="lazy"
-                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/f29e1e700e78ea183495f459f011cdf99af605ffed0f8228e8bfbdcdaff79712?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                            class="card-image" alt="Clear Spring fashion and beauty" />
-                        <div class="card-title">Clear Spring</div>
-                        <div class="card-subtitle">Fashion & Beauty</div>
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <div class="card">
-                        <img loading="lazy"
-                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/a4cdc1806eb443caa254d8a7dd59c2641c5bf34e8148eb4da09e2033b1434cc5?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                            class="card-image" alt="Warm Autumn fashion and beauty" />
-                        <div class="card-title">Warm Autumn</div>
-                        <div class="card-subtitle">Fashion & Beauty</div>
-                    </div>
-                </div>
+          </div>
+          <div class="grid-item">
+            <div class="card">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/5afda3c01fdad3da1635ed607adb24a1f208ec76052d1269b6bbb5b6601d9673?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                class="card-image"
+                alt="Deep Winter fashion and beauty"
+              />
+              <div class="card-title">Deep Winter</div>
+              <div class="card-subtitle">Fashion & Beauty</div>
             </div>
-        </section>
+          </div>
+          <div class="grid-item">
+            <div class="card">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/f29e1e700e78ea183495f459f011cdf99af605ffed0f8228e8bfbdcdaff79712?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                class="card-image"
+                alt="Clear Spring fashion and beauty"
+              />
+              <div class="card-title">Clear Spring</div>
+              <div class="card-subtitle">Fashion & Beauty</div>
+            </div>
+          </div>
+          <div class="grid-item">
+            <div class="card">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/a4cdc1806eb443caa254d8a7dd59c2641c5bf34e8148eb4da09e2033b1434cc5?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                class="card-image"
+                alt="Warm Autumn fashion and beauty"
+              />
+              <div class="card-title">Warm Autumn</div>
+              <div class="card-subtitle">Fashion & Beauty</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section class="process-content">
-            <h2 class="section-title">How it works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-detail">
-                        <img loading="lazy"
-                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/bd9faf7da900a540eb97b3018aaab297bf9ad41ec2ad201c6ae7558ddb426b29?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                            class="step-icon" alt="Quiz" />
-                        <div class="step-title">Quiz</div>
-                        <div class="step-description">Answer a few questions about your skin, hair, and eye color</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-detail">
-                        <img loading="lazy"
-                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/5563a0415aecc319f5fb40feb621aaeca3e4fd713cf9066ed9c3ae749e89008b?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                            class="step-icon" alt="Personalized Recommendations" />
-                        <div class="step-title">Personalized Recommendations</div>
-                        <div class="step-description">Receive a personalized color palette for fashion and beauty</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-detail">
-                        <img loading="lazy"
-                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/7359d1e3f71aec2c567b57f2538e045cb4381aaec37e24b6ecd9b787a91bb104?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                            class="step-icon" alt="Shop" />
-                        <div class="step-title">Shop</div>
-                        <div class="step-description">Shop products that match your color tone</div>
-                    </div>
-                </div>
+      <section class="process-content">
+        <h2 class="section-title">How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <div
+              class="step-detail"
+              tabindex="0"
+              role="button"
+              onclick="redirectQuizz()"
+            >
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/bd9faf7da900a540eb97b3018aaab297bf9ad41ec2ad201c6ae7558ddb426b29?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                class="step-icon"
+                alt="Quiz"
+              />
+              <div class="step-title">Quiz</div>
+              <div class="step-description">
+                Answer a few questions about your skin, hair, and eye color
+              </div>
             </div>
-        </section>
+          </div>
+          <div class="step">
+            <div class="step-detail" onclick="redirectQuizz()" role="button">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/5563a0415aecc319f5fb40feb621aaeca3e4fd713cf9066ed9c3ae749e89008b?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                class="step-icon"
+                alt="Personalized Recommendations"
+              />
+              <div class="step-title">Personalized Recommendations</div>
+              <div class="step-description">
+                Receive a personalized color palette for fashion and beauty
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div
+              class="step-detail"
+              tabindex="0"
+              role="button"
+              onclick="redirectShop()"
+            >
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/7359d1e3f71aec2c567b57f2538e045cb4381aaec37e24b6ecd9b787a91bb104?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                class="step-icon"
+                alt="Shop"
+              />
+              <div class="step-title">Shop</div>
+              <div class="step-description">
+                Shop products that match your color tone
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-</body>
-
+  </body>
 </html>
 <script>
-    function myFunction() {
-        window.location.href = "http://127.0.0.1:5500/login.html"
-    }
+  function myFunction() {
+    window.location.href = "login.html";
+  }
+
+  function redirectHome() {
+    window.location.href = "index.html";
+  }
+
+  function redirectQuizz() {
+    window.location.href = "quiz.html";
+  }
+
+  function redirectShop() {
+    window.location.href = "shop.html";
+  }
 </script>

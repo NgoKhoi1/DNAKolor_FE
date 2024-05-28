@@ -1,407 +1,453 @@
-<style>
-  body {
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0;
-  }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DNAKolor</title>
+    <style>
+      body {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+      }
 
-  .container {
-    align-items: center;
-    background-color: var(--Home-page-color, #faf0f7);
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-  }
+      .container {
+        align-items: center;
+        background-color: var(--Home-page-color, #faf0f7);
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+      }
 
-  @media (max-width: 991px) {
-    .container {
-      max-width: 100%;
-    }
-  }
+      @media (max-width: 991px) {
+        .container {
+          max-width: 100%;
+        }
+      }
 
-  .header {
-    justify-content: space-between;
-    border-color: rgba(229, 232, 235, 1);
-    border-style: solid;
-    border-bottom-width: 1px;
-    align-self: stretch;
-    display: flex;
-    gap: 0px;
-    padding: 12px 40px;
-  }
+      .header {
+        justify-content: space-between;
+        border-color: rgba(229, 232, 235, 1);
+        border-style: solid;
+        border-bottom-width: 1px;
+        align-self: stretch;
+        display: flex;
+        gap: 0px;
+        padding: 12px 40px;
+      }
 
-  @media (max-width: 991px) {
-    .header {
-      flex-wrap: wrap;
-      padding: 0 20px;
-    }
-  }
+      @media (max-width: 991px) {
+        .header {
+          flex-wrap: wrap;
+          padding: 0 20px;
+        }
+      }
 
-  .logo-wrapper {
-    display: flex;
-    gap: 16px;
-    font-size: 18px;
-    color: #1c0a1a;
-    font-weight: 700;
-    white-space: nowrap;
-    letter-spacing: -0.27px;
-    margin: auto 0;
-  }
+      .logo-wrapper {
+        display: flex;
+        gap: 16px;
+        font-size: 18px;
+        color: #1c0a1a;
+        font-weight: 700;
+        white-space: nowrap;
+        letter-spacing: -0.27px;
+        margin: auto 0;
+        cursor: pointer;
+      }
 
-  @media (max-width: 991px) {
-    .logo-wrapper {
-      white-space: initial;
-    }
-  }
+      @media (max-width: 991px) {
+        .logo-wrapper {
+          white-space: initial;
+        }
+      }
 
-  .logo {
-    aspect-ratio: 1;
-    object-fit: auto;
-    object-position: center;
-    width: 16px;
-    margin: auto 0;
-  }
+      .logo {
+        aspect-ratio: 1;
+        object-fit: auto;
+        object-position: center;
+        width: 16px;
+        margin: auto 0;
+      }
 
-  .brand {
-    font-feature-settings: "dlig" on;
-    font-family: Plus Jakarta Sans, sans-serif;
-  }
+      .brand {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+      }
 
-  .navigation {
-    justify-content: end;
-    display: flex;
-    padding-left: 80px;
-    gap: 20px;
-    font-size: 14px;
-    line-height: 150%;
-  }
+      .navigation {
+        justify-content: end;
+        display: flex;
+        padding-left: 80px;
+        gap: 20px;
+        font-size: 14px;
+        line-height: 150%;
+      }
 
-  @media (max-width: 991px) {
-    .navigation {
-      flex-wrap: wrap;
-    }
-  }
+      @media (max-width: 991px) {
+        .navigation {
+          flex-wrap: wrap;
+        }
+      }
 
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    color: #1c0a1a;
-    font-weight: 500;
-    justify-content: space-between;
-    padding: 10px 0;
-  }
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        color: #1c0a1a;
+        font-weight: 500;
+        justify-content: space-between;
+        padding: 10px 0;
+      }
 
-  .nav-item {
-    font-feature-settings: "dlig" on;
-    font-family: Plus Jakarta Sans, sans-serif;
-  }
+      .nav-item {
+        display: flex;
+        justify-content: center;
+        /* Centers text horizontally */
+        align-items: center;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 500;
+        font-size: medium;
+        color: #1c0a1a;
+        text-decoration: none;
+      }
 
-  .cta-button {
-    justify-content: center;
-    border-radius: 20px;
-    background-color: #d421b0;
-    display: flex;
-    flex-direction: column;
-    color: var(--Home-page-color, #faf0f7);
-    font-weight: 700;
-    letter-spacing: 0.21px;
-    padding: 10px 16px;
-    border: 1px solid #d421b0;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+      .cta-button {
+        justify-content: center;
+        border-radius: 20px;
+        background-color: #d421b0;
+        display: flex;
+        flex-direction: column;
+        color: var(--Home-page-color, #faf0f7);
+        font-weight: 700;
+        letter-spacing: 0.21px;
+        padding: 10px 16px;
+        border: 1px solid #d421b0;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
 
-  .cta-button:hover,
-  .cta-button:active {
-    background-color: var(--Home-page-color, #faf0f7);
-    color: #d421b0;
-  }
+      .cta-button:hover,
+      .cta-button:active {
+        background-color: var(--Home-page-color, #faf0f7);
+        color: #d421b0;
+      }
 
-  .cta-label {
-    font-feature-settings: "dlig" on;
-    font-family: Plus Jakarta Sans, sans-serif;
-    justify-content: center;
-  }
+      .cta-label {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        justify-content: center;
+      }
 
-  .profile-pic {
-    aspect-ratio: 1;
-    object-fit: auto;
-    object-position: center;
-    width: 40px;
-  }
+      .profile-pic {
+        aspect-ratio: 1;
+        object-fit: auto;
+        object-position: center;
+        width: 40px;
+      }
 
-  .content-wrapper {
-    background-color: var(--Home-page-color, #faf0f7);
-    display: flex;
-    margin-top: 32px;
-    width: 100%;
-    max-width: 928px;
-    flex-direction: column;
-    font-size: 28px;
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: -0.7px;
-    justify-content: center;
-  }
+      .content-wrapper {
+        background-color: var(--Home-page-color, #faf0f7);
+        display: flex;
+        margin-top: 32px;
+        width: 100%;
+        max-width: 928px;
+        flex-direction: column;
+        font-size: 28px;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: -0.7px;
+        justify-content: center;
+      }
 
-  @media (max-width: 991px) {
-    .content-wrapper {
-      max-width: 100%;
-    }
-  }
+      @media (max-width: 991px) {
+        .content-wrapper {
+          max-width: 100%;
+        }
+      }
 
-  .image-section {
-    display: flex;
-    flex-direction: column;
-    font-feature-settings: "dlig" on;
-    font-family: Plus Jakarta Sans, sans-serif;
-    position: relative;
-    overflow: hidden;
-    min-height: 320px;
-    width: 100%;
-    align-items: start;
-    padding: 269px 16px 16px;
-  }
+      .image-section {
+        display: flex;
+        flex-direction: column;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        position: relative;
+        overflow: hidden;
+        min-height: 320px;
+        width: 100%;
+        align-items: start;
+        padding: 269px 16px 16px;
+      }
 
-  @media (max-width: 991px) {
-    .image-section {
-      max-width: 100%;
-      padding: 40px 20px 0 0;
-    }
-  }
+      @media (max-width: 991px) {
+        .image-section {
+          max-width: 100%;
+          padding: 40px 20px 0 0;
+        }
+      }
 
-  .background-img {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+      .background-img {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
 
-  .main-title {
-    font-feature-settings: "dlig" on;
-    align-items: center;
-    margin-top: 12px;
-    width: 960px;
-    max-width: 100%;
-    color: #1c0a1a;
-    letter-spacing: -0.8px;
-    justify-content: center;
-    padding: 16px;
-    font: 700 32px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
-      sans-serif;
-    text-align: center;
-  }
+      .main-title {
+        font-feature-settings: "dlig" on;
+        align-items: center;
+        margin-top: 12px;
+        width: 960px;
+        max-width: 100%;
+        color: #1c0a1a;
+        letter-spacing: -0.8px;
+        justify-content: center;
+        padding: 16px;
+        font: 700 32px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
+        text-align: center;
+      }
 
-  @media (max-width: 991px) {
-    .main-title {
-      padding-right: 20px;
-    }
-  }
+      @media (max-width: 991px) {
+        .main-title {
+          padding-right: 20px;
+        }
+      }
 
-  .description-text {
-    color: #1c0a1a;
-    text-align: center;
-    font-feature-settings: "dlig" on;
-    margin-top: 4px;
-    font: 400 16px/150% Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
-      sans-serif;
-    padding: 10 24;
-    border: 1px solid #807e7e;
-    border-radius: 12px;
-  }
+      .description-text {
+        color: #1c0a1a;
+        text-align: center;
+        font-feature-settings: "dlig" on;
+        margin-top: 4px;
+        font: 400 16px/150% Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
+        padding: 10px 24px;
+        border: 1px solid #807e7e;
+        border-radius: 12px;
+      }
 
-  @media (max-width: 991px) {
-    .description-text {
-      max-width: 100%;
-    }
-  }
+      @media (max-width: 991px) {
+        .description-text {
+          max-width: 100%;
+        }
+      }
 
-  .section-title {
-    color: #1c0a1a;
-    font-feature-settings: "dlig" on;
-    letter-spacing: -0.33px;
-    align-self: start;
-    font: 700 22px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
-      sans-serif;
-  }
+      .section-title {
+        color: #1c0a1a;
+        font-feature-settings: "dlig" on;
+        letter-spacing: -0.33px;
+        align-self: start;
+        font: 700 22px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
+      }
 
-  @media (max-width: 991px) {
-    .section-title {
-      margin-left: 10px;
-    }
-  }
+      @media (max-width: 991px) {
+        .section-title {
+          margin-left: 10px;
+        }
+      }
 
-  .products-wrapper {
-    justify-content: center;
-    margin-top: 12px;
-    width: 100%;
-    max-width: 960px;
-    padding: 16px;
-  }
+      .products-wrapper {
+        justify-content: center;
+        margin-top: 12px;
+        width: 100%;
+        max-width: 960px;
+        padding: 16px;
+      }
 
-  @media (max-width: 991px) {
-    .products-wrapper {
-      max-width: 100%;
-    }
-  }
+      @media (max-width: 991px) {
+        .products-wrapper {
+          max-width: 100%;
+        }
+      }
 
-  .products-container {
-    gap: 20px;
-    display: flex;
-  }
+      .products-container {
+        gap: 20px;
+        display: flex;
+      }
 
-  @media (max-width: 991px) {
-    .products-container {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0px;
-    }
-  }
+      @media (max-width: 991px) {
+        .products-container {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0px;
+        }
+      }
 
-  .product-column {
-    display: flex;
-    flex-direction: column;
-    line-height: normal;
-    width: 25%;
-    margin-left: 0px;
-  }
+      .product-column {
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: 25%;
+        margin-left: 0px;
+      }
 
-  @media (max-width: 991px) {
-    .product-column {
-      width: 100%;
-    }
-  }
+      @media (max-width: 991px) {
+        .product-column {
+          width: 100%;
+        }
+      }
 
-  .product {
-    display: flex;
-    flex-grow: 1;
-    padding-bottom: 12px;
-    flex-direction: column;
-    font-size: 16px;
-    color: #1c0a1a;
-    font-weight: 500;
-    line-height: 150%;
-  }
+      .product {
+        display: flex;
+        flex-grow: 1;
+        padding-bottom: 12px;
+        flex-direction: column;
+        font-size: 16px;
+        color: #1c0a1a;
+        font-weight: 500;
+        line-height: 150%;
+      }
 
-  @media (max-width: 991px) {
-    .product {
-      margin-top: 28px;
-    }
-  }
+      @media (max-width: 991px) {
+        .product {
+          margin-top: 28px;
+        }
+      }
 
-  .product-img {
-    aspect-ratio: 0.75;
-    object-fit: auto;
-    object-position: center;
-    width: 100%;
-  }
+      .product-img {
+        aspect-ratio: 0.75;
+        object-fit: auto;
+        object-position: center;
+        width: 100%;
+      }
 
-  .product-title {
-    font-feature-settings: "dlig" on;
-    font-family: Plus Jakarta Sans, sans-serif;
-    margin-top: 12px;
-  }
+      .product-title {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        margin-top: 12px;
+      }
 
-  .column-offset {
-    margin-left: 20px;
-  }
-</style>
+      .column-offset {
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div
+          class="logo-wrapper"
+          tabindex="0"
+          role="button"
+          onclick="redirectHome()"
+        >
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/e393950326b87b86fd49d3dc1027ea1fd64ea955892d268d2a2119d8d153233d?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
+            class="logo"
+            alt="DNAKolor logo"
+          />
+          <div class="brand">DNAKolor</div>
+        </div>
+        <nav class="navigation">
+          <div class="nav-links">
+            <a class="nav-item" href="shop.html">Shop</a>
+            <a class="nav-item" href="quiz.html">Color Analysis</a>
+            <div class="nav-item">The Studio</div>
+          </div>
+          <div class="cta-button" tabindex="0" role="button">
+            <div class="cta-label">Get Started</div>
+          </div>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/023120b8d0dbe86f3c2460e58012e218fe478858d690e6cc33c2afd642346dde?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
+            class="profile-pic"
+            alt="profile picture"
+          />
+        </nav>
+      </header>
+      <section class="content-wrapper">
+        <div class="image-section">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/c10e626ed45c98ba08a2e6d5828bdd0ba845e50586b5faacb96c16bd4dc44ce1?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
+            class="background-img"
+            alt="Soft Summer background image"
+          />
+          Soft Summer
+        </div>
+      </section>
+      <h1 class="main-title">Result</h1>
+      <p id="description-result" class="description-text">
+        `${decodeURIComponent(result)}`
+      </p>
 
-<div class="container">
-  <header class="header">
-    <div class="logo-wrapper">
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/e393950326b87b86fd49d3dc1027ea1fd64ea955892d268d2a2119d8d153233d?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-        class="logo"
-        alt="DNAKolor logo"
-      />
-      <div class="brand">DNAKolor</div>
+      <section class="products-wrapper">
+        <h2 class="section-title">Recommended Products</h2>
+        <div class="products-container">
+          <div class="product-column">
+            <div class="product">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/7e98a3ffdc42766f88a03477b791292c45c2b7e3d8f2b1eeda7d6ce8d5d8f1e7?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
+                class="product-img"
+                alt="Product 6"
+              />
+              <div class="product-title">Product 6</div>
+            </div>
+          </div>
+          <div class="product-column column-offset">
+            <div class="product">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff371429263ae721a5c591e7320011b5805a53ab7074778c84517d0b0e06bdb8?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
+                class="product-img"
+                alt="Product 7"
+              />
+              <div class="product-title">Product 7</div>
+            </div>
+          </div>
+          <div class="product-column column-offset">
+            <div class="product">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/7b977d984cd70171e329c80918757031c057f8bf64d7152abdd984efbd3609f6?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
+                class="product-img"
+                alt="Product 8"
+              />
+              <div class="product-title">Product 8</div>
+            </div>
+          </div>
+          <div class="product-column column-offset">
+            <div class="product">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5fe78320292d97220ae3e4548f7c74d5306d8a122ed137098e59c88db042ba3?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
+                class="product-img"
+                alt="Product 9"
+              />
+              <div class="product-title">Product 9</div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-    <nav class="navigation">
-      <div class="nav-links">
-        <div class="nav-item">Shop</div>
-        <div class="nav-item">Color Analysis</div>
-        <div class="nav-item">The Studio</div>
-      </div>
-      <div class="cta-button" tabindex="0" role="button">
-        <div class="cta-label">Get Started</div>
-      </div>
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023120b8d0dbe86f3c2460e58012e218fe478858d690e6cc33c2afd642346dde?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-        class="profile-pic"
-        alt="profile picture"
-      />
-    </nav>
-  </header>
-  <section class="content-wrapper">
-    <div class="image-section">
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/c10e626ed45c98ba08a2e6d5828bdd0ba845e50586b5faacb96c16bd4dc44ce1?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-        class="background-img"
-        alt="Soft Summer background image"
-      />
-      Soft Summer
-    </div>
-  </section>
-  <h1 class="main-title">Soft Summer</h1>
-  <p class="description-text">
-    Soft Summer: A palette inspired by the gentle tones of a summer breeze,
-    perfect for fashion and beauty.
-  </p>
+  </body>
+</html>
 
-  <section class="products-wrapper">
-    <h2 class="section-title">Recommended Products</h2>
-    <div class="products-container">
-      <div class="product-column">
-        <div class="product">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/7e98a3ffdc42766f88a03477b791292c45c2b7e3d8f2b1eeda7d6ce8d5d8f1e7?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-            class="product-img"
-            alt="Product 6"
-          />
-          <div class="product-title">Product 6</div>
-        </div>
-      </div>
-      <div class="product-column column-offset">
-        <div class="product">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff371429263ae721a5c591e7320011b5805a53ab7074778c84517d0b0e06bdb8?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-            class="product-img"
-            alt="Product 7"
-          />
-          <div class="product-title">Product 7</div>
-        </div>
-      </div>
-      <div class="product-column column-offset">
-        <div class="product">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/7b977d984cd70171e329c80918757031c057f8bf64d7152abdd984efbd3609f6?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-            class="product-img"
-            alt="Product 8"
-          />
-          <div class="product-title">Product 8</div>
-        </div>
-      </div>
-      <div class="product-column column-offset">
-        <div class="product">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5fe78320292d97220ae3e4548f7c74d5306d8a122ed137098e59c88db042ba3?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-            class="product-img"
-            alt="Product 9"
-          />
-          <div class="product-title">Product 9</div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+<script>
+  // Function to get query parameters
+  function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("result");
+  }
+
+  // Retrieve the result from the query parameter
+  const result = getQueryParams();
+
+  // Display the result
+  if (result) {
+    document.getElementById("description-result").textContent =
+      decodeURIComponent(result);
+  } else {
+    document.getElementById("description-result").textContent =
+      "No result found";
+  }
+
+  function redirectHome() {
+    window.location.href = "index.html";
+  }
+</script>
