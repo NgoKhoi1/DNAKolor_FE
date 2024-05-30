@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DNAKolor</title>
     <style>
+      :root {
+        --primary: #000000;
+        --light-primary: #0b0b0b;
+        --secondary: #d421b0;
+      }
       body {
         background-color: #fff;
         display: flex;
@@ -14,90 +19,83 @@
       }
 
       .container {
+        background-color: #faf0f7;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        background-color: var(--Home-page-color, #faf0f7);
+      }
+
+      .header {
+        align-items: center;
+        background-color: #faf0f7;
         display: flex;
         width: 100%;
         flex-direction: column;
       }
 
       @media (max-width: 991px) {
-        .container {
+        .header {
           max-width: 100%;
         }
       }
 
-      .header {
+      .navigation {
         justify-content: space-between;
-        border-color: rgba(229, 232, 235, 1);
-        border-style: solid;
-        border-bottom-width: 1px;
+        border-bottom: 1px solid rgba(229, 232, 235, 1);
         align-self: stretch;
         display: flex;
-        gap: 0px;
-        padding: 12px 40px;
+        padding: 2px 40px;
       }
 
       @media (max-width: 991px) {
-        .header {
+        .navigation {
           flex-wrap: wrap;
           padding: 0 20px;
         }
       }
 
-      .logo-wrapper {
+      .logo-container {
         display: flex;
-        gap: 16px;
+        gap: 8px;
         font-size: 18px;
         color: #1c0a1a;
         font-weight: 700;
-        white-space: nowrap;
         letter-spacing: -0.27px;
-        margin: auto 0;
         cursor: pointer;
       }
 
       @media (max-width: 991px) {
-        .logo-wrapper {
+        .logo-container {
           white-space: initial;
         }
       }
 
       .logo {
         aspect-ratio: 1;
-        object-fit: auto;
-        object-position: center;
-        width: 16px;
+        height: 48px;
+        width: 164px;
+      }
+
+      .site-title {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
         margin: auto 0;
       }
 
-      .brand {
-        font-feature-settings: "dlig" on;
-        font-family: Plus Jakarta Sans, sans-serif;
-      }
-
-      .navigation {
+      .nav-links {
         justify-content: end;
         display: flex;
         padding-left: 80px;
         gap: 20px;
         font-size: 14px;
         line-height: 150%;
+        align-items: center;
       }
 
       @media (max-width: 991px) {
-        .navigation {
+        .nav-links {
           flex-wrap: wrap;
         }
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 20px;
-        color: #1c0a1a;
-        font-weight: 500;
-        justify-content: space-between;
-        padding: 10px 0;
       }
 
       .nav-item {
@@ -112,37 +110,36 @@
         color: #1c0a1a;
         text-decoration: none;
       }
+      .nav-item:hover {
+        text-decoration: underline;
+      }
 
-      .cta-button {
+      .button-primary {
         justify-content: center;
+        height: 37.6px;
         border-radius: 20px;
         background-color: #d421b0;
-        display: flex;
-        flex-direction: column;
-        color: var(--Home-page-color, #faf0f7);
+        color: #faf0f7;
         font-weight: 700;
         letter-spacing: 0.21px;
         padding: 10px 16px;
-        border: 1px solid #d421b0;
+        border: #d421b0 solid 1px;
         transition: background-color 0.3s ease, color 0.3s ease;
       }
 
-      .cta-button:hover,
-      .cta-button:active {
-        background-color: var(--Home-page-color, #faf0f7);
+      .button-primary:hover {
+        background-color: #faf0f7;
         color: #d421b0;
+        cursor: pointer;
       }
 
-      .cta-label {
+      .button-text {
         font-feature-settings: "dlig" on;
         font-family: Plus Jakarta Sans, sans-serif;
-        justify-content: center;
       }
 
-      .profile-pic {
+      .icon {
         aspect-ratio: 1;
-        object-fit: auto;
-        object-position: center;
         width: 40px;
       }
 
@@ -323,41 +320,36 @@
       .column-offset {
         margin-left: 20px;
       }
+
+      #description-result {
+        max-width: 860px;
+      }
+      #logout {
+      text-decoration: underline;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
     </style>
   </head>
   <body>
     <div class="container">
       <header class="header">
-        <div
-          class="logo-wrapper"
-          tabindex="0"
-          role="button"
-          onclick="redirectHome()"
-        >
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/e393950326b87b86fd49d3dc1027ea1fd64ea955892d268d2a2119d8d153233d?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-            class="logo"
-            alt="DNAKolor logo"
-          />
-          <div class="brand">DNAKolor</div>
-        </div>
-        <nav class="navigation">
-          <div class="nav-links">
+        <div class="navigation">
+          <div class="logo-container" tabindex="0" role="button" onclick="redirectHome()">
+            <img loading="lazy" src="logo.png" class="logo" alt="DNAKolor logo" />
+          </div>
+          <nav class="nav-links">
             <a class="nav-item" href="shop.html">Shop</a>
             <a class="nav-item" href="quiz.html">Color Analysis</a>
-            <div class="nav-item">The Studio</div>
-          </div>
-          <div class="cta-button" tabindex="0" role="button">
-            <div class="cta-label">Get Started</div>
-          </div>
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/023120b8d0dbe86f3c2460e58012e218fe478858d690e6cc33c2afd642346dde?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-            class="profile-pic"
-            alt="profile picture"
-          />
-        </nav>
+            <button id="login" class="button-primary" aria-label="Get Started" onclick="redirectLogin()">
+              <span class="button-text">Get Started</span>
+            </button>
+            <img id="icon" loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
+              class="icon" alt="Shopping cart" />
+              <div id="logout" onclick="logout()">Logout</div>
+          </nav>
+        </div>
       </header>
       <section class="content-wrapper">
         <div class="image-section">
@@ -429,6 +421,24 @@
 </html>
 
 <script>
+  function redirectLogin() {
+    window.location.href = "login.html";
+  }
+
+  function redirectHome() {
+    window.location.href = "index.html";
+  }
+
+  function redirectQuizz() {
+    window.location.href = "quiz.html";
+  }
+
+  function redirectShop() {
+    window.location.href = "shop.html";
+  }
+</script>
+
+<script>
   // Function to get query parameters
   function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
@@ -449,5 +459,43 @@
 
   function redirectHome() {
     window.location.href = "index.html";
+  }
+</script>
+
+<script>
+  load();
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  function load() {
+    var token = getCookie("token");
+    const isTokenValid = (token) => true;
+    if (token && isTokenValid(token)) {
+      document.getElementById("login").style.display = "none";
+    } else {
+      document.getElementById("icon").style.display = "none";
+      document.getElementById("logout").style.display = "none";
+    }
+  }
+  function logout() {
+    deleteCookie("token");
+    redirectHome();
+  }
+  function deleteCookie(name) {
+    // Set the cookie with the specified name to expire in the past
+    document.cookie =
+      name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   }
 </script>
