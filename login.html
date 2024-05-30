@@ -342,8 +342,12 @@
           body: JSON.stringify(request), // body data type must match "Content-Type" header
         });
       response.json().then((result) => {
+        if (result.code === "200001") {
         setCookie("token", result.body, 5)
         redirectHome();
+        } else {
+          alert("Wrong username or password");
+        }
       })
   })
 </script>
