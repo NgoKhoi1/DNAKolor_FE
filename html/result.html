@@ -324,42 +324,30 @@
       #description-result {
         max-width: 860px;
       }
+      #logout {
+      text-decoration: underline;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
     </style>
   </head>
   <body>
     <div class="container">
       <header class="header">
         <div class="navigation">
-          <div
-            class="logo-container"
-            tabindex="0"
-            role="button"
-            onclick="redirectHome()"
-          >
-            <img
-              loading="lazy"
-              src="logo.png"
-              class="logo"
-              alt="DNAKolor logo"
-            />
+          <div class="logo-container" tabindex="0" role="button" onclick="redirectHome()">
+            <img loading="lazy" src="logo.png" class="logo" alt="DNAKolor logo" />
           </div>
           <nav class="nav-links">
             <a class="nav-item" href="shop.html">Shop</a>
             <a class="nav-item" href="quiz.html">Color Analysis</a>
-            <button
-              class="button-primary"
-              aria-label="Get Started"
-              onclick="redirectLogin()"
-            >
+            <button id="login" class="button-primary" aria-label="Get Started" onclick="redirectLogin()">
               <span class="button-text">Get Started</span>
             </button>
-            <img
-              hidden="true"
-              loading="lazy"
+            <img id="icon" loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
-              class="icon"
-              alt="Shopping cart"
-            />
+              class="icon" alt="Shopping cart" />
+              <div id="logout" onclick="logout()">Logout</div>
           </nav>
         </div>
       </header>
@@ -471,5 +459,43 @@
 
   function redirectHome() {
     window.location.href = "index.html";
+  }
+</script>
+
+<script>
+  load();
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  function load() {
+    var token = getCookie("token");
+    const isTokenValid = (token) => true;
+    if (token && isTokenValid(token)) {
+      document.getElementById("login").style.display = "none";
+    } else {
+      document.getElementById("icon").style.display = "none";
+      document.getElementById("logout").style.display = "none";
+    }
+  }
+  function logout() {
+    deleteCookie("token");
+    redirectHome();
+  }
+  function deleteCookie(name) {
+    // Set the cookie with the specified name to expire in the past
+    document.cookie =
+      name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   }
 </script>

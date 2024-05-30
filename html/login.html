@@ -240,6 +240,7 @@
         max-width: 100%;
       }
     }
+    
   </style>
 </head>
 
@@ -282,17 +283,16 @@
     </header>
     <section class="main-section">
       <h1 class="main-heading">Welcome Back</h1>
-      <form class="login-form">
+      <div class="login-form">
         <div class="input-container">
           <label for="usernameInput" class="visually-hidden">Username</label>
           <input type="email" id="usernameInput" class="input-field" placeholder="Username" aria-label="Username" />
           <label for="passwordInput" class="visually-hidden">Password</label>
           <input type="password" id="passwordInput" class="input-field" placeholder="Password" aria-label="Password" />
         </div>
-        <a href="#" class="forgot-password">Forgot Password?</a>
-        <button type="submit" class="login-btn">Log In</button>
+        <button type="submit" class="login-btn" id="login-btn">Log In</button>
         <a class="create-account" href="#">Don't have an account? Sign Up</a>
-      </form>
+      </div>
     </section>
   </div>
 </body>
@@ -315,4 +315,49 @@
   function redirectShop() {
     window.location.href = "shop.html";
   }
+</script>
+<script>
+  document.getElementById("login-btn").addEventListener("click", async (e) => {
+    var username = document.getElementById("usernameInput").value;
+    var password = document.getElementById("passwordInput").value;
+    var request = {
+            "username" : username,
+            "password" : password
+          }
+    var url = "http://localhost:8080/api/v1/auth/authenticate"
+    console.log(request)
+    var response = await fetch(url, {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          mode: "cors", // no-cors, *cors, same-origin
+          cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: "same-origin", // include, *same-origin, omit
+          headers: {
+            "Content-Type": "application/json",
+            "ApiKey": "*"
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          redirect: "follow", // manual, *follow, error
+          referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          body: JSON.stringify({
+            "username" : username,
+            "password" : password
+          }), // body data type must match "Content-Type" header
+        });
+      response.json().then((result) => {
+        setCookie("token", result.body, 5)
+        redirectHome();
+      })
+  })
+</script>
+<script>
+  function setCookie(name, value, minutes) {
+    const date = new Date();
+    date.setTime(date.getTime() + (minutes * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Example usage: Set a cookie named "username" with the value "JohnDoe" that expires in 5 minutes
+
+
 </script>
