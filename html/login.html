@@ -291,7 +291,7 @@
           <input type="password" id="passwordInput" class="input-field" placeholder="Password" aria-label="Password" />
         </div>
         <button type="submit" class="login-btn" id="login-btn">Log In</button>
-        <a class="create-account" href="#">Don't have an account? Sign Up</a>
+        <a class="create-account" href="register.html">Don't have an account? Sign Up</a>
       </div>
     </section>
   </div>
@@ -317,6 +317,7 @@
   }
 </script>
 <script>
+
   document.getElementById("login-btn").addEventListener("click", async (e) => {
     var username = document.getElementById("usernameInput").value;
     var password = document.getElementById("passwordInput").value;
@@ -338,10 +339,7 @@
           },
           redirect: "follow", // manual, *follow, error
           referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-          body: JSON.stringify({
-            "username" : username,
-            "password" : password
-          }), // body data type must match "Content-Type" header
+          body: JSON.stringify(request), // body data type must match "Content-Type" header
         });
       response.json().then((result) => {
         setCookie("token", result.body, 5)
@@ -349,15 +347,51 @@
       })
   })
 </script>
+
 <script>
+  load();
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  function load() {
+    var token = getCookie("token");
+    const isTokenValid = (token) => true;
+    if (token && isTokenValid(token)) {
+      document.getElementById("login").style.display = "none";
+    } else {
+      document.getElementById("icon").style.display = "none";
+      document.getElementById("logout").style.display = "none";
+    }
+  }
+  function logout() {
+    deleteCookie("token");
+    redirectHome();
+  }
+
+  function deleteCookie(name) {
+    // Set the cookie with the specified name to expire in the past
+    document.cookie =
+      name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  }
   function setCookie(name, value, minutes) {
     const date = new Date();
     date.setTime(date.getTime() + (minutes * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
-}
+  }
 
+  
 // Example usage: Set a cookie named "username" with the value "JohnDoe" that expires in 5 minutes
-
-
 </script>

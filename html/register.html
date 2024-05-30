@@ -272,7 +272,7 @@
     </header>
     <section class="section">
       <h2 class="form-title">Join Us</h2>
-      <form id="form-id">
+      <div id="form-id">
         <label for="fullname" class="visually-hidden">Full Name</label>
         <input
           class="input-field"
@@ -281,13 +281,13 @@
           placeholder="Full Name"
           aria-label="Full Name"
         />
-        <label for="email" class="visually-hidden">Email Address</label>
+        <label for="username" class="visually-hidden">Username</label>
         <input
           class="input-field"
-          type="email"
-          id="email"
-          placeholder="Email Address"
-          aria-label="Email Address"
+          type="text"
+          id="username"
+          placeholder="Username"
+          aria-label="Username"
         />
         <label for="password" class="visually-hidden">Password</label>
         <input
@@ -307,9 +307,9 @@
           placeholder="Confirm Password"
           aria-label="Confirm Password"
         />
-        <button type="submit" class="submit-button">Sign Up</button>
-      </form>
-      <a href="#" class="already-account">Already have an account? Log In</a>
+        <button type="submit" class="submit-button" id="submit-btn">Sign Up</button>
+      </div>
+      <a href="login.html" class="already-account">Already have an account? Log In</a>
     </section>
   </div>
 </body>
@@ -359,6 +359,12 @@
       document.getElementById("logout").style.display = "none";
     }
   }
+  function setCookie(name, value, minutes) {
+    const date = new Date();
+    date.setTime(date.getTime() + (minutes * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
   function logout() {
     deleteCookie("token");
     redirectHome();
@@ -368,4 +374,39 @@
     document.cookie =
       name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   }
+</script>
+
+<script>
+  document.getElementById("submit-btn").addEventListener("click", async (e) => {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var fullName = document.getElementById("fullname").value;
+    var request = {
+            "username": username,
+            "password": password,
+            "email":`${username}@gmail.com`,
+            "fullName": fullName,
+            "roles": "user"
+          }
+          var url = "http://localhost:8080/api/v1/accounts/register-alt"
+    console.log(request)
+    var response = await fetch(url, {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          mode: "cors", // no-cors, *cors, same-origin
+          cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: "same-origin", // include, *same-origin, omit
+          headers: {
+            "Content-Type": "application/json",
+            "ApiKey": "*"
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          redirect: "follow", // manual, *follow, error
+          referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          body: JSON.stringify(request), // body data type must match "Content-Type" header
+        });
+      response.json().then((result) => {
+        setCookie("token", result.body, 5)
+        redirectHome();
+      })      
+  });
 </script>
