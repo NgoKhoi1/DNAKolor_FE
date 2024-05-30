@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DNAKolor</title>
     <style>
+      
       body {
         margin: 0;
       }
@@ -35,7 +36,7 @@
         border-bottom: 1px solid rgba(229, 232, 235, 1);
         align-self: stretch;
         display: flex;
-        padding: 12px 40px;
+        padding: 2px 40px;
       }
 
       @media (max-width: 991px) {
@@ -47,7 +48,7 @@
 
       .logo-container {
         display: flex;
-        gap: 16px;
+        gap: 8px;
         font-size: 18px;
         color: #1c0a1a;
         font-weight: 700;
@@ -63,7 +64,8 @@
 
       .logo {
         aspect-ratio: 1;
-        width: 16px;
+        height: 48px;
+        width: 164px;
       }
 
       .site-title {
@@ -79,6 +81,7 @@
         gap: 20px;
         font-size: 14px;
         line-height: 150%;
+        align-items: center;
       }
 
       @media (max-width: 991px) {
@@ -99,9 +102,13 @@
         color: #1c0a1a;
         text-decoration: none;
       }
+      .nav-item:hover {
+        text-decoration: underline;
+      }
 
       .button-primary {
         justify-content: center;
+        height: 37.6px;
         border-radius: 20px;
         background-color: #d421b0;
         color: #faf0f7;
@@ -458,20 +465,18 @@
           >
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/b88a6b0862cc8a9941292e1920c92fa8ffb73d9c2dbda23006eb44f049c6f26b?apiKey=1145a631081a47248438c8ac05c41e7d&"
+              src="logo.png"
               class="logo"
               alt="DNAKolor logo"
             />
-            <div class="site-title">DNAKolor</div>
           </div>
           <nav class="nav-links">
             <a class="nav-item" href="shop.html">Shop</a>
             <a class="nav-item" href="quiz.html">Color Analysis</a>
-            <div class="nav-item">The Studio</div>
             <button
               class="button-primary"
               aria-label="Get Started"
-              onclick="myFunction()"
+              onclick="redirectLogin()"
             >
               <span class="button-text">Get Started</span>
             </button>
@@ -627,7 +632,7 @@
   </body>
 </html>
 <script>
-  function myFunction() {
+  function redirectLogin() {
     window.location.href = "login.html";
   }
 

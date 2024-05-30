@@ -1,304 +1,345 @@
-<style>
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0;
-    background-color: #faf0f7;
-  }
-
-  #form-id {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-
-  .container {
-    align-items: center;
-    background-color: var(--Home-page-color, #faf0f7);
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-  }
-
-  @media (max-width: 991px) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+        --primary: #000000;
+        --light-primary: #0b0b0b;
+        --secondary: #d421b0;
+      }
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0;
+      background-color: #faf0f7;
+    }
+  
+    #form-id {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+  
     .container {
+        background-color: #faf0f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header {
+        align-items: center;
+        background-color: #faf0f7;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      @media (max-width: 991px) {
+        .header {
+          max-width: 100%;
+        }
+      }
+
+      .navigation {
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(229, 232, 235, 1);
+        align-self: stretch;
+        display: flex;
+        padding: 2px 40px;
+      }
+
+      @media (max-width: 991px) {
+        .navigation {
+          flex-wrap: wrap;
+          padding: 0 20px;
+        }
+      }
+
+      .logo-container {
+        display: flex;
+        gap: 8px;
+        font-size: 18px;
+        color: #1c0a1a;
+        font-weight: 700;
+        letter-spacing: -0.27px;
+        cursor: pointer;
+      }
+
+      @media (max-width: 991px) {
+        .logo-container {
+          white-space: initial;
+        }
+      }
+
+      .logo {
+        aspect-ratio: 1;
+        height: 48px;
+        width: 164px;
+      }
+
+      .site-title {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        margin: auto 0;
+      }
+
+      .nav-links {
+        justify-content: end;
+        display: flex;
+        padding-left: 80px;
+        gap: 20px;
+        font-size: 14px;
+        line-height: 150%;
+        align-items: center;
+      }
+
+      @media (max-width: 991px) {
+        .nav-links {
+          flex-wrap: wrap;
+        }
+      }
+
+      .nav-item {
+        display: flex;
+        justify-content: center;
+        /* Centers text horizontally */
+        align-items: center;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 500;
+        font-size: medium;
+        color: #1c0a1a;
+        text-decoration: none;
+      }
+      .nav-item:hover {
+        text-decoration: underline;
+      }
+
+      .button-primary {
+        justify-content: center;
+        height: 37.6px;
+        border-radius: 20px;
+        background-color: #d421b0;
+        color: #faf0f7;
+        font-weight: 700;
+        letter-spacing: 0.21px;
+        padding: 10px 16px;
+        border: #d421b0 solid 1px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .button-primary:hover {
+        background-color: #faf0f7;
+        color: #d421b0;
+        cursor: pointer;
+      }
+
+      .button-text {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+      }
+
+      .icon {
+        aspect-ratio: 1;
+        width: 40px;
+      }
+  
+    .section {
+      display: flex;
+      margin-top: 20px;
+      width: 512px;
       max-width: 100%;
+      flex-direction: column;
+      font-size: 16px;
+      color: #a3408f;
+      font-weight: 400;
+      padding: 20px 16px;
     }
-  }
-
-  .header {
-    justify-content: space-between;
-    border-color: rgba(229, 232, 235, 1);
-    border-style: solid;
-    border-bottom-width: 1px;
-    align-self: stretch;
-    display: flex;
-    gap: 0px;
-    padding: 12px 40px;
-  }
-
-  @media (max-width: 991px) {
-    .header {
-      flex-wrap: wrap;
-      padding: 0 20px;
+  
+    .form-title {
+      color: #1c0a1a;
+      text-align: center;
+      font-feature-settings: "dlig" on;
+      letter-spacing: -0.8px;
+      align-self: center;
+      font: 700 32px Plus Jakarta Sans, sans-serif;
     }
-  }
-
-  .logo-wrapper {
-    display: flex;
-    gap: 16px;
-    font-size: 18px;
-    color: #1c0a1a;
-    font-weight: 700;
-    white-space: nowrap;
-    letter-spacing: -0.27px;
-    margin: auto 0;
-  }
-
-  @media (max-width: 991px) {
-    .logo-wrapper {
-      white-space: initial;
-    }
-  }
-
-  .logo {
-    aspect-ratio: 1;
-    object-fit: auto;
-    object-position: center;
-    width: 16px;
-    margin: auto 0;
-  }
-
-  .brand {
-    font-feature-settings: "dlig" on;
-    font-family: Plus Jakarta Sans, sans-serif;
-  }
-
-  .navigation {
-    justify-content: end;
-    display: flex;
-    padding-left: 80px;
-    gap: 20px;
-    font-size: 14px;
-    line-height: 150%;
-  }
-
-  @media (max-width: 991px) {
-    .navigation {
-      flex-wrap: wrap;
-    }
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    color: #1c0a1a;
-    font-weight: 500;
-    justify-content: space-between;
-    padding: 10px 0;
-  }
-
-  .nav-item {
-    font-feature-settings: "dlig" on;
-    font-family: Plus Jakarta Sans, sans-serif;
-  }
-
-  .cta-button {
-    justify-content: center;
-    border-radius: 20px;
-    background-color: #d421b0;
-    display: flex;
-    flex-direction: column;
-    color: var(--Home-page-color, #faf0f7);
-    font-weight: 700;
-    letter-spacing: 0.21px;
-    padding: 10px 16px;
-    border: 1px solid #d421b0;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  .cta-button:hover,
-  .cta-button:active {
-    background-color: var(--Home-page-color, #faf0f7);
-    color: #d421b0;
-  }
-
-  .cta-label {
-    font-feature-settings: "dlig" on;
-    font-family: Plus Jakarta Sans, sans-serif;
-    justify-content: center;
-  }
-
-  .profile-pic {
-    aspect-ratio: 1;
-    object-fit: auto;
-    object-position: center;
-    width: 40px;
-  }
-
-  .section {
-    display: flex;
-    margin-top: 20px;
-    width: 512px;
-    max-width: 100%;
-    flex-direction: column;
-    font-size: 16px;
-    color: #a3408f;
-    font-weight: 400;
-    padding: 20px 16px;
-  }
-
-  .form-title {
-    color: #1c0a1a;
-    text-align: center;
-    font-feature-settings: "dlig" on;
-    letter-spacing: -0.8px;
-    align-self: center;
-    font: 700 32px Plus Jakarta Sans, sans-serif;
-  }
-
-  .input-field {
-    font-feature-settings: "dlig" on;
-    font-family: Plus Jakarta Sans, sans-serif;
-    justify-content: center;
-    align-items: start;
-    border-radius: 12px;
-    border: 1px solid rgba(235, 199, 227, 1);
-    background-color: #faf0f7;
-    margin-top: 24px;
-    line-height: 150%;
-    padding: 15px;
-  }
-
-  @media (max-width: 991px) {
+  
     .input-field {
-      max-width: 100%;
-      padding-right: 20px;
+      font-feature-settings: "dlig" on;
+      font-family: Plus Jakarta Sans, sans-serif;
+      justify-content: center;
+      align-items: start;
+      border-radius: 12px;
+      border: 1px solid rgba(235, 199, 227, 1);
+      background-color: #faf0f7;
+      margin-top: 24px;
+      line-height: 150%;
+      padding: 15px;
     }
-  }
-
-  .submit-button {
-    justify-content: center;
-    align-items: center;
-    border-radius: 24px;
-    background-color: #d421b0;
-    display: flex;
-    color: #faf0f7;
-    font-weight: 700;
-    letter-spacing: 0.24px;
-    line-height: 150%;
-    margin: 24px 0 66px;
-    padding: 12px 20px;
-    border: 1px solid #d421b0;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  .submit-button:hover,
-  .submit-button:active {
-    background-color: var(--Home-page-color, #faf0f7);
-    color: #d421b0;
-  }
-
-  @media (max-width: 991px) {
+  
+    @media (max-width: 991px) {
+      .input-field {
+        max-width: 100%;
+        padding-right: 20px;
+      }
+    }
+  
     .submit-button {
-      max-width: 100%;
-      margin-bottom: 40px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 24px;
+      background-color: #d421b0;
+      display: flex;
+      color: #faf0f7;
+      font-weight: 700;
+      letter-spacing: 0.24px;
+      line-height: 150%;
+      margin: 24px 0 66px;
+      padding: 12px 20px;
+      border: 1px solid #d421b0;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-  }
-
-  .already-account {
-    color: #a3408f;
-    text-align: center;
-    font-feature-settings: "dlig" on;
-    margin-top: 24px;
-    font: 400 14px/150% Plus Jakarta Sans, sans-serif;
-    text-decoration: none;
-  }
-
-  .already-account:hover,
-  .already-account:active {
-    text-decoration: underline;
-  }
-
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-</style>
-<div class="container">
-  <header class="header">
-    <div class="logo-wrapper">
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/e393950326b87b86fd49d3dc1027ea1fd64ea955892d268d2a2119d8d153233d?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-        class="logo"
-        alt="DNAKolor logo"
-      />
-      <div class="brand">DNAKolor</div>
-    </div>
-    <nav class="navigation">
-      <div class="nav-links">
-        <div class="nav-item">Shop</div>
-        <div class="nav-item">Color Analysis</div>
-        <div class="nav-item">The Studio</div>
+  
+    .submit-button:hover,
+    .submit-button:active {
+      background-color: var(--Home-page-color, #faf0f7);
+      color: #d421b0;
+    }
+  
+    @media (max-width: 991px) {
+      .submit-button {
+        max-width: 100%;
+        margin-bottom: 40px;
+      }
+    }
+  
+    .already-account {
+      color: #a3408f;
+      text-align: center;
+      font-feature-settings: "dlig" on;
+      margin-top: 24px;
+      font: 400 14px/150% Plus Jakarta Sans, sans-serif;
+      text-decoration: none;
+    }
+  
+    .already-account:hover,
+    .already-account:active {
+      text-decoration: underline;
+    }
+  
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+  </style>
+  <title>DNAKolor</title>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="navigation">
+        <div
+          class="logo-container"
+          tabindex="0"
+          role="button"
+          onclick="redirectHome()"
+        >
+          <img
+            loading="lazy"
+            src="logo.png"
+            class="logo"
+            alt="DNAKolor logo"
+          />
+        </div>
+        <nav class="nav-links">
+          <a class="nav-item" href="shop.html">Shop</a>
+          <a class="nav-item" href="quiz.html">Color Analysis</a>
+          <button
+            class="button-primary"
+            aria-label="Get Started"
+            onclick="redirectLogin()"
+          >
+            <span class="button-text">Get Started</span>
+          </button>
+          <img
+            hidden="true"
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
+            class="icon"
+            alt="Shopping cart"
+          />
+        </nav>
       </div>
-      <div class="cta-button" tabindex="0" role="button">
-        <div class="cta-label">Get Started</div>
-      </div>
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023120b8d0dbe86f3c2460e58012e218fe478858d690e6cc33c2afd642346dde?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-        class="profile-pic"
-        alt="profile picture"
-      />
-    </nav>
-  </header>
-  <section class="section">
-    <h2 class="form-title">Join Us</h2>
-    <form id="form-id">
-      <label for="fullname" class="visually-hidden">Full Name</label>
-      <input
-        class="input-field"
-        type="text"
-        id="fullname"
-        placeholder="Full Name"
-        aria-label="Full Name"
-      />
-      <label for="email" class="visually-hidden">Email Address</label>
-      <input
-        class="input-field"
-        type="email"
-        id="email"
-        placeholder="Email Address"
-        aria-label="Email Address"
-      />
-      <label for="password" class="visually-hidden">Password</label>
-      <input
-        class="input-field"
-        type="password"
-        id="password"
-        placeholder="Password"
-        aria-label="Password"
-      />
-      <label for="confirm-password" class="visually-hidden"
-        >Confirm Password</label
-      >
-      <input
-        class="input-field"
-        type="password"
-        id="confirm-password"
-        placeholder="Confirm Password"
-        aria-label="Confirm Password"
-      />
-      <button type="submit" class="submit-button">Sign Up</button>
-    </form>
-    <a href="#" class="already-account">Already have an account? Log In</a>
-  </section>
-</div>
+    </header>
+    <section class="section">
+      <h2 class="form-title">Join Us</h2>
+      <form id="form-id">
+        <label for="fullname" class="visually-hidden">Full Name</label>
+        <input
+          class="input-field"
+          type="text"
+          id="fullname"
+          placeholder="Full Name"
+          aria-label="Full Name"
+        />
+        <label for="email" class="visually-hidden">Email Address</label>
+        <input
+          class="input-field"
+          type="email"
+          id="email"
+          placeholder="Email Address"
+          aria-label="Email Address"
+        />
+        <label for="password" class="visually-hidden">Password</label>
+        <input
+          class="input-field"
+          type="password"
+          id="password"
+          placeholder="Password"
+          aria-label="Password"
+        />
+        <label for="confirm-password" class="visually-hidden"
+          >Confirm Password</label
+        >
+        <input
+          class="input-field"
+          type="password"
+          id="confirm-password"
+          placeholder="Confirm Password"
+          aria-label="Confirm Password"
+        />
+        <button type="submit" class="submit-button">Sign Up</button>
+      </form>
+      <a href="#" class="already-account">Already have an account? Log In</a>
+    </section>
+  </div>
+</body>
+</html>
+<script>
+  function redirectLogin() {
+    window.location.href = "login.html";
+  }
+
+  function redirectHome() {
+    window.location.href = "index.html";
+  }
+
+  function redirectQuizz() {
+    window.location.href = "quiz.html";
+  }
+
+  function redirectShop() {
+    window.location.href = "shop.html";
+  }
+</script>

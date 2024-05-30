@@ -8,123 +8,133 @@
   <style>
     body {
       margin: 0;
+      background-color: #faf0f7;
     }
 
     .container {
-      background-color: #faf0f7;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        background-color: #faf0f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-    .header {
-      align-items: center;
-      background-color: #faf0f7;
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-    }
-
-    @media (max-width: 991px) {
       .header {
-        max-width: 100%;
+        align-items: center;
+        background-color: #faf0f7;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
       }
-    }
 
-    .navigation {
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(229, 232, 235, 1);
-      align-self: stretch;
-      display: flex;
-      padding: 12px 40px;
-    }
+      @media (max-width: 991px) {
+        .header {
+          max-width: 100%;
+        }
+      }
 
-    @media (max-width: 991px) {
       .navigation {
-        flex-wrap: wrap;
-        padding: 0 20px;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(229, 232, 235, 1);
+        align-self: stretch;
+        display: flex;
+        padding: 2px 40px;
       }
-    }
 
-    .logo-container {
-      display: flex;
-      gap: 16px;
-      font-size: 18px;
-      color: #1c0a1a;
-      font-weight: 700;
-      letter-spacing: -0.27px;
-    }
+      @media (max-width: 991px) {
+        .navigation {
+          flex-wrap: wrap;
+          padding: 0 20px;
+        }
+      }
 
-    @media (max-width: 991px) {
       .logo-container {
-        white-space: initial;
+        display: flex;
+        gap: 8px;
+        font-size: 18px;
+        color: #1c0a1a;
+        font-weight: 700;
+        letter-spacing: -0.27px;
+        cursor: pointer;
       }
-    }
 
-    .logo {
-      aspect-ratio: 1;
-      width: 16px;
-    }
+      @media (max-width: 991px) {
+        .logo-container {
+          white-space: initial;
+        }
+      }
 
-    .site-title {
-      font-feature-settings: "dlig" on;
-      font-family: Plus Jakarta Sans, sans-serif;
-      margin: auto 0;
-    }
+      .logo {
+        aspect-ratio: 1;
+        height: 48px;
+        width: 164px;
+      }
 
-    .nav-links {
-      justify-content: end;
-      display: flex;
-      padding-left: 80px;
-      gap: 20px;
-      font-size: 14px;
-      line-height: 150%;
-    }
+      .site-title {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        margin: auto 0;
+      }
 
-    @media (max-width: 991px) {
       .nav-links {
-        flex-wrap: wrap;
+        justify-content: end;
+        display: flex;
+        padding-left: 80px;
+        gap: 20px;
+        font-size: 14px;
+        line-height: 150%;
+        align-items: center;
       }
-    }
 
-    .nav-item {
-      display: flex;
-      justify-content: center;
-      /* Centers text horizontally */
-      align-items: center;
-      font-feature-settings: "dlig" on;
-      font-family: Plus Jakarta Sans, sans-serif;
-      font-weight: 500;
-      font-size: medium;
-    }
+      @media (max-width: 991px) {
+        .nav-links {
+          flex-wrap: wrap;
+        }
+      }
 
-    .button-primary {
-      justify-content: center;
-      border-radius: 20px;
-      background-color: #d421b0;
-      color: #faf0f7;
-      font-weight: 700;
-      letter-spacing: 0.21px;
-      padding: 10px 16px;
-      border: #d421b0 solid 1px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+      .nav-item {
+        display: flex;
+        justify-content: center;
+        /* Centers text horizontally */
+        align-items: center;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 500;
+        font-size: medium;
+        color: #1c0a1a;
+        text-decoration: none;
+      }
+      .nav-item:hover {
+        text-decoration: underline;
+      }
 
-    .button-primary:hover {
-      background-color: #faf0f7;
-      color: #d421b0;
-      cursor: pointer;
-    }
+      .button-primary {
+        justify-content: center;
+        height: 37.6px;
+        border-radius: 20px;
+        background-color: #d421b0;
+        color: #faf0f7;
+        font-weight: 700;
+        letter-spacing: 0.21px;
+        padding: 10px 16px;
+        border: #d421b0 solid 1px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
 
-    .button-text {
-      font-feature-settings: "dlig" on;
-      font-family: Plus Jakarta Sans, sans-serif;
-    }
+      .button-primary:hover {
+        background-color: #faf0f7;
+        color: #d421b0;
+        cursor: pointer;
+      }
 
-    .icon {
-      aspect-ratio: 1;
-      width: 40px;
-    }
+      .button-text {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+      }
+
+      .icon {
+        aspect-ratio: 1;
+        width: 40px;
+      }
 
     .main-section {
       align-self: center;
@@ -237,19 +247,36 @@
   <div class="container">
     <header class="header">
       <div class="navigation">
-        <div class="logo-container">
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b88a6b0862cc8a9941292e1920c92fa8ffb73d9c2dbda23006eb44f049c6f26b?apiKey=1145a631081a47248438c8ac05c41e7d&"
-            class="logo" alt="DNAKolor logo" />
-          <div class="site-title">DNAKolor</div>
+        <div
+          class="logo-container"
+          tabindex="0"
+          role="button"
+          onclick="redirectHome()"
+        >
+          <img
+            loading="lazy"
+            src="logo.png"
+            class="logo"
+            alt="DNAKolor logo"
+          />
         </div>
         <nav class="nav-links">
-          <div class="nav-item">Shop</div>
-          <div class="nav-item">Color Analysis</div>
-          <div class="nav-item">The Studio</div>
-          <button class="button-primary" aria-label="Get Started">
+          <a class="nav-item" href="shop.html">Shop</a>
+          <a class="nav-item" href="quiz.html">Color Analysis</a>
+          <button
+            class="button-primary"
+            aria-label="Get Started"
+            onclick="redirectLogin()"
+          >
             <span class="button-text">Get Started</span>
           </button>
+          <img
+            hidden="true"
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
+            class="icon"
+            alt="Shopping cart"
+          />
         </nav>
       </div>
     </header>
@@ -271,3 +298,21 @@
 </body>
 
 </html>
+
+<script>
+  function myFunction() {
+    window.location.href = "login.html";
+  }
+
+  function redirectHome() {
+    window.location.href = "index.html";
+  }
+
+  function redirectQuizz() {
+    window.location.href = "quiz.html";
+  }
+
+  function redirectShop() {
+    window.location.href = "shop.html";
+  }
+</script>
