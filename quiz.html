@@ -335,6 +335,7 @@
       margin-top: 12px;
       align-items: center;
     }
+
     #logout {
       text-decoration: underline;
       cursor: pointer;
@@ -359,7 +360,7 @@
           <img id="icon" loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
             class="icon" alt="Shopping cart" />
-            <div id="logout" onclick="logout()">Logout</div>
+          <div id="logout" onclick="logout()">Logout</div>
         </nav>
       </div>
     </header>
@@ -500,6 +501,15 @@
     .getElementById("submit-btn")
     .addEventListener("click", async function (event) {
       if (base64String) {
+        var formAnswer = {
+          "favorite_color": "Blue",
+          "clothing_preference": "Classic and elegant",
+          "makeup_tone_preference": "Neutral tones (like beige, nude)",
+          "confident_clothing_color": "Dark colors (like black, dark blue)",
+          "outfit_color_coordination": "Neutral colors",
+          "important_factor_when_buying_clothes": "Style",
+          "following_fashion_trends": "Yes, occasionally"
+        }
         let jsonString = {
           contents: [
             {
@@ -551,10 +561,14 @@
           referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
           body: JSON.stringify(jsonString), // body data type must match "Content-Type" header
         });
+        var s = response.status;
 
         response.json().then((result) => {
-          document.getElementById("waiting-prompt-text").innerHTML = "Succeed";
-
+          if (s === 200) {
+            document.getElementById("waiting-prompt-text").innerHTML = "Succeed";
+          } else {
+            document.getElementById("waiting-prompt-text").innerHTML = "Something went wrong! Please reload the page";
+          }
           // Wait for 0.5 seconds
           setTimeout(() => {
             var a = result.candidates[0].content.parts[0].text
