@@ -127,6 +127,7 @@
       }
 
       .button-text {
+        display: inline;
         font-feature-settings: "dlig" on;
         font-family: Plus Jakarta Sans, sans-serif;
       }
@@ -596,6 +597,7 @@
         cursor: pointer;
       }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -620,6 +622,7 @@
             <a class="nav-item" href="quiz.html">Color Analysis</a>
             <a class="nav-item" href="quiz.html">Blogs</a>
           <a class="nav-item" href="quiz.html">Community</a>
+          
             <button
               id="login"
               class="button-primary"
@@ -650,6 +653,15 @@
           <div class="main-right">
             <div class="product-description">
               <h1 class="shop-title">Shop Our Collection</h1>
+              <button
+              id="login"
+              class="button-primary"
+              aria-label="Get Started"
+              onclick="redirectCart()"
+            >
+              <span class="button-text">Go to your cart</span>
+              <i class="fa fa-shopping-cart" style="font-size:16px"></i>
+            </button>
               <p class="shop-subtitle">
                 Explore the perfect products tailored for your color palette
               </p>
@@ -1009,6 +1021,11 @@
 </script>
 
 <script>
+
+function redirectCart() {
+    window.location.href = "cart.html";
+  }
+
   function redirectLogin() {
     window.location.href = "login.html";
   }
