@@ -483,6 +483,7 @@
         padding-bottom: 12px;
         flex-direction: column;
         flex: 1;
+        text-decoration: none;
       }
 
       @media (max-width: 991px) {
@@ -508,6 +509,10 @@
         margin-top: 12px;
         font: 500 16px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
           sans-serif;
+          text-decoration: none;
+      }
+      .product-title:hover {
+          text-decoration: underline;
       }
 
       .product-price {
@@ -824,6 +829,7 @@
     productRow.className = "product-row";
 
     products.forEach((product, index) => {
+      var p = {"name": `${product.product_name}`, "price": `${product.price}`, "image": `${product.image_src}`, "quantity": "1"}
       var productItem = document.createElement("div");
       productItem.className = "product-item";
 
@@ -832,9 +838,10 @@
       img.alt = product.product_name;
       img.className = "product-img";
 
-      var title = document.createElement("span");
+      var title = document.createElement("a");
       title.className = "product-title";
       title.textContent = product.product_name;
+      title.href = `product_detail.html?product=${encodeURIComponent(JSON.stringify(p))}`;
 
       var price = document.createElement("span");
       price.className = "product-price";
@@ -864,7 +871,7 @@
     var productClassName = event.currentTarget.className.split(' ').pop(); // Get the last class name
     var productData = JSON.parse(atob(productClassName));
     if (!getCookie("cart")) {
-      var cart = [{"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`}]
+      var cart = [{"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`, "s_price": `${productData.price}`}]
       setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
       window.location.href = "cart.html";
     } else {
@@ -872,13 +879,14 @@
       cart.forEach(e => {
         if (e.name === productData.product_name) {
           e.quantity = `${parseInt(e.quantity) + 1}`;
+          e.s_price = `${productData.price}`
           e.price = `${parseFloat(productData.price) * parseInt(e.quantity)}`;
           setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
           window.location.href = "cart.html";
           return;
         }
       });
-      cart.push({"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`});
+      cart.push({"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`, "s_price": `${productData.price}`});
       setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
       window.location.href = "cart.html";
     }
