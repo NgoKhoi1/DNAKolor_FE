@@ -1,9 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+    />
+
+    <title>Galileo Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
       body {
         background-color: #faf0f7;
@@ -393,164 +401,164 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <header class="header">
-        <div class="navigation">
-          <div
-            class="logo-container"
-            tabindex="0"
-            role="button"
-            onclick="redirectHome()"
-          >
-            <img
-              loading="lazy"
-              src="logo.png"
-              class="logo"
-              alt="DNAKolor logo"
-            />
-          </div>
-          <nav class="nav-links">
-            <a class="nav-item" href="shop.html">Shop</a>
-            <a class="nav-item" href="quiz.html">Color Analysis</a>
-            <a class="nav-item" href="quiz.html">Blogs</a>
-            <a class="nav-item" href="quiz.html">Community</a>
-            <button
-              id="login"
-              class="button-primary"
-              aria-label="Get Started"
-              onclick="redirectLogin()"
+    <div class="relative flex size-full min-h-screen flex-col bg-[#f8f2f6] group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="header">
+          <div class="navigation">
+            <div
+              class="logo-container"
+              tabindex="0"
+              role="button"
+              onclick="redirectHome()"
             >
-              <span class="button-text">Get Started</span>
-            </button>
-            <img
-              id="icon"
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
-              class="icon"
-              alt="Shopping cart"
-            />
-            <div id="logout" onclick="logout()">Logout</div>
-          </nav>
-        </div>
-      </header>
-      <main class="main-content">
-        <section class="main-section">
-          <div class="main-title">Your Cart</div>
-          <div class="cart-summary-header">
-            <span class="cart-summary-label">Product</span>
-            <span class="cart-summary-label">Description</span>
-            <span class="cart-summary-label">Quantity</span>
-            <span class="cart-summary-label">Price</span>
-          </div>
-          <div class="cart-summary">
-          
-          </div>
-        </section>
-        <aside class="sidebar">
-            <h1 style="font-family: 'Plus Jakarta Sans', sans-serif;">Order Details</h1>
-            <div class="order-detail">
-                <span class="order-detail-field">SubTotal</span>
-                <span class="order-detail-value" id="subtotal-price"></span>
-            </div>
-            <div class="order-detail">
-                <span class="order-detail-field">Shipping</span>
-                <span class="order-detail-value" id="shipping-price">$0</span>
-            </div>
-            <div class="order-detail">
-                <span class="order-detail-field">Total</span>
-                <span class="order-detail-value" id="total-price"></span>
-            </div>
-          <button class="get-started" onclick="redirectPayment()">Checkout</button>
-        </aside>
-      </main>
-    </div>
-  </body>
-</html>
-<script>
-  function redirectLogin() {
-    window.location.href = "login.html";
-  }
-
-  function redirectHome() {
-    window.location.href = "index.html";
-  }
-
-  function redirectQuizz() {
-    window.location.href = "quiz.html";
-  }
-
-  function redirectShop() {
-    window.location.href = "shop.html";
-  }
-
-  function redirectPayment(){
-    window.location.href = "payment.html"
-  }
-</script>
-
-<script>
-  load();
-  function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(";");
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == " ") {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-  function load() {
-    var token = getCookie("token");
-    const isTokenValid = (token) => true;
-    if (token && isTokenValid(token)) {
-      document.getElementById("login").style.display = "none";
-    } else {
-      document.getElementById("icon").style.display = "none";
-      document.getElementById("logout").style.display = "none";
-    }
-    if (!getCookie("cart")) return;
-    try{
-    var cart = JSON.parse(atob(getCookie("cart")));
-    console.log(cart);
-        var container = document.getElementsByClassName("cart-summary")[0];
-        var subtotal = 0.0;
-        cart.forEach(element => {
-          var price = parseFloat(element.price.replace("\$", "").trim()).toFixed(2);
-          container.innerHTML += `<div class="cart-summary-item">
               <img
-                class="cart-summary-image"
-                src="${element.image}"
-                alt="Matte Lipstick Set - Reds"
+                loading="lazy"
+                src="logo.png"
+                class="logo"
+                alt="DNAKolor logo"
               />
-              <a href="shop.html" class="cart-summary-value">${element.name}</a>
-              <span class="cart-summary-value">${element.quantity}</span>
-              <span class="cart-summary-subtotal-value">$${price}</span>
-            </div>`;
-            
-            subtotal += price * parseInt(element.quantity);
-            
-        });
-        var total = 0.0;
-        total += subtotal + parseFloat(document.getElementById("shipping-price").innerHTML.replace("\$", "").trim());
-        document.getElementById("subtotal-price").innerHTML = `$${subtotal.toFixed(2)}`
-        document.getElementById("total-price").innerHTML = `$${total.toFixed(2)}`
-    } catch {
-      return;
-    }
-  }
-  function logout() {
-    deleteCookie("token");
-    redirectHome();
-  }
-  function deleteCookie(name) {
-    // Set the cookie with the specified name to expire in the past
-    document.cookie =
-      name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  }
-</script>
+            </div>
+            <nav class="nav-links">
+              <a class="nav-item" href="shop.html">Shop</a>
+              <a class="nav-item" href="quiz.html">Color Analysis</a>
+              <a class="nav-item" href="quiz.html">Blogs</a>
+              <a class="nav-item" href="quiz.html">Community</a>
+              <button
+                id="login"
+                class="button-primary"
+                aria-label="Get Started"
+                onclick="redirectLogin()"
+              >
+                <span class="button-text">Get Started</span>
+              </button>
+              <img
+                id="icon"
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                class="icon"
+                alt="Shopping cart"
+              />
+              <div id="logout" onclick="logout()">Logout</div>
+            </nav>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+              <div class="flex flex-col gap-3">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                  style='background-image: url("https://cdn.usegalileo.ai/stability/018ca05d-7989-4f6f-a460-21478daf5aee.png");'
+                ></div>
+              </div>
+            </div>
+            <p class="text-[#1b0e17] text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">Please scan the QR code to proceed with your payment.</p>
+            <div class="p-4 grid grid-cols-[20%_1fr] gap-x-6">
+              <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#e4cddd] py-5">
+                <p class="text-[#924f7e] text-sm font-normal leading-normal">Order Number</p>
+                <p class="text-[#1b0e17] text-sm font-normal leading-normal">123456789</p>
+              </div>
+              <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#e4cddd] py-5">
+                <p class="text-[#924f7e] text-sm font-normal leading-normal">Amount Due</p>
+                <p class="text-[#1b0e17] text-sm font-normal leading-normal">$50.00</p>
+              </div>
+              <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#e4cddd] py-5">
+                <p class="text-[#924f7e] text-sm font-normal leading-normal">Payment Method</p>
+                <p class="text-[#1b0e17] text-sm font-normal leading-normal">QR Code Payment</p>
+              </div>
+              <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#e4cddd] py-5">
+                <p class="text-[#924f7e] text-sm font-normal leading-normal">Payment Status</p>
+                <p class="text-[#1b0e17] text-sm font-normal leading-normal">Processing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function redirectLogin() {
+        window.location.href = "login.html";
+      }
+    
+      function redirectHome() {
+        window.location.href = "index.html";
+      }
+    
+      function redirectQuizz() {
+        window.location.href = "quiz.html";
+      }
+    
+      function redirectShop() {
+        window.location.href = "shop.html";
+      }
+    </script>
+    
+    <script>
+      load();
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      function load() {
+        var token = getCookie("token");
+        const isTokenValid = (token) => true;
+        if (token && isTokenValid(token)) {
+          document.getElementById("login").style.display = "none";
+        } else {
+          document.getElementById("icon").style.display = "none";
+          document.getElementById("logout").style.display = "none";
+        }
+        if (!getCookie("cart")) return;
+        try{
+        var cart = JSON.parse(atob(getCookie("cart")));
+        console.log(cart);
+            var container = document.getElementsByClassName("cart-summary")[0];
+            var subtotal = 0.0;
+            cart.forEach(element => {
+              var price = parseFloat(element.price.replace("\$", "").trim()).toFixed(2);
+              container.innerHTML += `<div class="cart-summary-item">
+                  <img
+                    class="cart-summary-image"
+                    src="${element.image}"
+                    alt="Matte Lipstick Set - Reds"
+                  />
+                  <a href="shop.html" class="cart-summary-value">${element.name}</a>
+                  <span class="cart-summary-value">${element.quantity}</span>
+                  <span class="cart-summary-subtotal-value">$${price}</span>
+                </div>`;
+                
+                subtotal += price * parseInt(element.quantity);
+                
+            });
+            var total = 0.0;
+            total += subtotal + parseFloat(document.getElementById("shipping-price").innerHTML.replace("\$", "").trim());
+            document.getElementById("subtotal-price").innerHTML = `$${subtotal.toFixed(2)}`
+            document.getElementById("total-price").innerHTML = `$${total.toFixed(2)}`
+        } catch {
+          return;
+        }
+      }
+      function logout() {
+        deleteCookie("token");
+        redirectHome();
+      }
+      function deleteCookie(name) {
+        // Set the cookie with the specified name to expire in the past
+        document.cookie =
+          name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      }
+    </script>
+  </body> 
+</html>
