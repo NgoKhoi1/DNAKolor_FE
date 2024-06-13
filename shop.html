@@ -104,6 +104,7 @@
       }
       .nav-item:hover {
         text-decoration: underline;
+        cursor: pointer;
       }
 
       .button-primary {
@@ -575,6 +576,20 @@
         cursor: pointer;
         font-family: Arial, Helvetica, sans-serif;
       }
+      .add-to-cart {
+        /* Centers text horizontally */
+        align-items: center;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 500;
+        font-size: medium;
+        color: #d011d0;
+        text-decoration: none; 
+      }
+      .add-to-cart:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     </style>
   </head>
 
@@ -598,7 +613,8 @@
           <nav class="nav-links">
             <a class="nav-item" href="shop.html">Shop</a>
             <a class="nav-item" href="quiz.html">Color Analysis</a>
-
+            <a class="nav-item" href="quiz.html">Blogs</a>
+          <a class="nav-item" href="quiz.html">Community</a>
             <button
               id="login"
               class="button-primary"
@@ -822,11 +838,16 @@
 
       var price = document.createElement("span");
       price.className = "product-price";
-      price.textContent = `$${product.price}`;
+      price.textContent = `$${product.price}`;  
+      var addToCart = document.createElement("div");
+      addToCart.className = `add-to-cart ${btoa(JSON.stringify(product))}`;
+      addToCart.textContent = "Add to cart";
+      addToCart.onclick = addToCartExec;
 
       productItem.appendChild(img);
       productItem.appendChild(title);
       productItem.appendChild(price);
+      productItem.appendChild(addToCart)
 
       productRow.appendChild(productItem);
 
@@ -837,6 +858,36 @@
       }
     });
   }
+
+  function addToCartExec(event) {
+    // Extract the product information from the element's className
+    var productClassName = event.currentTarget.className.split(' ').pop(); // Get the last class name
+    var productData = JSON.parse(atob(productClassName));
+    if (!getCookie("cart")) {
+      var cart = [{"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`}]
+      setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
+      window.location.href = "cart.html";
+    } else {
+      var cart = JSON.parse(atob(getCookie("cart")));
+      cart.forEach(e => {
+        if (e.name === productData.product_name) {
+          e.quantity = `${parseInt(e.quantity) + 1}`;
+          e.price = `${parseFloat(productData.price) * parseInt(e.quantity)}`;
+          setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
+          window.location.href = "cart.html";
+          return;
+        }
+      });
+      cart.push({"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`});
+      setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
+      window.location.href = "cart.html";
+    }
+
+    // Here you can add the logic to add the product to the cart
+    console.log("Product added to cart:", productData);
+    // You can implement the logic to add the product to the cart
+}
+
 
   let bestSellerProduct = [
     {
@@ -1002,6 +1053,12 @@
     // Set the cookie with the specified name to expire in the past
     document.cookie =
       name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  }
+  function setCookie(name, value, minutes) {
+    const date = new Date();
+    date.setTime(date.getTime() + (minutes * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
   }
 </script>
 
