@@ -439,11 +439,35 @@
         }
       }
 
-      .product-row {
+      .product-scroll-wrap {
         display: flex;
+        align-items: center;
+      }
+
+      #backBtn,
+      #nextBtn {
+        width: 50px;
+      }
+
+      .product-scroll {
+        width: 100%;
+        display: flex;
+        overflow-x: scroll;
+      }
+
+      .product-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .product-row {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
         gap: 12px;
+        padding: 5px;
         white-space: nowrap;
         line-height: 150%;
+        flex: none;
       }
 
       @media (max-width: 991px) {
@@ -471,7 +495,6 @@
         object-fit: auto;
         object-position: center;
         width: 176px;
-        align-self: center;
       }
 
       .product-title,
@@ -548,10 +571,10 @@
         outline: none;
       }
       #logout {
-      text-decoration: underline;
-      cursor: pointer;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+        text-decoration: underline;
+        cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+      }
     </style>
   </head>
 
@@ -559,21 +582,39 @@
     <section class="container">
       <header class="header">
         <div class="navigation">
-          <div class="logo-container" tabindex="0" role="button" onclick="redirectHome()">
-            <img loading="lazy" src="logo.png" class="logo" alt="DNAKolor logo" />
+          <div
+            class="logo-container"
+            tabindex="0"
+            role="button"
+            onclick="redirectHome()"
+          >
+            <img
+              loading="lazy"
+              src="logo.png"
+              class="logo"
+              alt="DNAKolor logo"
+            />
           </div>
           <nav class="nav-links">
             <a class="nav-item" href="shop.html">Shop</a>
             <a class="nav-item" href="quiz.html">Color Analysis</a>
-            <a class="nav-item" href="quiz.html">Blogs</a>
-            <a class="nav-item" href="quiz.html">Community</a>
-            <button id="login" class="button-primary" aria-label="Get Started" onclick="redirectLogin()">
+
+            <button
+              id="login"
+              class="button-primary"
+              aria-label="Get Started"
+              onclick="redirectLogin()"
+            >
               <span class="button-text">Get Started</span>
             </button>
-            <img id="icon" loading="lazy"
+            <img
+              id="icon"
+              loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
-              class="icon" alt="Shopping cart" />
-              <div id="logout" onclick="logout()">Logout</div>
+              class="icon"
+              alt="Shopping cart"
+            />
+            <div id="logout" onclick="logout()">Logout</div>
           </nav>
         </div>
       </header>
@@ -656,6 +697,94 @@
       </div>
 
       <section class="products">
+
+        <h2 class="categories">Best Seller</h2>
+        <div class="product-scroll-wrap">
+          <!-- <img src="back.png" id="backBtn" /> -->
+          <div id="bestSellerList" class="product-scroll">
+            <!-- <div class="product-row">
+              <div class="product-item">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5371cbddfdf8fd6ecf471811d263fb54f71190ebd7be8637f0a370636197044?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                  alt="Lipstick"
+                  class="product-img"
+                />
+                <span class="product-title">Lipstick</span>
+                <span class="product-price">$20</span>
+              </div>
+              <div class="product-item">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/d47118254dac52bcd5f52341b08dd84b14b56698a6b846788087376690e1b9fc?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                  alt="Foundation"
+                  class="product-img"
+                />
+                <span class="product-title">Foundation</span>
+                <span class="product-price">$35</span>
+              </div>
+              <div class="product-item">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/73dccf16e2805bdde81f2184509e101818fedd71974a08a516c810cb695fcca3?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                  alt="Moisturizer"
+                  class="product-img"
+                />
+                <span class="product-title">Moisturizer</span>
+                <span class="product-price">$25</span>
+              </div>
+              <div class="product-item">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/db35f905042a6fb9b2ae0fd0cae0c5eb15466736e708371faa03d566331f7453?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                  alt="Serum"
+                  class="product-img"
+                />
+                <span class="product-title">Serum</span>
+                <span class="product-price">$40</span>
+              </div>
+            </div>
+            <div class="product-row">
+              <div class="product-item">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5371cbddfdf8fd6ecf471811d263fb54f71190ebd7be8637f0a370636197044?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                  alt="Lipstick"
+                  class="product-img"
+                />
+                <span class="product-title">Lipstick</span>
+                <span class="product-price">$20</span>
+              </div>
+              <div class="product-item">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/d47118254dac52bcd5f52341b08dd84b14b56698a6b846788087376690e1b9fc?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                  alt="Foundation"
+                  class="product-img"
+                />
+                <span class="product-title">Foundation</span>
+                <span class="product-price">$35</span>
+              </div>
+              <div class="product-item">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/73dccf16e2805bdde81f2184509e101818fedd71974a08a516c810cb695fcca3?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                  alt="Moisturizer"
+                  class="product-img"
+                />
+                <span class="product-title">Moisturizer</span>
+                <span class="product-price">$25</span>
+              </div>
+              <div class="product-item">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/db35f905042a6fb9b2ae0fd0cae0c5eb15466736e708371faa03d566331f7453?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                  alt="Serum"
+                  class="product-img"
+                />
+                <span class="product-title">Serum</span>
+                <span class="product-price">$40</span>
+              </div>
+            </div>
+          </div> -->
+          <!-- <img src="next.png" id="nextBtn" /> -->
+        </div>
+      </section>
+
+      <section id="productList" class="products">
+
         <h2 class="categories">Categories</h2>
         <div class="category-list">
           <div class="category-item">All</div>
@@ -664,58 +793,161 @@
           <div class="category-item">Haircare</div>
           <div class="category-item">Accessories</div>
         </div>
-        <div class="product-row">
-          <div class="product-item">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5371cbddfdf8fd6ecf471811d263fb54f71190ebd7be8637f0a370636197044?apiKey=1145a631081a47248438c8ac05c41e7d&"
-              alt="Lipstick"
-              class="product-img"
-            />
-            <span class="product-title">Lipstick</span>
-            <span class="product-price">$20</span>
-          </div>
-          <div class="product-item">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/d47118254dac52bcd5f52341b08dd84b14b56698a6b846788087376690e1b9fc?apiKey=1145a631081a47248438c8ac05c41e7d&"
-              alt="Foundation"
-              class="product-img"
-            />
-            <span class="product-title">Foundation</span>
-            <span class="product-price">$35</span>
-          </div>
-          <div class="product-item">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/73dccf16e2805bdde81f2184509e101818fedd71974a08a516c810cb695fcca3?apiKey=1145a631081a47248438c8ac05c41e7d&"
-              alt="Moisturizer"
-              class="product-img"
-            />
-            <span class="product-title">Moisturizer</span>
-            <span class="product-price">$25</span>
-          </div>
-          <div class="product-item">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/db35f905042a6fb9b2ae0fd0cae0c5eb15466736e708371faa03d566331f7453?apiKey=1145a631081a47248438c8ac05c41e7d&"
-              alt="Serum"
-              class="product-img"
-            />
-            <span class="product-title">Serum</span>
-            <span class="product-price">$40</span>
-          </div>
-          <div class="product-item">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/35cf0853917d8a028c58185397c93d9cfb33bb342a4d3bd23c5a6236fbdd86fa?apiKey=1145a631081a47248438c8ac05c41e7d&"
-              alt="Shampoo"
-              class="product-img"
-            />
-            <span class="product-title">Shampoo</span>
-            <span class="product-price">$15</span>
-          </div>
-        </div>
-        
+
       </section>
     </section>
   </body>
 </html>
+
+<script>
+  let bestSellerListEl = document.getElementById("bestSellerList");
+  let productListEl = document.getElementById("productList");
+
+  function addProducts(products,parentElment) {    
+    var productRow = document.createElement("div");
+    productRow.className = "product-row";
+
+    products.forEach((product, index) => {
+      var productItem = document.createElement("div");
+      productItem.className = "product-item";
+
+      var img = document.createElement("img");
+      img.src = product.image_src;
+      img.alt = product.product_name;
+      img.className = "product-img";
+
+      var title = document.createElement("span");
+      title.className = "product-title";
+      title.textContent = product.product_name;
+
+      var price = document.createElement("span");
+      price.className = "product-price";
+      price.textContent = `$${product.price}`;
+
+      productItem.appendChild(img);
+      productItem.appendChild(title);
+      productItem.appendChild(price);
+
+      productRow.appendChild(productItem);
+
+      if ((index + 1) % 4 === 0 || index === products.length - 1) {
+        parentElment.appendChild(productRow);
+        productRow = document.createElement("div");
+        productRow.className = "product-row";
+      }
+    });
+  }
+
+  let bestSellerProduct = [
+    {
+      product_name: "Wine - Bel Paese White",
+      image_src:
+        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+      price: 91.3,
+    },
+    {
+      product_name: "Chocolate Bar - Reese Pieces",
+      image_src:
+        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+      price: 28.64,
+    },
+    {
+      product_name: "Creme De Menth - White",
+      image_src:
+        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+      price: 95.74,
+    },
+    {
+      product_name: "Fruit Salad Deluxe",
+      image_src:
+        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+      price: 20.14,
+    },
+    {
+      product_name: "Chocolate Bar - Smarties",
+      image_src:
+        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+      price: 86.52,
+    },
+    {
+      product_name: "Coffee - Cafe Moreno",
+      image_src:
+        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+      price: 96.49,
+    },
+    {
+      product_name: "Beans - Soya Bean",
+      image_src:
+        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+      price: 81.29,
+    },
+    {
+      product_name: "Blouse / Shirt / Sweater",
+      image_src:
+        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+      price: 97.7,
+    },
+  ];
+
+  let productListItem = [
+      {
+        product_name: "Wine ",
+        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        price: 91.3,
+      },
+      {
+        product_name: "Chocolate Bar",
+        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        price: 28.64,
+      },
+      {
+        product_name: "Creme De Menth - White",
+        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        price: 95.74,
+      },
+      {
+        product_name: "Fruit Salad Deluxe",
+        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        price: 20.14,
+      },
+      {
+        product_name: "Chocolate Bar - Smarties",
+        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        price: 86.52,
+      },
+      {
+        product_name: "Coffee - Cafe Moreno",
+        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        price: 96.49,
+      },
+      {
+        product_name: "Beans - Soya Bean",
+        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        price: 81.29,
+      },
+      {
+        product_name: "Blouse / Shirt / Sweater",
+        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        price: 97.7,
+      }
+    ];
+
+  var backBtn = document.createElement("img");
+  backBtn.src = "back.png";
+  backBtn.id = "backBtn";
+  bestSellerListEl.insertAdjacentElement("beforebegin",backBtn);
+
+  addProducts(bestSellerProduct,bestSellerListEl);
+
+  var nextBtn= document.createElement("img");
+  nextBtn.src = "next.png";
+  nextBtn.id = "nextBtn";
+  
+  bestSellerList.insertAdjacentElement("afterend",nextBtn);
+
+  addProducts(productListItem,productListEl);
+
+</script>
 
 <script>
   function redirectLogin() {
@@ -773,3 +1005,22 @@
   }
 </script>
 
+<script>
+  let nextBtnAct = document.getElementById("nextBtn");
+  let backBtnAct = document.getElementById("backBtn");
+
+  bestSellerListEl.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    bestSellerListEl.scrollLeft += evt.deltaY;
+  });
+
+  nextBtnAct.addEventListener("click", () => {
+    bestSellerListEl.style.scrollBehavior = "smooth";
+    bestSellerListEl.scrollLeft += 864;
+  });
+
+  backBtnAct.addEventListener("click", () => {
+    bestSellerListEl.style.scrollBehavior = "smooth";
+    bestSellerListEl.scrollLeft -= 864;
+  });
+</script>
