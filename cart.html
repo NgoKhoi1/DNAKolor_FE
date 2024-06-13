@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #faf0f7;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #faf0f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header {
+        align-items: center;
+        background-color: #faf0f7;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      @media (max-width: 991px) {
+        .header {
+          max-width: 100%;
+        }
+      }
+
+      .navigation {
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(229, 232, 235, 1);
+        align-self: stretch;
+        display: flex;
+        padding: 2px 40px;
+      }
+
+      @media (max-width: 991px) {
+        .navigation {
+          flex-wrap: wrap;
+          padding: 0 20px;
+        }
+      }
+
+      .logo-container {
+        display: flex;
+        gap: 8px;
+        font-size: 18px;
+        color: #1c0a1a;
+        font-weight: 700;
+        letter-spacing: -0.27px;
+        cursor: pointer;
+      }
+
+      @media (max-width: 991px) {
+        .logo-container {
+          white-space: initial;
+        }
+      }
+
+      .logo {
+        aspect-ratio: 1;
+        height: 48px;
+        width: 164px;
+      }
+
+      .site-title {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        margin: auto 0;
+      }
+
+      .nav-links {
+        justify-content: end;
+        display: flex;
+        padding-left: 80px;
+        gap: 20px;
+        font-size: 14px;
+        line-height: 150%;
+        align-items: center;
+      }
+
+      @media (max-width: 991px) {
+        .nav-links {
+          flex-wrap: wrap;
+        }
+      }
+
+      .nav-item {
+        display: flex;
+        justify-content: center;
+        /* Centers text horizontally */
+        align-items: center;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 500;
+        font-size: medium;
+        color: #1c0a1a;
+        text-decoration: none;
+      }
+
+      .nav-item:hover {
+        text-decoration: underline;
+      }
+
+      .button-primary {
+        justify-content: center;
+        height: 37.6px;
+        border-radius: 20px;
+        background-color: #d421b0;
+        color: #faf0f7;
+        font-weight: 700;
+        letter-spacing: 0.21px;
+        padding: 10px 16px;
+        border: #d421b0 solid 1px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .button-primary:hover {
+        background-color: #faf0f7;
+        color: #d421b0;
+        cursor: pointer;
+      }
+
+      .button-text {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+      }
+
+      .icon {
+        aspect-ratio: 1;
+        width: 40px;
+      }
+      .main-content {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      @media (max-width: 991px) {
+        .main-content {
+          padding: 0 20px;
+        }
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        background-color: #faf0f7;
+        width: 26%;
+      }
+
+      @media (max-width: 991px) {
+        .sidebar {
+          width: 100%;
+          margin-top: 24px;
+        }
+      }
+
+      .sidebar-header {
+        display: flex;
+        gap: 12px;
+      }
+
+      .brand-logo {
+        width: 40px;
+        aspect-ratio: 1;
+        object-fit: cover;
+      }
+
+      .brand-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .brand-title {
+        font: 500 16px "Plus Jakarta Sans", sans-serif;
+      }
+
+      .brand-tagline {
+        font: 400 14px "Plus Jakarta Sans", sans-serif;
+        color: #a3408f;
+      }
+
+      @media (max-width: 991px) {
+        .sidebar-link {
+          white-space: initial;
+        }
+      }
+
+      .sidebar-link-container {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: #f2deed;
+        border-radius: 20px;
+      }
+
+      .sidebar-link {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+      }
+
+      .main-section {
+        display: flex;
+        flex-direction: column;
+        padding: 24px 0 80px;
+        max-width: 960px;
+        width: 74%;
+      }
+
+      @media (max-width: 991px) {
+        .main-section {
+          max-width: 100%;
+          margin-top: 24px;
+        }
+      }
+
+      .main-title {
+        margin: 0 16px;
+        font: 32px "Plus Jakarta Sans", sans-serif;
+        color: #1c0a1a;
+        font-feature-settings: "dlig" on;
+      }
+
+      @media (max-width: 991px) {
+        .main-title {
+          margin-right: 10px;
+        }
+      }
+
+      .cart-summary {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(235, 199, 227, 1);
+        margin: 24px 16px 0;
+        background-color: #faf0f7;
+        padding: 1px;
+        border-radius: 12px;
+      }
+
+      @media (max-width: 991px) {
+        .cart-summary {
+          margin-right: 10px;
+        }
+      }
+
+      .cart-summary-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 13px 16px;
+        background-color: #faf0f7;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 991px) {
+        .cart-summary-header {
+          flex-wrap: wrap;
+        }
+      }
+
+      .cart-summary-item,
+      .cart-summary-subtotal {
+        display: flex;
+        padding: 16px 20px;
+        justify-content: space-between;
+        border-top: 1px solid rgba(229, 232, 235, 1);
+      }
+
+      @media (max-width: 991px) {
+        .cart-summary-item,
+        .cart-summary-subtotal {
+          flex-wrap: wrap;
+        }
+      }
+
+      .cart-summary-item img,
+      .cart-summary-subtotal img {
+        width: 40px;
+        aspect-ratio: 1;
+        object-fit: cover;
+      }
+
+      .cart-summary-label {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      .cart-summary-value {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      width: 240px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        color: #a3408f;
+      }
+
+      .cart-summary-subtotal-value {
+        width: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: stretch;
+        background-color: #f2deed;
+        padding: 6px 16px;
+        border-radius: 16px;
+        text-align: center;
+        font: 500 14px "Plus Jakarta Sans", sans-serif;
+      }
+
+      @media (max-width: 991px) {
+        .cart-summary-subtotal-value {
+          padding: 0 20px;
+        }
+      }
+
+      .cart-actions {
+        display: flex;
+        margin-top: 12px;
+        gap: 12px;
+        padding: 12px 16px;
+        justify-content: space-between;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .checkout,
+      .continue-shopping {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        text-overflow: ellipsis;
+        border-radius: 24px;
+      }
+
+      .checkout {
+        background-color: #d421b0;
+        color: #faf0f7;
+        white-space: nowrap;
+        padding: 12px 20px;
+      }
+
+      @media (max-width: 991px) {
+        .checkout {
+          white-space: initial;
+        }
+      }
+
+      .continue-shopping {
+        background-color: #f2deed;
+        color: #1c0a1a;
+        padding: 12px 20px;
+      }
+
+      .get-started {
+        padding: 10px 16px;
+        font: 700 14px/150% "Plus Jakarta Sans", sans-serif;
+        background-color: #d421b0;
+        border-radius: 20px;
+        color: #faf0f7;
+        font-weight: 700;
+        letter-spacing: 0.21px;
+        padding: 10px 16px;
+        border: #d421b0 solid 1px;
+        transition: background-color 0.3s ease, color 0.15s ease;
+      }
+      .get-started:hover {
+        background-color: #faf0f7;
+        color: #d421b0;
+        cursor: pointer;
+      }
+      .order-detail {
+        display: flex;
+        justify-content: space-between;
+      }
+      .order-detail-field {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        color: #a3408f;
+      }
+      .order-detail-value {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="navigation">
+          <div
+            class="logo-container"
+            tabindex="0"
+            role="button"
+            onclick="redirectHome()"
+          >
+            <img
+              loading="lazy"
+              src="logo.png"
+              class="logo"
+              alt="DNAKolor logo"
+            />
+          </div>
+          <nav class="nav-links">
+            <a class="nav-item" href="shop.html">Shop</a>
+            <a class="nav-item" href="quiz.html">Color Analysis</a>
+            <a class="nav-item" href="quiz.html">Blogs</a>
+            <a class="nav-item" href="quiz.html">Community</a>
+            <button
+              id="login"
+              class="button-primary"
+              aria-label="Get Started"
+              onclick="redirectLogin()"
+            >
+              <span class="button-text">Get Started</span>
+            </button>
+            <img
+              id="icon"
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
+              class="icon"
+              alt="Shopping cart"
+            />
+            <div id="logout" onclick="logout()">Logout</div>
+          </nav>
+        </div>
+      </header>
+      <main class="main-content">
+        <section class="main-section">
+          <div class="main-title">Your Cart</div>
+          <div class="cart-summary-header">
+            <span class="cart-summary-label">Product</span>
+            <span class="cart-summary-label">Description</span>
+            <span class="cart-summary-label">Quantity</span>
+            <span class="cart-summary-label">Price</span>
+          </div>
+          <div class="cart-summary">
+          
+          </div>
+        </section>
+        <aside class="sidebar">
+            <h1 style="font-family: 'Plus Jakarta Sans', sans-serif;">Order Details</h1>
+            <div class="order-detail">
+                <span class="order-detail-field">SubTotal</span>
+                <span class="order-detail-value" id="subtotal-price"></span>
+            </div>
+            <div class="order-detail">
+                <span class="order-detail-field">Shipping</span>
+                <span class="order-detail-value" id="shipping-price">$0</span>
+            </div>
+            <div class="order-detail">
+                <span class="order-detail-field">Total</span>
+                <span class="order-detail-value" id="total-price"></span>
+            </div>
+          <button class="get-started">Checkout</button>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
+<script>
+  function redirectLogin() {
+    window.location.href = "login.html";
+  }
+
+  function redirectHome() {
+    window.location.href = "index.html";
+  }
+
+  function redirectQuizz() {
+    window.location.href = "quiz.html";
+  }
+
+  function redirectShop() {
+    window.location.href = "shop.html";
+  }
+</script>
+
+<script>
+  load();
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  function load() {
+    var token = getCookie("token");
+    const isTokenValid = (token) => true;
+    if (token && isTokenValid(token)) {
+      document.getElementById("login").style.display = "none";
+    } else {
+      document.getElementById("icon").style.display = "none";
+      document.getElementById("logout").style.display = "none";
+    }
+    if (!getCookie("cart")) return;
+    try{
+    var cart = JSON.parse(atob(getCookie("cart")));
+    console.log(cart);
+        var container = document.getElementsByClassName("cart-summary")[0];
+        var subtotal = 0.0;
+        cart.forEach(element => {
+          var price = parseFloat(element.price.replace("\$", "").trim()).toFixed(2);
+          container.innerHTML += `<div class="cart-summary-item">
+              <img
+                class="cart-summary-image"
+                src="${element.image}"
+                alt="Matte Lipstick Set - Reds"
+              />
+              <a href="shop.html" class="cart-summary-value">${element.name}</a>
+              <span class="cart-summary-value">${element.quantity}</span>
+              <span class="cart-summary-subtotal-value">$${price}</span>
+            </div>`;
+            
+            subtotal += price * parseInt(element.quantity);
+            
+        });
+        var total = 0.0;
+        total += subtotal + parseFloat(document.getElementById("shipping-price").innerHTML.replace("\$", "").trim());
+        document.getElementById("subtotal-price").innerHTML = `$${subtotal.toFixed(2)}`
+        document.getElementById("total-price").innerHTML = `$${total.toFixed(2)}`
+    } catch {
+      return;
+    }
+  }
+  function logout() {
+    deleteCookie("token");
+    redirectHome();
+  }
+  function deleteCookie(name) {
+    // Set the cookie with the specified name to expire in the past
+    document.cookie =
+      name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  }
+</script>
