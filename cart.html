@@ -554,6 +554,7 @@
         var price = parseFloat(element.price.replace("\$", "").trim()).toFixed(
           2
         );
+        var product = {"name": `${element.name}`, "price": `${element.s_price}`, "image": `${element.image}`, "quantity": `${element.quantity}`}
         container.innerHTML += `
   <div class="cart-summary-item">
     <img
@@ -561,7 +562,7 @@
       src="${element.image}"
       alt="${element.name}"
     />
-    <a href="shop.html" class="cart-summary-value">${element.name}</a>
+    <a href="product_detail.html?product=${encodeURIComponent(JSON.stringify(product))}" class="cart-summary-value">${element.name}</a>
     <span class="cart-summary-value">
       <div class="quantity-btn" onclick="updateQuantity('${index}', -1)">-</div>
       <span class="quantity-value">${element.quantity}</span>
@@ -600,8 +601,7 @@
       cart.splice(id, 1);
     } else {
       item.price = `${
-        (parseFloat(item.price) / (parseInt(item.quantity) - change)) *
-        parseInt(item.quantity)
+        parseFloat(item.s_price) * parseInt(item.quantity)
       }`;
     }
     setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
