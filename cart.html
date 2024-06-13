@@ -135,6 +135,7 @@
         aspect-ratio: 1;
         width: 40px;
       }
+
       .main-content {
         width: 100%;
         display: flex;
@@ -299,7 +300,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-      width: 240px;
+        width: 240px;
+        padding: 12px 0px;
         font-family: "Plus Jakarta Sans", sans-serif;
         color: #a3408f;
       }
@@ -374,24 +376,49 @@
         border: #d421b0 solid 1px;
         transition: background-color 0.3s ease, color 0.15s ease;
       }
+
       .get-started:hover {
         background-color: #faf0f7;
         color: #d421b0;
         cursor: pointer;
       }
+
       .order-detail {
         display: flex;
         justify-content: space-between;
       }
+
       .order-detail-field {
         font-family: "Plus Jakarta Sans", sans-serif;
         color: #a3408f;
       }
+
       .order-detail-value {
         font-family: "Plus Jakarta Sans", sans-serif;
       }
+      .quantity-value {
+        display: flex;
+        justify-content: center;
+        width: 32px;
+        border: 0.5px solid #a3408f;
+      }
+      .quantity-btn {
+        color: #faf0f7;
+        background-color: #d421b0;
+        display: flex;
+        width: 16px;
+        justify-content: center;
+        border: 0.5px solid #a3408f;
+      }
+
+      .quantity-btn:hover {
+        background-color: #faf0f7;
+        color: #d421b0;
+        cursor: pointer;
+      }
     </style>
   </head>
+
   <body>
     <div class="container">
       <header class="header">
@@ -442,25 +469,27 @@
             <span class="cart-summary-label">Quantity</span>
             <span class="cart-summary-label">Price</span>
           </div>
-          <div class="cart-summary">
-          
-          </div>
+          <div class="cart-summary"></div>
         </section>
         <aside class="sidebar">
-            <h1 style="font-family: 'Plus Jakarta Sans', sans-serif;">Order Details</h1>
-            <div class="order-detail">
-                <span class="order-detail-field">SubTotal</span>
-                <span class="order-detail-value" id="subtotal-price"></span>
-            </div>
-            <div class="order-detail">
-                <span class="order-detail-field">Shipping</span>
-                <span class="order-detail-value" id="shipping-price">$0</span>
-            </div>
-            <div class="order-detail">
-                <span class="order-detail-field">Total</span>
-                <span class="order-detail-value" id="total-price"></span>
-            </div>
+
+          <h1 style="font-family: 'Plus Jakarta Sans', sans-serif">
+            Order Details
+          </h1>
+          <div class="order-detail">
+            <span class="order-detail-field">SubTotal</span>
+            <span class="order-detail-value" id="subtotal-price"></span>
+          </div>
+          <div class="order-detail">
+            <span class="order-detail-field">Shipping</span>
+            <span class="order-detail-value" id="shipping-price">$0</span>
+          </div>
+          <div class="order-detail">
+            <span class="order-detail-field">Total</span>
+            <span class="order-detail-value" id="total-price"></span>
+          </div>
           <button class="get-started" onclick="redirectPayment()">Checkout</button>
+
         </aside>
       </main>
     </div>
@@ -515,35 +544,77 @@
       document.getElementById("logout").style.display = "none";
     }
     if (!getCookie("cart")) return;
-    try{
-    var cart = JSON.parse(atob(getCookie("cart")));
-    console.log(cart);
-        var container = document.getElementsByClassName("cart-summary")[0];
-        var subtotal = 0.0;
-        cart.forEach(element => {
-          var price = parseFloat(element.price.replace("\$", "").trim()).toFixed(2);
-          container.innerHTML += `<div class="cart-summary-item">
-              <img
-                class="cart-summary-image"
-                src="${element.image}"
-                alt="Matte Lipstick Set - Reds"
-              />
-              <a href="shop.html" class="cart-summary-value">${element.name}</a>
-              <span class="cart-summary-value">${element.quantity}</span>
-              <span class="cart-summary-subtotal-value">$${price}</span>
-            </div>`;
-            
-            subtotal += price * parseInt(element.quantity);
-            
-        });
-        var total = 0.0;
-        total += subtotal + parseFloat(document.getElementById("shipping-price").innerHTML.replace("\$", "").trim());
-        document.getElementById("subtotal-price").innerHTML = `$${subtotal.toFixed(2)}`
-        document.getElementById("total-price").innerHTML = `$${total.toFixed(2)}`
+    try {
+      var cart = JSON.parse(atob(getCookie("cart")));
+      console.log(cart);
+      var container = document.getElementsByClassName("cart-summary")[0];
+      var subtotal = 0.0;
+      container.innerHTML = "";
+      cart.forEach((element, index) => {
+        var price = parseFloat(element.price.replace("\$", "").trim()).toFixed(
+          2
+        );
+        container.innerHTML += `
+  <div class="cart-summary-item">
+    <img
+      class="cart-summary-image"
+      src="${element.image}"
+      alt="${element.name}"
+    />
+    <a href="shop.html" class="cart-summary-value">${element.name}</a>
+    <span class="cart-summary-value">
+      <div class="quantity-btn" onclick="updateQuantity('${index}', -1)">-</div>
+      <span class="quantity-value">${element.quantity}</span>
+      <div class="quantity-btn" onclick="updateQuantity('${index}', 1)">+</div>
+    </span>
+    <span class="cart-summary-subtotal-value">$${price}</span>
+  </div>
+`;
+
+        subtotal += parseFloat(price) ;
+      });
+      var total = 0.0;
+      total +=
+        subtotal +
+        parseFloat(
+          document
+            .getElementById("shipping-price")
+            .innerHTML.replace("\$", "")
+            .trim()
+        );
+      document.getElementById(
+        "subtotal-price"
+      ).innerHTML = `$${subtotal.toFixed(2)}`;
+      document.getElementById("total-price").innerHTML = `$${total.toFixed(2)}`;
     } catch {
+      console.log(atob(getCookie("cart")));
       return;
     }
   }
+  function updateQuantity(id, change) {
+    var cart = JSON.parse(atob(getCookie("cart")));
+    var item = cart[id];
+    item.quantity = `${parseInt(item.quantity) + change}`;
+    if (item.quantity === "0") {
+      console.log("quantity equal 0");
+      cart.splice(id, 1);
+    } else {
+      item.price = `${
+        (parseFloat(item.price) / (parseInt(item.quantity) - change)) *
+        parseInt(item.quantity)
+      }`;
+    }
+    setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
+    load();
+  }
+
+  function setCookie(name, value, minutes) {
+    const date = new Date();
+    date.setTime(date.getTime() + minutes * 60 * 1000);
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
+
   function logout() {
     deleteCookie("token");
     redirectHome();
