@@ -349,6 +349,11 @@
         padding-bottom: 12px;
         flex-direction: column;
         line-height: 150%;
+        cursor: pointer;
+        opacity: .5;
+      }
+      .highlight-select {
+        opacity: 1;
       }
 
       .collection-item img {
@@ -684,6 +689,15 @@
           </div>
         </section>
       </main>
+      <section class="products">
+
+        <h2 class="categories">Best Seller</h2>
+        <div class="product-scroll-wrap">
+          <!-- <img src="back.png" id="backBtn" /> -->
+          <div id="bestSellerList" class="product-scroll">
+            
+        </div>
+      </section>
       <div class="collections">
         <section class="collection-grid">
           <div class="collection-section">
@@ -697,7 +711,7 @@
             </div>
           </div>
           <div class="collection-section">
-            <div class="collection-item">
+            <div class="collection-item highlight-select">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/54a28571727e70f2ae584faf644d2c3f8819b082b5bc57b224d5d55adae63582?apiKey=1145a631081a47248438c8ac05c41e7d&"
                 alt="Deep Winter Collection"
@@ -729,96 +743,10 @@
         </section>
       </div>
 
-      <section class="products">
-
-        <h2 class="categories">Best Seller</h2>
-        <div class="product-scroll-wrap">
-          <!-- <img src="back.png" id="backBtn" /> -->
-          <div id="bestSellerList" class="product-scroll">
-            <!-- <div class="product-row">
-              <div class="product-item">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5371cbddfdf8fd6ecf471811d263fb54f71190ebd7be8637f0a370636197044?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                  alt="Lipstick"
-                  class="product-img"
-                />
-                <span class="product-title">Lipstick</span>
-                <span class="product-price">$20</span>
-              </div>
-              <div class="product-item">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/d47118254dac52bcd5f52341b08dd84b14b56698a6b846788087376690e1b9fc?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                  alt="Foundation"
-                  class="product-img"
-                />
-                <span class="product-title">Foundation</span>
-                <span class="product-price">$35</span>
-              </div>
-              <div class="product-item">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/73dccf16e2805bdde81f2184509e101818fedd71974a08a516c810cb695fcca3?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                  alt="Moisturizer"
-                  class="product-img"
-                />
-                <span class="product-title">Moisturizer</span>
-                <span class="product-price">$25</span>
-              </div>
-              <div class="product-item">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/db35f905042a6fb9b2ae0fd0cae0c5eb15466736e708371faa03d566331f7453?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                  alt="Serum"
-                  class="product-img"
-                />
-                <span class="product-title">Serum</span>
-                <span class="product-price">$40</span>
-              </div>
-            </div>
-            <div class="product-row">
-              <div class="product-item">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5371cbddfdf8fd6ecf471811d263fb54f71190ebd7be8637f0a370636197044?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                  alt="Lipstick"
-                  class="product-img"
-                />
-                <span class="product-title">Lipstick</span>
-                <span class="product-price">$20</span>
-              </div>
-              <div class="product-item">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/d47118254dac52bcd5f52341b08dd84b14b56698a6b846788087376690e1b9fc?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                  alt="Foundation"
-                  class="product-img"
-                />
-                <span class="product-title">Foundation</span>
-                <span class="product-price">$35</span>
-              </div>
-              <div class="product-item">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/73dccf16e2805bdde81f2184509e101818fedd71974a08a516c810cb695fcca3?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                  alt="Moisturizer"
-                  class="product-img"
-                />
-                <span class="product-title">Moisturizer</span>
-                <span class="product-price">$25</span>
-              </div>
-              <div class="product-item">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/db35f905042a6fb9b2ae0fd0cae0c5eb15466736e708371faa03d566331f7453?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                  alt="Serum"
-                  class="product-img"
-                />
-                <span class="product-title">Serum</span>
-                <span class="product-price">$40</span>
-              </div>
-            </div>
-          </div> -->
-          <!-- <img src="next.png" id="nextBtn" /> -->
-        </div>
-      </section>
+      
 
       <section id="productList" class="products">
-
-        <h2 class="categories">Categories</h2>
+        <h2 class="categories">Recommended</h2>
         <div class="category-list">
           <div class="category-item">All</div>
           <div class="category-item">Makeup</div>
@@ -878,6 +806,18 @@
     });
   }
 
+  document.addEventListener('DOMContentLoaded', () => {
+            const collectionItems = document.querySelectorAll('.collection-item');
+
+            collectionItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Remove highlight-select class from all items
+                    collectionItems.forEach(i => i.classList.remove('highlight-select'));
+                    // Add highlight-select class to the clicked item
+                    item.classList.add('highlight-select');
+                });
+            });
+        });
   function addToCartExec(event) {
     // Extract the product information from the element's className
     var productClassName = event.currentTarget.className.split(' ').pop(); // Get the last class name
