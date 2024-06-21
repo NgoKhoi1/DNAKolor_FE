@@ -1,462 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DNAKolor</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100%;
+        min-height: 100vh;
+        background-color: #faf0f7;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DNAKolor</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100%;
-      min-height: 100vh;
-      background-color: #faf0f7;
-    }
+      .container {
+        background-color: #faf0f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-    .container {
-      background-color: #faf0f7;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .header {
-      align-items: center;
-      background-color: #faf0f7;
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-    }
-
-    @media (max-width: 991px) {
       .header {
-        max-width: 100%;
+        align-items: center;
+        background-color: #faf0f7;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
       }
-    }
 
-    .navigation {
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(229, 232, 235, 1);
-      align-self: stretch;
-      display: flex;
-      padding: 2px 40px;
-    }
+      @media (max-width: 991px) {
+        .header {
+          max-width: 100%;
+        }
+      }
 
-    @media (max-width: 991px) {
       .navigation {
-        flex-wrap: wrap;
-        padding: 0 20px;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(229, 232, 235, 1);
+        align-self: stretch;
+        display: flex;
+        padding: 2px 40px;
       }
-    }
 
-    .logo-container {
-      display: flex;
-      gap: 8px;
-      font-size: 18px;
-      color: #1c0a1a;
-      font-weight: 700;
-      letter-spacing: -0.27px;
-      cursor: pointer;
-    }
+      @media (max-width: 991px) {
+        .navigation {
+          flex-wrap: wrap;
+          padding: 0 20px;
+        }
+      }
 
-    @media (max-width: 991px) {
       .logo-container {
-        white-space: initial;
+        display: flex;
+        gap: 8px;
+        font-size: 18px;
+        color: #1c0a1a;
+        font-weight: 700;
+        letter-spacing: -0.27px;
+        cursor: pointer;
       }
-    }
 
-    .logo {
-      aspect-ratio: 1;
-      height: 48px;
-      width: 164px;
-    }
+      @media (max-width: 991px) {
+        .logo-container {
+          white-space: initial;
+        }
+      }
 
-    .site-title {
-      font-feature-settings: "dlig" on;
-      font-family: Plus Jakarta Sans, sans-serif;
-      margin: auto 0;
-    }
+      .logo {
+        aspect-ratio: 1;
+        height: 48px;
+        width: 164px;
+      }
 
-    .nav-links {
-      justify-content: end;
-      display: flex;
-      padding-left: 80px;
-      gap: 20px;
-      font-size: 14px;
-      line-height: 150%;
-      align-items: center;
-    }
+      .site-title {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        margin: auto 0;
+      }
 
-    @media (max-width: 991px) {
       .nav-links {
-        flex-wrap: wrap;
+        justify-content: end;
+        display: flex;
+        padding-left: 80px;
+        gap: 20px;
+        font-size: 14px;
+        line-height: 150%;
+        align-items: center;
       }
-    }
 
-    .nav-item {
-      display: flex;
-      justify-content: center;
-      /* Centers text horizontally */
-      align-items: center;
-      font-feature-settings: "dlig" on;
-      font-family: Plus Jakarta Sans, sans-serif;
-      font-weight: 500;
-      font-size: medium;
-      color: #1c0a1a;
-      text-decoration: none;
-    }
+      @media (max-width: 991px) {
+        .nav-links {
+          flex-wrap: wrap;
+        }
+      }
 
-    .nav-item:hover {
-      text-decoration: underline;
-    }
+      .nav-item {
+        display: flex;
+        justify-content: center;
+        /* Centers text horizontally */
+        align-items: center;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 500;
+        font-size: medium;
+        color: #1c0a1a;
+        text-decoration: none;
+      }
 
-    .button-primary {
-      justify-content: center;
-      height: 37.6px;
-      border-radius: 20px;
-      background-color: #d421b0;
-      color: #faf0f7;
-      font-weight: 700;
-      letter-spacing: 0.21px;
-      padding: 10px 16px;
-      border: #d421b0 solid 1px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+      .nav-item:hover {
+        text-decoration: underline;
+      }
 
-    .button-primary:hover {
-      background-color: #faf0f7;
-      color: #d421b0;
-      cursor: pointer;
-    }
+      .button-primary {
+        justify-content: center;
+        height: 37.6px;
+        border-radius: 20px;
+        background-color: #d421b0;
+        color: #faf0f7;
+        font-weight: 700;
+        letter-spacing: 0.21px;
+        padding: 10px 16px;
+        border: #d421b0 solid 1px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
 
-    .button-text {
-      font-feature-settings: "dlig" on;
-      font-family: Plus Jakarta Sans, sans-serif;
-    }
+      .button-primary:hover {
+        background-color: #faf0f7;
+        color: #d421b0;
+        cursor: pointer;
+      }
 
-    .icon {
-      aspect-ratio: 1;
-      width: 40px;
-    }
+      .button-text {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+      }
 
-    .promo-section {
-      align-items: start;
-      display: flex;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 960px;
-      flex-direction: column;
-      padding: 16px 80px 16px 16px;
-    }
+      .icon {
+        aspect-ratio: 1;
+        width: 40px;
+      }
 
-    @media (max-width: 991px) {
       .promo-section {
-        max-width: 100%;
-        padding-right: 20px;
+        align-items: start;
+        display: flex;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 960px;
+        flex-direction: column;
+        padding: 16px 80px 16px 16px;
       }
-    }
 
-    .promo-heading {
-      color: #1c0a1a;
-      font-feature-settings: "dlig" on;
-      letter-spacing: -1.19px;
-      font: 800 36px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
-        sans-serif;
-    }
+      @media (max-width: 991px) {
+        .promo-section {
+          max-width: 100%;
+          padding-right: 20px;
+        }
+      }
 
-    @media (max-width: 991px) {
       .promo-heading {
-        max-width: 100%;
+        color: #1c0a1a;
+        font-feature-settings: "dlig" on;
+        letter-spacing: -1.19px;
+        font: 800 36px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
       }
-    }
 
-    .promo-text {
-      color: #a3408f;
-      font-feature-settings: "dlig" on;
-      margin-top: 12px;
-      font: 400 16px/150% Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
-        sans-serif;
-    }
+      @media (max-width: 991px) {
+        .promo-heading {
+          max-width: 100%;
+        }
+      }
 
-    @media (max-width: 991px) {
       .promo-text {
-        max-width: 100%;
+        color: #a3408f;
+        font-feature-settings: "dlig" on;
+        margin-top: 12px;
+        font: 400 16px/150% Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
+          sans-serif;
       }
-    }
 
-    .quiz-section {
-      display: flex;
-      width: 100%;
-      max-width: 960px;
-      flex-direction: column;
-      padding: 16px;
-    }
+      @media (max-width: 991px) {
+        .promo-text {
+          max-width: 100%;
+        }
+      }
 
-    @media (max-width: 991px) {
       .quiz-section {
-        max-width: 100%;
+        display: flex;
+        width: 100%;
+        max-width: 960px;
+        flex-direction: column;
+        padding: 16px;
       }
-    }
 
-    .quiz-card {
-      border-radius: 12px;
-      border: 1px solid rgba(235, 199, 227, 1);
-      display: flex;
-      gap: 16px;
-      flex-direction: column;
-      padding: 15px;
-      margin-top: 12px;
-      display: none;
-    }
+      @media (max-width: 991px) {
+        .quiz-section {
+          max-width: 100%;
+        }
+      }
 
-    @media (max-width: 991px) {
       .quiz-card {
-        flex-wrap: wrap;
+        border-radius: 12px;
+        border: 1px solid rgba(235, 199, 227, 1);
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        padding: 15px;
+        margin-top: 12px;
+        display: none;
       }
-    }
 
-    .quiz-card input {
-      justify-content: center;
-      border-radius: 10px;
-      border: 2px solid rgba(235, 199, 227, 1);
-      width: 20px;
-      height: 20px;
-      margin: auto 0;
-      padding: 2px;
-    }
+      @media (max-width: 991px) {
+        .quiz-card {
+          flex-wrap: wrap;
+        }
+      }
 
-    .quiz-answer {
-      display: flex;
-      flex-direction: column;
-      font-size: 14px;
-      line-height: 150%;
-      gap: 10px;
-    }
+      .quiz-card input {
+        justify-content: center;
+        border-radius: 10px;
+        border: 2px solid rgba(235, 199, 227, 1);
+        width: 20px;
+        height: 20px;
+        margin: auto 0;
+        padding: 2px;
+      }
 
-    @media (max-width: 991px) {
       .quiz-answer {
-        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        line-height: 150%;
+        gap: 10px;
       }
-    }
 
-    .quiz-question {
-      color: #1c0a1a;
-      font-feature-settings: "dlig" on;
-      font-family: Plus Jakarta Sans, sans-serif;
-      font-weight: 500;
-    }
+      @media (max-width: 991px) {
+        .quiz-answer {
+          max-width: 100%;
+        }
+      }
 
-    @media (max-width: 991px) {
       .quiz-question {
-        max-width: 100%;
+        color: #1c0a1a;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 500;
       }
-    }
 
-    .quiz-option {
-      color: #a3408f;
-      font-feature-settings: "dlig" on;
-      font-family: Plus Jakarta Sans, sans-serif;
-      font-weight: 400;
-    }
+      @media (max-width: 991px) {
+        .quiz-question {
+          max-width: 100%;
+        }
+      }
 
-    @media (max-width: 991px) {
       .quiz-option {
-        max-width: 100%;
+        color: #a3408f;
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+        font-weight: 400;
       }
-    }
 
-    .submit-button {
-      justify-content: center;
-      align-items: center;
-      border-radius: 6px;
-      background-color: #d421b0;
-      display: flex;
-      width: 120px;
-      max-width: 100%;
-      font-size: 16px;
-      color: #faf0f7;
-      font-weight: 700;
-      margin: 12px 0 8px;
-      padding: 12px 20px;
-      margin-left: auto;
-      cursor: pointer;
-    }
+      @media (max-width: 991px) {
+        .quiz-option {
+          max-width: 100%;
+        }
+      }
 
-    .submit-button span {
-      font-feature-settings: "dlig" on;
-      font-family: Plus Jakarta Sans, sans-serif;
-    }
+      .submit-button {
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+        background-color: #d421b0;
+        display: flex;
+        width: 120px;
+        max-width: 100%;
+        font-size: 16px;
+        color: #faf0f7;
+        font-weight: 700;
+        margin: 12px 0 8px;
+        padding: 12px 20px;
+        margin-left: auto;
+        cursor: pointer;
+      }
 
-    .answer {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
+      .submit-button span {
+        font-feature-settings: "dlig" on;
+        font-family: Plus Jakarta Sans, sans-serif;
+      }
 
-    .quiz-desc {
-      font-family: Arial, Helvetica, sans-serif;
-    }
+      .answer {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
 
-    #quiz-form {
-      display: flex;
-      flex-direction: column;
-    }
+      .quiz-desc {
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-    #upload-section {
-      border-radius: 12px;
-      border: 1px solid rgba(235, 199, 227, 1);
-      display: flex;
-      gap: 16px;
-      flex-direction: column;
-      padding: 15px;
-      margin-top: 12px;
-    }
+      #quiz-form {
+        display: flex;
+        flex-direction: column;
+      }
 
-    .upload-label {
-      display: block;
-      margin-bottom: 10px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: bolder;
-      font-size: larger;
-    }
+      #upload-section {
+        border-radius: 12px;
+        border: 1px solid rgba(235, 199, 227, 1);
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        padding: 15px;
+        margin-top: 12px;
+      }
 
-    #image-preview {
-      max-width: 100%;
-      height: auto;
-      margin-top: 10px;
-    }
+      .upload-label {
+        display: block;
+        margin-bottom: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: larger;
+      }
 
-    #waiting-prompt {
-      display: none;
-      border-radius: 12px;
-      gap: 16px;
-      flex-direction: column;
-      padding: 15px;
-      margin-top: 12px;
-      align-items: center;
-    }
+      #image-preview {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+      }
 
-    #logout {
-      text-decoration: underline;
-      cursor: pointer;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-  </style>
-</head>
+      #waiting-prompt {
+        display: none;
+        border-radius: 12px;
+        gap: 16px;
+        flex-direction: column;
+        padding: 15px;
+        margin-top: 12px;
+        align-items: center;
+      }
 
-<body>
-  <div class="container">
-    <header class="header">
-      <div class="navigation">
-        <div class="logo-container" tabindex="0" role="button" onclick="redirectHome()">
-          <img loading="lazy" src="logo.png" class="logo" alt="DNAKolor logo" />
+      #logout {
+        text-decoration: underline;
+        cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="navigation">
+          <div
+            class="logo-container"
+            tabindex="0"
+            role="button"
+            onclick="redirectHome()"
+          >
+            <img
+              loading="lazy"
+              src="logo.png"
+              class="logo"
+              alt="DNAKolor logo"
+            />
+          </div>
+          <nav class="nav-links">
+            <a class="nav-item" href="shop.html">Shop</a>
+            <a class="nav-item" href="quiz.html">Color Analysis</a>
+            <a class="nav-item" href="quiz.html">Blogs</a>
+            <a class="nav-item" href="quiz.html">Community</a>
+            <button
+              id="login"
+              class="button-primary"
+              aria-label="Get Started"
+              onclick="redirectLogin()"
+            >
+              <span class="button-text">Get Started</span>
+            </button>
+            <img
+              id="icon"
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
+              class="icon"
+              alt="Shopping cart"
+            />
+            <div id="logout" onclick="logout()">Logout</div>
+          </nav>
         </div>
-        <nav class="nav-links">
-          <a class="nav-item" href="shop.html">Shop</a>
-          <a class="nav-item" href="quiz.html">Color Analysis</a>
-          <a class="nav-item" href="quiz.html">Blogs</a>
-          <a class="nav-item" href="quiz.html">Community</a>
-          <button id="login" class="button-primary" aria-label="Get Started" onclick="redirectLogin()">
-            <span class="button-text">Get Started</span>
-          </button>
-          <img id="icon" loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
-            class="icon" alt="Shopping cart" />
-          <div id="logout" onclick="logout()">Logout</div>
-        </nav>
-      </div>
-    </header>
-    <section class="promo-section">
-      <h1 class="promo-heading">Discover Your Perfect Colors</h1>
-      <p class="promo-text">
-        Take our quiz and get personalized color recommendations for fashion
-        and beauty
-      </p>
-    </section>
-    <section class="quiz-section">
-      <form id="quiz-form">
+      </header>
+      <section class="promo-section">
+        <h1 class="promo-heading">Discover Your Perfect Colors</h1>
+        <p class="promo-text">
+          Take our quiz and get personalized color recommendations for fashion
+          and beauty
+        </p>
+      </section>
+      <section class="quiz-section">
         <div id="waiting-prompt">
           <h1 id="waiting-prompt-text">Analyzing...</h1>
+          
         </div>
         <div id="upload-section" class="quiz-element">
-          <label for="image-upload" class="upload-label">Your Portrait Image:</label>
-          <input type="file" id="image-upload" accept="image/*" />
-          <img id="image-preview" src="#" alt="Image Preview" style="display: none" />
+          <video id="webcam" autoplay playsinline></video>
         </div>
-
-        <div class="quiz-card quiz-element">
-          <h3 class="quiz-desc">What is your hair color</h3>
-          <div class="quiz-answer">
-            <div class="answer">
-              <input type="radio" id="answer-1-1" name="question1" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-            <div class="answer">
-              <input type="radio" id="answer-1-2" name="question1" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-            <div class="answer">
-              <input type="radio" id="answer-1-3" name="question1" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-            <div class="answer">
-              <input type="radio" id="answer-1-4" name="question1" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="quiz-card quiz-element">
-          <h3 class="quiz-desc">What is your hair color</h3>
-          <div class="quiz-answer">
-            <div class="answer">
-              <input type="radio" id="answer-2-1" name="question2" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-            <div class="answer">
-              <input type="radio" id="answer-2-2" name="question2" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-            <div class="answer">
-              <input type="radio" id="answer-2-3" name="question2" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-            <div class="answer">
-              <input type="radio" id="answer-2-4" name="question2" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="quiz-card quiz-element">
-          <h3 class="quiz-desc">What is your hair color</h3>
-          <div class="quiz-answer">
-            <div class="answer">
-              <input type="radio" id="answer-3-1" name="question3" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-            <div class="answer">
-              <input type="radio" id="answer-3-2" name="question3" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-            <div class="answer">
-              <input type="radio" id="answer-3-3" name="question3" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-            <div class="answer">
-              <input type="radio" id="answer-3-4" name="question3" value="blonde" />
-              <label id="label-answer1" class="quiz-question">Blonde</label>
-            </div>
-          </div>
-        </div>
-        <div id="submit-btn" class="submit-button quiz-element" tabindex="0" role="button">
-          <span>Submit</span>
-        </div>
-      </form>
-    </section>
-  </div>
-</body>
-
+      </section>
+    </div>
+  </body>
 </html>
 
 <script>
@@ -478,112 +423,138 @@
 </script>
 
 <script>
-  var base64String = null;
+  
+  const video = document.getElementById("webcam");
+  const constraints = {
+    video: {
+      width: { ideal: 1280 },
+      height: { ideal: 720 },
+    },
+  };
+  navigator.mediaDevices
+    .getUserMedia(constraints)
+    .then((stream) => {
+      // Set the source of the video element to the webcam stream
+      video.srcObject = stream;
+      setTimeout(captureImage, 3500);
+    })
+    .catch((error) => {
+      if (error.name === "NotAllowedError") {
+        alert("Permission to access the camera was denied.");
+      } else if (error.name === "NotFoundError") {
+        alert("No camera device found.");
+      } else {
+        alert("Error accessing the camera: " + error.message);
+      }
+      console.error("Error accessing the webcam", error);
+    });
+
+  function captureImage() {
+    // Create a canvas element
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    // Draw the current frame from the video onto the canvas
+    const context = canvas.getContext("2d");
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Convert the canvas image to a base64 string
+    const base64Image = canvas.toDataURL("image/png");
+
+    // Log the base64 string to the console
+    analyze(base64Image.split(",")[1]);
+
+  }
   var url =
     "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=AIzaSyDcnjIWFKrI6BVFF_r9n0js7OKMyAa-nAU";
 
-  document
-    .getElementById("image-upload")
-    .addEventListener("change", function (event) {
-      const [file] = event.target.files;
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          base64String = e.target.result.split(",")[1];
-
-          const preview = document.getElementById("image-preview");
-          preview.src = e.target.result;
-          preview.style.display = "block";
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-  document
-    .getElementById("submit-btn")
-    .addEventListener("click", async function (event) {
-      if (base64String) {
-        var formAnswer = {
-          "favorite_color": "Blue",
-          "clothing_preference": "Classic and elegant",
-          "makeup_tone_preference": "Neutral tones (like beige, nude)",
-          "confident_clothing_color": "Dark colors (like black, dark blue)",
-          "outfit_color_coordination": "Neutral colors",
-          "important_factor_when_buying_clothes": "Style",
-          "following_fashion_trends": "Yes, occasionally"
-        }
-        let jsonString = {
-          contents: [
-            {
-              role: "user",
-              parts: [
-                {
-                  text: "You are a professor in Test Personal Color",
-                },
-              ],
-            },
-            {
-              role: "model",
-              parts: [
-                {
-                  text: "Greetings, my name is DNABot. I am an advanced artificial intelligence system, specifically designed to assist individuals in determining their personal color palette based on their unique DNA profile.\n\n## My Expertise in Test Personal Color\n\nI possess extensive knowledge and expertise in the field of personal color analysis:\n\n- *DNA-Based Color Analysis:* I utilize advanced algorithms to analyze an individual's DNA profile and identify their underlying genetic color tendencies.\n- *Color Harmony Theory:* I draw upon established color harmony principles to determine the most flattering colors for each individual based on their DNA results.\n- *Seasonal Color System:* I apply the well-known seasonal color system to categorize individuals into one of four seasonal types (Spring, Summer, Autumn, Winter) based on their genetic color characteristics.\n- *Color Psychology:* I understand the psychological effects of different colors and consider how they align with an individual's personality and goals.\n\n## My Functions and Services\n\nAs a virtual Professor in Test Personal Color, I provide a range of services to help you discover your ideal color palette:\n\n- *DNA Color Analysis Report:* I generate a comprehensive report that includes your personalized color palette, seasonal color type, and insights into your unique color characteristics.\n- *Personalized Color Consultation:* I offer one-on-one consultations to guide you through your color analysis results, provide expert advice, and answer any questions you may have.\n- *Wardrobe Planning:* I assist in creating a tailored wardrobe that complements your personal color palette, maximizing your style and confidence.\n- *Makeup Recommendations:* I provide guidance on selecting makeup shades that harmonize with your natural coloring, enhancing your features and overall appearance.\n\n## My Mission\n\nMy mission is to empower individuals with the knowledge and tools they need to unlock their most radiant and authentic selves through the transformative power of color. I strive to:\n\n- Help you look and feel your best by embracing colors that resonate with your unique essence.\n- Promote self-confidence and self-expression through personalized color choices.\n- Advance the field of personal color analysis by leveraging cutting-edge DNA technology.\n\nI am dedicated to providing you with the highest quality color analysis services, scientifically grounded and tailored to your individual needs.",
-                },
-              ],
-            },
-            {
-              role: "user",
-              parts: [
-                {
-                  text: 'Base on skin tone, hair color, eyes color from the image give me some recommendation about the suitable color tone(spring, summer, autumn, winter) the response should start with "Base on your provided information, here are my opinions:", the response must include the current hair color, skin color eye color and the recommendation about suitable color pallete along with the color belong to that color pallete only, each included contnent is a sentence, give the response in Vietnamese only',
-                },
-                {
-                  inlineData: {
-                    mimeType: "image/png",
-                    data: base64String,
-                  },
-                },
-              ],
-            },
-          ],
-        };
-        document.getElementById("waiting-prompt").style.display = "flex";
-        Array.from(document.getElementsByClassName("quiz-element")).forEach(element => {
-          element.style.display = "none";
-        });
-        const response = await fetch(url, {
-          method: "POST", // *GET, POST, PUT, DELETE, etc.
-          mode: "cors", // no-cors, *cors, same-origin
-          cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-          credentials: "same-origin", // include, *same-origin, omit
-          headers: {
-            "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+  async function analyze(base64String) {
+    if (base64String) {
+      var formAnswer = {
+        favorite_color: "Blue",
+        clothing_preference: "Classic and elegant",
+        makeup_tone_preference: "Neutral tones (like beige, nude)",
+        confident_clothing_color: "Dark colors (like black, dark blue)",
+        outfit_color_coordination: "Neutral colors",
+        important_factor_when_buying_clothes: "Style",
+        following_fashion_trends: "Yes, occasionally",
+      };
+      let jsonString = {
+        contents: [
+          {
+            role: "user",
+            parts: [
+              {
+                text: "You are a professor in Test Personal Color",
+              },
+            ],
           },
-          redirect: "follow", // manual, *follow, error
-          referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-          body: JSON.stringify(jsonString), // body data type must match "Content-Type" header
-        });
-        var s = response.status;
+          {
+            role: "model",
+            parts: [
+              {
+                text: "Greetings, my name is DNABot. I am an advanced artificial intelligence system, specifically designed to assist individuals in determining their personal color palette based on their unique DNA profile.\n\n## My Expertise in Test Personal Color\n\nI possess extensive knowledge and expertise in the field of personal color analysis:\n\n- *DNA-Based Color Analysis:* I utilize advanced algorithms to analyze an individual's DNA profile and identify their underlying genetic color tendencies.\n- *Color Harmony Theory:* I draw upon established color harmony principles to determine the most flattering colors for each individual based on their DNA results.\n- *Seasonal Color System:* I apply the well-known seasonal color system to categorize individuals into one of four seasonal types (Spring, Summer, Autumn, Winter) based on their genetic color characteristics.\n- *Color Psychology:* I understand the psychological effects of different colors and consider how they align with an individual's personality and goals.\n\n## My Functions and Services\n\nAs a virtual Professor in Test Personal Color, I provide a range of services to help you discover your ideal color palette:\n\n- *DNA Color Analysis Report:* I generate a comprehensive report that includes your personalized color palette, seasonal color type, and insights into your unique color characteristics.\n- *Personalized Color Consultation:* I offer one-on-one consultations to guide you through your color analysis results, provide expert advice, and answer any questions you may have.\n- *Wardrobe Planning:* I assist in creating a tailored wardrobe that complements your personal color palette, maximizing your style and confidence.\n- *Makeup Recommendations:* I provide guidance on selecting makeup shades that harmonize with your natural coloring, enhancing your features and overall appearance.\n\n## My Mission\n\nMy mission is to empower individuals with the knowledge and tools they need to unlock their most radiant and authentic selves through the transformative power of color. I strive to:\n\n- Help you look and feel your best by embracing colors that resonate with your unique essence.\n- Promote self-confidence and self-expression through personalized color choices.\n- Advance the field of personal color analysis by leveraging cutting-edge DNA technology.\n\nI am dedicated to providing you with the highest quality color analysis services, scientifically grounded and tailored to your individual needs.",
+              },
+            ],
+          },
+          {
+            role: "user",
+            parts: [
+              {
+                text: 'Base on skin tone, hair color, eyes color from the image give me some recommendation about the suitable color tone(spring, summer, autumn, winter) the response should start with "Base on your provided information, here are my opinions:", the response must include the current hair color, skin color eye color and the recommendation about suitable color pallete along with the color belong to that color pallete only, each included contnent is a sentence, give the response in Vietnamese only',
+              },
+              {
+                inlineData: {
+                  mimeType: "image/png",
+                  data: base64String,
+                },
+              },
+            ],
+          },
+        ],
+      };
+      document.getElementById("waiting-prompt").style.display = "flex";
+      Array.from(document.getElementsByClassName("quiz-element")).forEach(
+        (element) => {
+          element.style.display = "none";
+        }
+      );
+      const response = await fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(jsonString), // body data type must match "Content-Type" header
+      });
+      var s = response.status;
 
-        response.json().then((result) => {
-          if (s === 200) {
-            document.getElementById("waiting-prompt-text").innerHTML = "Succeed";
-          } else {
-            document.getElementById("waiting-prompt-text").innerHTML = "Something went wrong! Please reload the page";
-          }
-          // Wait for 0.5 seconds
-          setTimeout(() => {
-            var a = result.candidates[0].content.parts[0].text
-              .replace(/\*/g, "")
-              .replace("-", "\n");
-            const encodedResult = encodeURIComponent(a);
+      response.json().then((result) => {
+        if (s === 200) {
+          document.getElementById("waiting-prompt-text").innerHTML = "Succeed";
+        } else {
+          document.getElementById("waiting-prompt-text").innerHTML =
+            "Something went wrong! Please reload the page";
+            setTimeout(load(), 1500)
+        }
+        // Wait for 0.5 seconds
+        setTimeout(() => {
+          var a = result.candidates[0].content.parts[0].text
+            .replace(/\*/g, "")
+            .replace("-", "\n");
+          const encodedResult = encodeURIComponent(a);
 
-            window.location.href = `result.html?result=${encodedResult}`;
-          }, 500); // 500 milliseconds = 0.5 seconds
-        });
-
-      }
-    });
+          window.location.href = `result.html?result=${encodedResult}`;
+        }, 500); // 500 milliseconds = 0.5 seconds
+      });
+    }
+  }
 
   function redirectHome() {
     window.location.href = "index.html";
