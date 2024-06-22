@@ -449,6 +449,7 @@
       .product-scroll-wrap {
         display: flex;
         align-items: center;
+        justify-content: center;
       }
 
       #backBtn,
@@ -460,6 +461,8 @@
         width: 100%;
         display: flex;
         overflow-x: scroll;
+        justify-content: center;
+        margin: 0px 10px;
       }
 
       .product-scroll::-webkit-scrollbar {
@@ -780,7 +783,7 @@
     productRow.className = "product-row";
 
     products.forEach((product, index) => {
-      var p = {"name": `${product.product_name}`, "price": `${product.price}`, "image": `${product.image_src}`, "quantity": "1"}
+      var p = {"name": `${product.product_name}`, "price": `${product.price}`, "image": `${product.image_src}`, "quantity": "1", "colors": product.colors, "volume": product.volume}
       var productItem = document.createElement("div");
       productItem.className = "product-item";
 
@@ -834,7 +837,7 @@
     var productClassName = event.currentTarget.className.split(' ').pop(); // Get the last class name
     var productData = JSON.parse(atob(productClassName));
     if (!getCookie("cart")) {
-      var cart = [{"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`, "s_price": `${productData.price}`}]
+      var cart = [{"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`, "s_price": `${productData.price}`, "colors": productData.colors, "volume": productData.volume}]
       setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
       window.location.href = "cart.html";
     } else {
@@ -860,99 +863,155 @@
 }
 
 
-  let bestSellerProduct = [
+let bestSellerProduct = [
     {
-      product_name: "Wine - Bel Paese White",
-      image_src:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-      price: 91.3,
-    },
-    {
-      product_name: "Chocolate Bar - Reese Pieces",
-      image_src:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-      price: 28.64,
-    },
-    {
-      product_name: "Creme De Menth - White",
-      image_src:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-      price: 95.74,
-    },
-    {
-      product_name: "Fruit Salad Deluxe",
-      image_src:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-      price: 20.14,
-    },
-    {
-      product_name: "Chocolate Bar - Smarties",
-      image_src:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-      price: 86.52,
-    },
-    {
-      product_name: "Coffee - Cafe Moreno",
-      image_src:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-      price: 96.49,
-    },
-    {
-      product_name: "Beans - Soya Bean",
-      image_src:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-      price: 81.29,
-    },
-    {
-      product_name: "Blouse / Shirt / Sweater",
-      image_src:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-      price: 97.7,
-    },
-  ];
-
-  let productListItem = [
-      {
-        product_name: "Wine ",
-        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        product_name: "Sweater - Bel Paese White",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         price: 91.3,
-      },
-      {
-        product_name: "Chocolate Bar",
-        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Black" },
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "White" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    },
+    {
+        product_name: "Beauty Cream - Reese Pieces",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         price: 28.64,
-      },
-      {
-        product_name: "Creme De Menth - White",
-        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        colors: null,
+        volume: ["150ml", "250ml", "500ml", "750ml"]
+    },
+    {
+        product_name: "Sweater - Creme De Menth",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         price: 95.74,
-      },
-      {
-        product_name: "Fruit Salad Deluxe",
-        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Red"},
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Green" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    },
+    {
+        product_name: "Beauty Cream - Fruit Salad Deluxe",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         price: 20.14,
-      },
-      {
-        product_name: "Chocolate Bar - Smarties",
-        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        colors: null,
+        volume: ["100ml", "200ml", "300ml", "400ml"]
+    },
+    {
+        product_name: "Sweater - Smarties",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         price: 86.52,
-      },
-      {
-        product_name: "Coffee - Cafe Moreno",
-        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Blue" },
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Yellow" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    },
+    {
+        product_name: "Beauty Cream - Cafe Moreno",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         price: 96.49,
-      },
-      {
-        product_name: "Beans - Soya Bean",
-        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        colors: null,
+        volume: ["100ml", "200ml", "300ml", "400ml"]
+    },
+    {
+        product_name: "Sweater - Soya Bean",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         price: 81.29,
-      },
-      {
-        product_name: "Blouse / Shirt / Sweater",
-        image_src: "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Brown" },
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Beige" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    },
+    {
+        product_name: "Sweater - Blouse/Shirt",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         price: 97.7,
-      }
-    ];
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Purple" },
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Pink" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    }
+];
+
+
+let productListItem = [
+    {
+        product_name: "Sweater - Bel Paese White",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        price: 91.3,
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Black" },
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "White" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    },
+    {
+        product_name: "Beauty Cream - Reese Pieces",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        price: 28.64,
+        colors: null,
+        volume: ["150ml", "250ml", "500ml", "750ml"]
+    },
+    {
+        product_name: "Sweater - Creme De Menth",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        price: 95.74,
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Red"},
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Green" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    },
+    {
+        product_name: "Beauty Cream - Fruit Salad Deluxe",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        price: 20.14,
+        colors: null,
+        volume: ["100ml", "200ml", "300ml", "400ml"]
+    },
+    {
+        product_name: "Sweater - Smarties",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        price: 86.52,
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Blue" },
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Yellow" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    },
+    {
+        product_name: "Beauty Cream - Cafe Moreno",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        price: 96.49,
+        colors: null,
+        volume: ["100ml", "200ml", "300ml", "400ml"]
+    },
+    {
+        product_name: "Sweater - Soya Bean",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        price: 81.29,
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Brown" },
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Beige" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    },
+    {
+        product_name: "Sweater - Blouse/Shirt",
+        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        price: 97.7,
+        colors: [
+          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Purple" },
+         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Pink" }
+        ],
+        volume: ["S", "M", "L", "XL"]
+    }
+];
+
 
   var backBtn = document.createElement("img");
   backBtn.src = "back.png";
