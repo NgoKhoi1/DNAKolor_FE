@@ -146,18 +146,19 @@
 
       .main-content {
         background-color: white;
-        width: 70vw;
-        height: 80vh;
+        width: 1041.6px;
+        height: 593.912px;
         margin-top: 48px;
-        border-radius: 50px;
         display: flex;
         gap: 20px;
+        padding: 12px;
       }
 
       .image-section {
         height: 100%;
         display: flex;
-        justify-content: flex-start;
+        flex-direction: column;
+        gap: 12px;
       }
       .image-section-src {
         width: 432px;
@@ -165,7 +166,8 @@
       }
       .text-section {
         display: flex;
-        height: 90%;
+        height: 95%;
+        width: 55%;
         flex-direction: column;
         padding: 15px 0px;
         justify-content: space-between;
@@ -197,9 +199,7 @@
       .cart-summary-value {
         display: flex;
         align-items: center;
-        margin-left: 25px;
         width: 240px;
-        padding: 12px 0px;
         font-family: "Plus Jakarta Sans", sans-serif;
         color: #a3408f;
       }
@@ -208,7 +208,6 @@
         padding: 10px 16px;
         font: 700 14px/150% "Plus Jakarta Sans", sans-serif;
         background-color: #d421b0;
-        border-radius: 20px;
         color: #faf0f7;
         font-weight: 700;
         letter-spacing: 0.21px;
@@ -221,7 +220,6 @@
         padding: 10px 16px;
         font: 700 14px/150% "Plus Jakarta Sans", sans-serif;
         background-color: white;
-        border-radius: 20px;
         color: #d421b0;
         font-weight: 700;
         letter-spacing: 0.21px;
@@ -243,16 +241,26 @@
       .counter-get-started:hover {
         cursor: pointer;
       }
+      .image-alt-src {
+        width: 86px;
+        height: auto;
+      }
+      .alter-image {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+      }
       #product-name {
         font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 48px;
+        font-size: 24px;
         font-weight: 700;
       }
       #product-price {
         font-family: "Plus Jakarta Sans", sans-serif;
-        margin-left: 25px;
-        font-size: x-large;
+        font-size: 28px;
         font-weight: 200;
+        background-color: #faf0f7;
+        padding: 12px;
         color: #a3408f;
       }
       #product-description {
@@ -274,6 +282,24 @@
         border: solid black 1px;
         border-radius: 25px;
         cursor: pointer;
+      }
+      .product-attribute {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 20% 80%;
+        grid-template-rows: 10% 40% 20% 20% 10%;
+        gap: 5px;
+        min-height: 60%;
+      }
+
+      .attribute-name {
+        display: flex;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        color: gray;
+
+      }
+      .attribute-value {
+        margin: 0px 12px;
       }
     </style>
   </head>
@@ -328,21 +354,34 @@
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&"
             alt="img"
           />
+          <div id="alter-image" class="alter-image">
+            
+          </div>
         </div>
+        
         <div class="text-section">
           <span id="product-name">Coffee - Cafe Moreno</span>
-          
-          <div id="product-color-pallete">   
+          <span id="product-price">$88.00</span>
+          <div class="product-attribute">
+            <span class="attribute-name">Discount Code</span>
+            <div class="attribute-value"></div>
+            <span class="attribute-name">Delivery</span>
+            <div class="attribute-value"></div>
+            <span class="attribute-name">Colors</span>
+            <div class="attribute-value" id="color-attribute"></div>
+            <span class="attribute-name" id="volume-attribute">Volume</span>
+            <div class="attribute-value"></div>
+            <span class="attribute-name">Discount Code</span>
+            <div class="attribute-value">
+              <span class="cart-summary-value">
+                <div class="quantity-btn" onclick="updateQuantity(-1)">-</div>
+                <span id="product-quantity" class="quantity-value">1</span>
+                <div class="quantity-btn" onclick="updateQuantity(1)">+</div>
+                <span style="margin-left: 5px; font-size: 14px; font-weight: lighter;"> of 1890 available products</span>
+              </span>
+            </div>
           </div>
-
           <div>
-            <span id="product-price">$88.00</span>
-            <span class="cart-summary-value">
-              <div class="quantity-btn" onclick="updateQuantity(-1)">-</div>
-              <span id="product-quantity" class="quantity-value">1</span>
-              <div class="quantity-btn" onclick="updateQuantity(1)">+</div>
-              <span style="margin-left: 5px;"> 1890 available products</span>
-            </span>
             <div class="action-section">
               <div class="get-started" onclick="AddToCart()">Add to Cart</div>
               <a href="shop.html" class="counter-get-started">Buy Now</a>
@@ -374,15 +413,6 @@
 
 <script>
   
-  function loadColor() {
-    var colorList = ["#fffffff","#000000"];
-    const colorPallete = document.getElementById("product-color-pallete");
-    colorPallete.innerHTML = "";
-    colorList.forEach((element, index) => {
-      console.log(element);
-      colorPallete.innerHTML += `<div class="color-item" style="background-color: ${element};"></div>`
-    })
-  }
   function updateQuantity(change) {
     var quantity = document.getElementById("product-quantity").innerHTML;
     if (quantity === "1" && change === -1) return;
@@ -476,7 +506,17 @@
     document.getElementById("product-price").innerHTML = `$${product.price}`;
     document.getElementById("product-quantity").innerHTML = product.quantity;
     document.getElementById("image-src").src = product.image;
-    loadColor();
+    const altImage = document.getElementById("alter-image");
+    if (product.colors) {
+      product.colors.forEach(element => {
+        altImage.innerHTML += `<img
+            id="image-alt-1"
+            class="image-alt-src"
+            src="${element.image}"
+            alt="img"
+          />`
+      })
+    }
   }
   function setCookie(name, value, minutes) {
     const date = new Date();
