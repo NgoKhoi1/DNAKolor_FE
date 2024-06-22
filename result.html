@@ -278,7 +278,11 @@
         flex-direction: column;
         line-height: normal;
         width: 25%;
-        margin-left: 0px;
+        margin-right: 20px;
+      }
+
+      .product-column:last-child {
+        margin-right: 0px;
       }
 
       @media (max-width: 991px) {
@@ -317,53 +321,58 @@
         margin-top: 12px;
       }
 
-      .column-offset {
-        margin-left: 20px;
-      }
-
       #description-result {
         max-width: 860px;
       }
       #logout {
-      text-decoration: underline;
-      cursor: pointer;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+        text-decoration: underline;
+        cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <header class="header">
         <div class="navigation">
-          <div class="logo-container" tabindex="0" role="button" onclick="redirectHome()">
-            <img loading="lazy" src="logo.png" class="logo" alt="DNAKolor logo" />
+          <div
+            class="logo-container"
+            tabindex="0"
+            role="button"
+            onclick="redirectHome()"
+          >
+            <img
+              loading="lazy"
+              src="logo.png"
+              class="logo"
+              alt="DNAKolor logo"
+            />
           </div>
           <nav class="nav-links">
             <a class="nav-item" href="shop.html">Shop</a>
             <a class="nav-item" href="quiz.html">Color Analysis</a>
             <a class="nav-item" href="quiz.html">Blogs</a>
             <a class="nav-item" href="quiz.html">Community</a>
-            <button id="login" class="button-primary" aria-label="Get Started" onclick="redirectLogin()">
+            <button
+              id="login"
+              class="button-primary"
+              aria-label="Get Started"
+              onclick="redirectLogin()"
+            >
               <span class="button-text">Get Started</span>
             </button>
-            <img id="icon" loading="lazy"
+            <img
+              id="icon"
+              loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bf8bea4887ff1b80e4c6a11b3c07795f069747b9171b67930d0e08cde38f966?apiKey=1145a631081a47248438c8ac05c41e7d&"
-              class="icon" alt="Shopping cart" />
-              <div id="logout" onclick="logout()">Logout</div>
+              class="icon"
+              alt="Shopping cart"
+            />
+            <div id="logout" onclick="logout()">Logout</div>
           </nav>
         </div>
       </header>
-      <section class="content-wrapper">
-        <div class="image-section">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/c10e626ed45c98ba08a2e6d5828bdd0ba845e50586b5faacb96c16bd4dc44ce1?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
-            class="background-img"
-            alt="Soft Summer background image"
-          />
-          Soft Summer
-        </div>
-      </section>
+      <section class="content-wrapper"></section>
       <h1 class="main-title">Result</h1>
       <p id="description-result" class="description-text">
         `${decodeURIComponent(result)}`
@@ -371,8 +380,8 @@
 
       <section class="products-wrapper">
         <h2 class="section-title">Recommended Products</h2>
-        <div class="products-container">
-          <div class="product-column">
+        <div class="products-container" id="productContainer">
+          <!-- <div class="product-column">
             <div class="product">
               <img
                 loading="lazy"
@@ -383,7 +392,7 @@
               <div class="product-title">Product 6</div>
             </div>
           </div>
-          <div class="product-column column-offset">
+          <div class="product-column">
             <div class="product">
               <img
                 loading="lazy"
@@ -394,7 +403,7 @@
               <div class="product-title">Product 7</div>
             </div>
           </div>
-          <div class="product-column column-offset">
+          <div class="product-column">
             <div class="product">
               <img
                 loading="lazy"
@@ -405,15 +414,15 @@
               <div class="product-title">Product 8</div>
             </div>
           </div>
-          <div class="product-column column-offset">
-            <div class="product">
+          <div class="product-column"> -->
+            <!-- <div class="product">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5fe78320292d97220ae3e4548f7c74d5306d8a122ed137098e59c88db042ba3?apiKey=5ec64b11b08f49a69c650c657ce8ff3b&"
                 class="product-img"
                 alt="Product 9"
               />
-              <div class="product-title">Product 9</div>
+              <div class="product-title">Product 9</div> -->
             </div>
           </div>
         </div>
@@ -441,6 +450,11 @@
 </script>
 
 <script>
+
+  
+</script>
+
+<script>
   // Function to get query parameters
   function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
@@ -462,6 +476,111 @@
   function redirectHome() {
     window.location.href = "index.html";
   }
+
+  function isWordInString(word) {
+    const regex = new RegExp(`${word}`, 'i');
+    return regex.test(decodeURIComponent(result));
+  }
+
+  function filterResult(){
+    if(isWordInString('Xuân')){
+      return 'Clear Spring';
+    } if (isWordInString('Hè') || isWordInString('Hạ')){
+      return 'Soft Summer';
+    } if(isWordInString('Thu')){
+      return 'Warm Autumn';
+    } if(isWordInString('Đông')) {
+      return 'Deep Winter';
+    }
+  }
+
+  const products = [
+      {
+        product_name: "Wine - Bel Paese White",
+        image_src:
+          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        tag: "Warm Autumn"
+      },
+      {
+        product_name: "Chocolate Bar - Reese Pieces",
+        image_src:
+          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        tag: "Deep Winter"
+      },
+      {
+        product_name: "Creme De Menth - White",
+        image_src:
+          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        tag: "Soft Summer"
+      },
+      {
+        product_name: "Fruit Salad Deluxe",
+        image_src:
+          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        tag: "Clear Spring"
+      },
+      {
+        product_name: "Chocolate Bar - Smarties",
+        image_src:
+          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        tag: "Warm Autumn"
+      },
+      {
+        product_name: "Coffee - Cafe Moreno",
+        image_src:
+          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        tag: "Deep Winter"
+      },
+      {
+        product_name: "Beans - Soya Bean",
+        image_src:
+          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        tag: "Clear Spring"
+      },
+      {
+        product_name: "Blouse / Shirt / Sweater",
+        image_src:
+          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
+        tag: "Soft Summer"
+      },
+    ];
+    
+    const productsContainer = document.getElementById('productContainer');
+    console.log(filterResult());
+    const specificTag = filterResult(); 
+    const filteredProducts = products.filter(product => product.tag === specificTag);
+
+    let count = 0;
+    const maxRecords = 4;
+
+    filteredProducts.forEach(product => {
+      if (count >= maxRecords) {
+        return;
+      }
+
+      const productColumn = document.createElement('div');
+      productColumn.classList.add('product-column');
+
+      const productDiv = document.createElement('div');
+      productDiv.classList.add('product');
+
+      const imgElement = document.createElement('img');
+      imgElement.loading = 'lazy';
+      imgElement.src = product.image_src;
+      imgElement.classList.add('product-img');
+      imgElement.alt = product.product_name;
+
+      const titleElement = document.createElement('div');
+      titleElement.classList.add('product-title');
+      titleElement.textContent = product.product_name;
+
+      productDiv.appendChild(imgElement);
+      productDiv.appendChild(titleElement);
+      productColumn.appendChild(productDiv);
+      productsContainer.appendChild(productColumn);
+
+      count++;
+    });
 </script>
 
 <script>

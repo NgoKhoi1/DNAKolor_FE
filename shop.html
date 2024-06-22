@@ -469,7 +469,7 @@
       .product-row {
         width: 100%;
         display: grid;
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns:  auto auto auto auto;
         gap: 12px;
         padding: 5px;
         white-space: nowrap;
@@ -490,6 +490,16 @@
         flex-direction: column;
         flex: 1;
         text-decoration: none;
+        background-color: white;  
+        padding: 15px;  
+        border-radius: 8px;  
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .product-item:hover {
+        transform: translateY(-5px);  /* Slightly lift the card */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  /* Enhance shadow on hover */
       }
 
       @media (max-width: 991px) {
@@ -525,6 +535,7 @@
         color: #a3408f;
         font: 400 14px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
           sans-serif;
+        
       }
 
       .product-extra {
