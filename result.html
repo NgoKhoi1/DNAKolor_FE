@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>DNAKolor</title>
     <style>
       :root {
@@ -300,6 +301,7 @@
         color: #1c0a1a;
         font-weight: 500;
         line-height: 150%;
+
       }
 
       @media (max-width: 991px) {
@@ -309,7 +311,7 @@
       }
 
       .product-img {
-        aspect-ratio: 0.75;
+        aspect-ratio: 1;
         object-fit: auto;
         object-position: center;
         width: 100%;
@@ -377,9 +379,17 @@
       <p id="description-result" class="description-text">
         `${decodeURIComponent(result)}`
       </p>
+      <button
+      id="login"
+      class="button-primary"
+      aria-label="Get Started"
+    >
+      <span class="button-text">Explore recommend collections <i class='fa fa-shopping-bag'></i></span>
+    </button>
 
       <section class="products-wrapper">
         <h2 class="section-title">Recommended Products</h2>
+        
         <div class="products-container" id="productContainer">
           <!-- <div class="product-column">
             <div class="product">
@@ -495,55 +505,95 @@
   }
 
   const products = [
-      {
-        product_name: "Wine - Bel Paese White",
-        image_src:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-        tag: "Warm Autumn"
-      },
-      {
-        product_name: "Chocolate Bar - Reese Pieces",
-        image_src:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-        tag: "Deep Winter"
-      },
-      {
-        product_name: "Creme De Menth - White",
-        image_src:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-        tag: "Soft Summer"
-      },
-      {
-        product_name: "Fruit Salad Deluxe",
-        image_src:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-        tag: "Clear Spring"
-      },
-      {
-        product_name: "Chocolate Bar - Smarties",
-        image_src:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-        tag: "Warm Autumn"
-      },
-      {
-        product_name: "Coffee - Cafe Moreno",
-        image_src:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-        tag: "Deep Winter"
-      },
-      {
-        product_name: "Beans - Soya Bean",
-        image_src:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-        tag: "Clear Spring"
-      },
-      {
-        product_name: "Blouse / Shirt / Sweater",
-        image_src:
-          "https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&",
-        tag: "Soft Summer"
-      },
-    ];
+    {
+        "product_name": "Sweater - Bel Paese White",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 91.3,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Black"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "White"}
+        ],
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Female",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Beauty Cream - Reese Pieces",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 28.64,
+        "colors": null,
+        "volume": ["150ml", "250ml", "500ml", "750ml"],
+        "category": "Cosmetics",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Sweater - Creme De Menth",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 95.74,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Red"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Green"}
+        ],
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Accessories",
+        "tag": "Soft Summer"
+    },
+    {
+        "product_name": "Beauty Cream - Fruit Salad Deluxe",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 20.14,
+        "colors": null,
+        "volume": ["100ml", "200ml", "300ml", "400ml"],
+        "category": "Female",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Sweater - Smarties",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 86.52,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Blue"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Yellow"}
+        ],
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Accessories",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Beauty Cream - Cafe Moreno",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 96.49,
+        "colors": null,
+        "volume": ["100ml", "200ml", "300ml", "400ml"],
+        "category": "Female",
+        "tag": "Warm Autumn"
+    },
+    {
+        "product_name": "Sweater - Soya Bean",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 81.29,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Brown"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Beige"}
+        ],
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Male",
+        "tag": "Warm Autumn"
+    },
+    {
+        "product_name": "Sweater - Blouse/Shirt",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 97.7,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Purple"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Pink"}
+        ],
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Cosmetics",
+        "tag": "Clear Spring"
+    }
+];
+
     
     const productsContainer = document.getElementById('productContainer');
     console.log(filterResult());

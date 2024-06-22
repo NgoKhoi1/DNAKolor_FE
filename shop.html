@@ -435,7 +435,7 @@
       .products {
         display: flex;
         width: 100%;
-        max-width: 960px;
+        max-width: 1200px;
         flex-direction: column;
         padding: 16px;
       }
@@ -478,6 +478,7 @@
         white-space: nowrap;
         line-height: 150%;
         flex: none;
+        
       }
 
       @media (max-width: 991px) {
@@ -515,7 +516,7 @@
         aspect-ratio: 1;
         object-fit: auto;
         object-position: center;
-        width: 176px;
+        width: 231px;
       }
 
       .product-title,
@@ -529,6 +530,8 @@
         font: 500 16px Plus Jakarta Sans, -apple-system, Roboto, Helvetica,
           sans-serif;
           text-decoration: none;
+        max-width: 176px;
+        overflow-x: hidden;
       }
       .product-title:hover {
           text-decoration: underline;
@@ -712,60 +715,14 @@
             
         </div>
       </section>
-      <div class="collections">
-        <section class="collection-grid">
-          <div class="collection-section">
-            <div class="collection-item">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/38c4cd33fcc429ace65b05036b5afb44cde4ba8a05eb3fb3ad89486cbd50b8f0?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                alt="Soft Summer Collection"
-              />
-              <span class="collection-title">Soft Summer Collection</span>
-              <span class="collection-category">Fashion & Beauty</span>
-            </div>
-          </div>
-          <div class="collection-section">
-            <div class="collection-item highlight-select">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/54a28571727e70f2ae584faf644d2c3f8819b082b5bc57b224d5d55adae63582?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                alt="Deep Winter Collection"
-              />
-              <span class="collection-title">Deep Winter Collection</span>
-              <span class="collection-category">Fashion & Beauty</span>
-            </div>
-          </div>
-          <div class="collection-section">
-            <div class="collection-item">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/edbdabd87b4ce06f204f9e46fc5b4b68a86f12af5d678a5224246f16f0e68451?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                alt="Clear Spring Collection"
-              />
-              <span class="collection-title">Clear Spring Collection</span>
-              <span class="collection-category">Fashion & Beauty</span>
-            </div>
-          </div>
-          <div class="collection-section">
-            <div class="collection-item">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/8631dbef9da0837f30770a0e681cca4fce36ad023707ec1de44bb341bdf999b6?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                alt="Warm Autumn Collection"
-              />
-              <span class="collection-title">Warm Autumn Collection</span>
-              <span class="collection-category">Fashion & Beauty</span>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      
-
+   
       <section id="productList" class="products">
         <h2 class="categories">Recommended</h2>
         <div class="category-list">
           <div class="category-item">All</div>
-          <div class="category-item">Makeup</div>
-          <div class="category-item">Skincare</div>
-          <div class="category-item">Haircare</div>
+          <div class="category-item">Male</div>
+          <div class="category-item">Female</div>
+          <div class="category-item">Cosmetics</div>
           <div class="category-item">Accessories</div>
         </div>
 
@@ -940,77 +897,94 @@ let bestSellerProduct = [
 
 let productListItem = [
     {
-        product_name: "Sweater - Bel Paese White",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 91.3,
-        colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Black" },
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "White" }
+        "product_name": "Sweater - Bel Paese White",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 91.3,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Black"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "White"}
         ],
-        volume: ["S", "M", "L", "XL"]
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Female",
+        "tag": "Clear Spring"
     },
     {
-        product_name: "Beauty Cream - Reese Pieces",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 28.64,
-        colors: null,
-        volume: ["150ml", "250ml", "500ml", "750ml"]
+        "product_name": "Beauty Cream - Reese Pieces",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 28.64,
+        "colors": null,
+        "volume": ["150ml", "250ml", "500ml", "750ml"],
+        "category": "Cosmetics",
+        "tag": "Clear Spring"
     },
     {
-        product_name: "Sweater - Creme De Menth",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 95.74,
-        colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Red"},
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Green" }
+        "product_name": "Sweater - Creme De Menth",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 95.74,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Red"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Green"}
         ],
-        volume: ["S", "M", "L", "XL"]
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Accessories",
+        "tag": "Clear Spring"
     },
     {
-        product_name: "Beauty Cream - Fruit Salad Deluxe",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 20.14,
-        colors: null,
-        volume: ["100ml", "200ml", "300ml", "400ml"]
+        "product_name": "Beauty Cream - Fruit Salad Deluxe",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 20.14,
+        "colors": null,
+        "volume": ["100ml", "200ml", "300ml", "400ml"],
+        "category": "Female",
+        "tag": "Clear Spring"
     },
     {
-        product_name: "Sweater - Smarties",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 86.52,
-        colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Blue" },
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Yellow" }
+        "product_name": "Sweater - Smarties",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 86.52,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Blue"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Yellow"}
         ],
-        volume: ["S", "M", "L", "XL"]
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Accessories",
+        "tag": "Clear Spring"
     },
     {
-        product_name: "Beauty Cream - Cafe Moreno",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 96.49,
-        colors: null,
-        volume: ["100ml", "200ml", "300ml", "400ml"]
+        "product_name": "Beauty Cream - Cafe Moreno",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 96.49,
+        "colors": null,
+        "volume": ["100ml", "200ml", "300ml", "400ml"],
+        "category": "Female",
+        "tag": "Warm Autumn"
     },
     {
-        product_name: "Sweater - Soya Bean",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 81.29,
-        colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Brown" },
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Beige" }
+        "product_name": "Sweater - Soya Bean",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 81.29,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Brown"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Beige"}
         ],
-        volume: ["S", "M", "L", "XL"]
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Male",
+        "tag": "Warm Autumn"
     },
     {
-        product_name: "Sweater - Blouse/Shirt",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 97.7,
-        colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Purple" },
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Pink" }
+        "product_name": "Sweater - Blouse/Shirt",
+        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
+        "price": 97.7,
+        "colors": [
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Purple"},
+            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Pink"}
         ],
-        volume: ["S", "M", "L", "XL"]
+        "volume": ["S", "M", "L", "XL"],
+        "category": "Cosmetics",
+        "tag": "Clear Spring"
     }
 ];
+
 
 
   var backBtn = document.createElement("img");
