@@ -554,7 +554,7 @@
         var price = parseFloat(element.price.replace("\$", "").trim()).toFixed(
           2
         );
-        var product = {"name": `${element.name}`, "price": `${element.s_price}`, "image": `${element.image}`, "quantity": `${element.quantity}`}
+        var product = {"name": `${element.name}`, "price": `${element.s_price}`, "image": `${element.image}`, "quantity": `${element.quantity}`, "colors": element.colors, "volume": element.volume}
         container.innerHTML += `
   <div class="cart-summary-item">
     <img
