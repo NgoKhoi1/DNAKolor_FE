@@ -496,7 +496,6 @@
         text-decoration: none;
         background-color: white;  
         padding: 15px;  
-        border-radius: 8px;  
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
         transition: transform 0.2s, box-shadow 0.2s;
       }
@@ -617,6 +616,11 @@
       .add-to-cart:hover {
         text-decoration: underline;
         cursor: pointer;
+      }
+      .product-img-container {
+        background-color: #faf0f7;
+        display: flex;
+        justify-content: center;
       }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -744,6 +748,9 @@
       var productItem = document.createElement("div");
       productItem.className = "product-item";
 
+      var imgContainer = document.createElement("div");
+      imgContainer.className = "product-img-container";
+
       var img = document.createElement("img");
       img.src = product.image_src;
       img.alt = product.product_name;
@@ -762,7 +769,8 @@
       addToCart.textContent = "Add to cart";
       addToCart.onclick = addToCartExec;
 
-      productItem.appendChild(img);
+      imgContainer.appendChild(img);
+      productItem.appendChild(imgContainer)
       productItem.appendChild(title);
       productItem.appendChild(price);
       productItem.appendChild(addToCart)
@@ -826,7 +834,7 @@ let bestSellerProduct = [
         image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         price: 91.3,
         colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Black" },
+          { "image": "https://product.hstatic.net/1000344185/product/img_2260a_8a22d71d91574a5f8a009f84226fa37b_master.jpg", "text": "Black" },
          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "White" }
         ],
         volume: ["S", "M", "L", "XL"]
@@ -901,7 +909,7 @@ let productListItem = [
         "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
         "price": 91.3,
         "colors": [
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Black"},
+            {"image": "https://product.hstatic.net/1000344185/product/img_2260a_8a22d71d91574a5f8a009f84226fa37b_master.jpg", "text": "Black"},
             {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "White"}
         ],
         "volume": ["S", "M", "L", "XL"],

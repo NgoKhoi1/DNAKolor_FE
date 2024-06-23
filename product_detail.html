@@ -185,7 +185,7 @@
         color: #faf0f7;
         background-color: #d421b0;
         display: flex;
-        width: 32px; 
+        width: 32px;
         justify-content: center;
         align-items: center;
         border: 0.5px solid #a3408f;
@@ -216,10 +216,16 @@
         width: 168px;
         text-align: center;
       }
+      .get-started:hover {
+        opacity: 0.7;
+      }
+      .counter-get-started:hover {
+        opacity: 0.7;
+      }
       .counter-get-started {
         padding: 10px 16px;
         font: 700 14px/150% "Plus Jakarta Sans", sans-serif;
-        background-color: white;
+        background-color: #faf0f7;
         color: #d421b0;
         font-weight: 700;
         letter-spacing: 0.21px;
@@ -244,11 +250,16 @@
       .image-alt-src {
         width: 86px;
         height: auto;
+        cursor: pointer;
       }
       .alter-image {
         display: flex;
         gap: 8px;
         overflow-x: auto;
+      }
+
+      .image-alt-src:hover {
+        border: #d421b0 solid 2px;
       }
       #product-name {
         font-family: "Plus Jakarta Sans", sans-serif;
@@ -296,10 +307,68 @@
         display: flex;
         font-family: "Plus Jakarta Sans", sans-serif;
         color: gray;
-
       }
       .attribute-value {
         margin: 0px 12px;
+      }
+      #color-attribute,
+      #volume-attribute {
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: auto;
+        gap: 12px;
+      }
+      .color-element {
+        cursor: pointer;
+        height: 28px;
+        border: solid black 0.5px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .color-element:hover {
+        border: #d421b0 solid 2px;
+        color: #d421b0;
+      }
+      .volume-element {
+        cursor: pointer;
+        height: 28px;
+        width: 82px;
+        border: solid black 0.5px;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+      .volume-element:hover {
+        border: #d421b0 solid 2px;
+        color: #d421b0;
+      }
+
+      .hightlight-border {
+        border: #d421b0 solid 2px;
+        color: #d421b0;
+      }
+      .color-element-image {
+        height: 100%;
+        width: auto;
+      }
+      .icon-image {
+        height: 100%;
+        width: auto;
+      }
+      #delivery-attribute {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .delivery-element {
+        height: 24px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
       }
     </style>
   </head>
@@ -354,11 +423,9 @@
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/260a7a2aed86ce12348465a80d8fa988902b8038fdecce1b9a5446273300f36c?apiKey=1145a631081a47248438c8ac05c41e7d&"
             alt="img"
           />
-          <div id="alter-image" class="alter-image">
-            
-          </div>
+          <div id="alter-image" class="alter-image"></div>
         </div>
-        
+
         <div class="text-section">
           <span id="product-name">Coffee - Cafe Moreno</span>
           <span id="product-price">$88.00</span>
@@ -366,25 +433,111 @@
             <span class="attribute-name">Discount Code</span>
             <div class="attribute-value"></div>
             <span class="attribute-name">Delivery</span>
-            <div class="attribute-value"></div>
-            <span class="attribute-name">Colors</span>
+            <div class="attribute-value" id="delivery-attribute">
+              <div class="delivery-element" id="handle-by">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/66/66841.png"
+                  alt=""
+                  class="icon-image"
+                />
+                <span
+                  style="
+                    font-size: 14px;
+                    font-weight: lighter;
+                    font-family: Arial, Helvetica, sans-serif;
+                  "
+                  >Handle by DNAKolor</span
+                >
+              </div>
+              <div class="delivery-element" id="free-ship">
+                <img
+                  src="https://cdn-icons-png.freepik.com/512/4947/4947265.png"
+                  alt=""
+                  class="icon-image"
+                />
+                <span
+                  style="
+                    font-size: 14px;
+                    font-weight: lighter;
+                    font-family: Arial, Helvetica, sans-serif;
+                  "
+                  >Freeship</span
+                >
+              </div>
+              <div class="delivery-element" id="free-ship">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/2000px-Solid_white.svg.png"
+                  alt=""
+                  class="icon-image"
+                />
+                <span
+                  style="
+                    font-size: 14px;
+                    font-weight: lighter;
+                    font-family: Arial, Helvetica, sans-serif;
+                  "
+                  >Deliver From</span
+                >
+                <a
+                  href=""
+                  style="
+                    font-size: 14px;
+                    font-weight: lighter;
+                    font-family: Arial, Helvetica, sans-serif;
+                  "
+                  >DNAKolor Shop</a
+                >
+              </div>
+              <div class="delivery-element" id="free-ship">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/2000px-Solid_white.svg.png"
+                  alt=""
+                  class="icon-image"
+                />
+                <span
+                  style="
+                    font-size: 14px;
+                    font-weight: lighter;
+                    font-family: Arial, Helvetica, sans-serif;
+                  "
+                  >Deliver Fee</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    font-weight: lighter;
+                    font-family: Arial, Helvetica, sans-serif;
+                  "
+                  >$0</span
+                >
+              </div>
+            </div>
+            <span class="attribute-name invisible">Colors</span>
             <div class="attribute-value" id="color-attribute"></div>
-            <span class="attribute-name" id="volume-attribute">Volume</span>
-            <div class="attribute-value"></div>
-            <span class="attribute-name">Discount Code</span>
+            <span class="attribute-name" id="volume-name"></span>
+            <div class="attribute-value" id="volume-attribute"></div>
+            <span class="attribute-name">Quantity</span>
             <div class="attribute-value">
               <span class="cart-summary-value">
                 <div class="quantity-btn" onclick="updateQuantity(-1)">-</div>
                 <span id="product-quantity" class="quantity-value">1</span>
                 <div class="quantity-btn" onclick="updateQuantity(1)">+</div>
-                <span style="margin-left: 5px; font-size: 14px; font-weight: lighter;"> of 1890 available products</span>
+                <span
+                  style="
+                    margin-left: 12px;
+                    font-size: 14px;
+                    font-weight: lighter;
+                  "
+                >
+                  of 1890 available products</span
+                >
               </span>
             </div>
           </div>
           <div>
             <div class="action-section">
               <div class="get-started" onclick="AddToCart()">Add to Cart</div>
-              <a href="shop.html" class="counter-get-started">Buy Now</a>
+              <a href="shop.html" class="counter-get-started">Go to Shop</a>
             </div>
           </div>
         </div>
@@ -412,7 +565,6 @@
 </script>
 
 <script>
-  
   function updateQuantity(change) {
     var quantity = document.getElementById("product-quantity").innerHTML;
     if (quantity === "1" && change === -1) return;
@@ -507,16 +659,68 @@
     document.getElementById("product-quantity").innerHTML = product.quantity;
     document.getElementById("image-src").src = product.image;
     const altImage = document.getElementById("alter-image");
+    const colorsAttribute = document.getElementById("color-attribute");
+    const volumeAttribute = document.getElementById("volume-attribute");
     if (product.colors) {
-      product.colors.forEach(element => {
+      document.getElementById("volume-name").innerHTML = "Size";
+      product.colors.forEach((element) => {
         altImage.innerHTML += `<img
-            id="image-alt-1"
             class="image-alt-src"
             src="${element.image}"
             alt="img"
-          />`
-      })
+          />`;
+
+        colorsAttribute.innerHTML += `<div class="color-element">
+                <img src="${element.image}" alt="" class="color-element-image">
+                <span style="margin-right: 5px; font-family: Arial, Helvetica, sans-serif;">${element.text}</span>
+              </div>`;
+      });
+    } else {
+      document.getElementById("volume-name").innerHTML = "Volume";
     }
+    product.volume.forEach((element) => {
+      volumeAttribute.innerHTML += `<div class="volume-element">
+                <span style="font-family: Arial, Helvetica, sans-serif;">${element}</span>
+              </div>`;
+    });
+
+    Array.from(document.getElementsByClassName("color-element")).forEach(
+      (element) => {
+        element.addEventListener("mouseover", () => {
+          document.getElementById("image-src").src = element.childNodes[1].src;
+        });
+        element.addEventListener("click", () => {
+          colorsAttribute.childNodes.forEach(e => {
+            console.log(e)
+            e.classList.remove("hightlight-border");
+          });
+          element.classList.add("hightlight-border");
+        })
+      }
+    );
+    Array.from(document.getElementsByClassName("volume-element")).forEach(
+      (element) => {
+        element.addEventListener("click", () => {
+          volumeAttribute.childNodes.forEach(e => {
+            console.log(e)
+            e.classList.remove("hightlight-border");
+          });
+          element.classList.add("hightlight-border");
+        })
+      }
+    );
+    Array.from(document.getElementsByClassName("image-alt-src")).forEach(
+      (element) => {
+        element.addEventListener("mouseover", () => {
+          document.getElementById("alter-image").childNodes.forEach(e => {
+            console.log(e)
+            e.classList.remove("hightlight-border");
+          });
+          element.classList.add("hightlight-border");
+          document.getElementById("image-src").src = element.src;
+        });
+      }
+    );
   }
   function setCookie(name, value, minutes) {
     const date = new Date();
