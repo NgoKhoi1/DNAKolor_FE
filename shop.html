@@ -268,6 +268,7 @@
         gap: 0px;
         line-height: 150%;
         padding: 8px 8px 8px 16px;
+        max-width: 414.4px;
       }
 
       @media (max-width: 991px) {
@@ -408,6 +409,7 @@
         font-weight: 500;
         white-space: nowrap;
         line-height: 150%;
+        flex-wrap: wrap;
       }
 
       @media (max-width: 991px) {
@@ -424,6 +426,10 @@
         border-radius: 16px;
         background-color: #f2deed;
         padding: 6px 16px;
+        cursor: pointer;
+      }
+      .cate-selected {
+        background-color: #ee64cc;
       }
 
       @media (max-width: 991px) {
@@ -591,8 +597,8 @@
         }
       }
 
-      #search-text-id,
-      #search-text-id:focus {
+      .search-text-id,
+      .search-text-id:focus {
         background-color: #f2deed;
         font-size: medium;
         border: none;
@@ -621,6 +627,9 @@
         background-color: #faf0f7;
         display: flex;
         justify-content: center;
+      }
+      .unsual-form {
+        margin: 12px 0px;
       }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -691,21 +700,6 @@
               <p class="shop-subtitle">
                 Explore the perfect products tailored for your color palette
               </p>
-              <form class="search-form">
-                <div class="search-field">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/43e46e670d919748d1dd74481df304c43ca2f75e6652e468c7fec8dc1629d334?apiKey=1145a631081a47248438c8ac05c41e7d&"
-                    alt="Magnifying Glass Icon"
-                  />
-                  <input
-                    type="text"
-                    name="search-text"
-                    id="search-text-id"
-                    placeholder="Search for products"
-                  />
-                </div>
-                <button class="search-button">Search</button>
-              </form>
             </div>
           </div>
         </section>
@@ -723,27 +717,81 @@
       <section id="productList" class="products">
         <h2 class="categories">Recommended</h2>
         <div class="category-list">
-          <div class="category-item">All</div>
-          <div class="category-item">Male</div>
-          <div class="category-item">Female</div>
-          <div class="category-item">Cosmetics</div>
-          <div class="category-item">Accessories</div>
+          <div class="category-item cate-selected">All</div>
+          <div class="category-item">Cleanser</div>
+          <div class="category-item">Sunplay</div>
+          <div class="category-item">MR</div>
+          <div class="category-item">Toner</div>
+          <div class="category-item">Lotion</div>
+          <div class="category-item">Cushion</div>
+          <div class="category-item">LS</div>
+          <div class="category-item">EP</div>
+          <div class="category-item">Brush</div>
+          <div class="category-item">Powder</div>
+          <div class="category-item">Accessory</div>
+          <div class="category-item">Shirt</div>
+          <div class="category-item">Skirt</div>
+          <div class="category-item">Pant</div>
         </div>
+        <div class="search-box">
+          <form class="search-form unsual-form">
+            <div class="search-field">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/43e46e670d919748d1dd74481df304c43ca2f75e6652e468c7fec8dc1629d334?apiKey=1145a631081a47248438c8ac05c41e7d&"
+                alt="Magnifying Glass Icon"
+              />
+              <input
+                type="text"
+                name="search-text"
+                id="search-text-id"
+                class="search-text-id"
+                placeholder="Search for products"
+              />
+            </div>
+          </form>
+        </div>
+        <div class="show-room" id="show-room">
 
+        </div>
       </section>
     </section>
   </body>
 </html>
 
 <script>
+  let bestSellerListEl = document.getElementById("bestSellerList");
+  let productListEl = document.getElementById("show-room");
+  var selectedCategory = document.getElementsByClassName("cate-selected")[0];
+  var searchString = "";
+  Array.from(document.getElementsByClassName("category-item")).forEach(e => {
+    e.addEventListener('click', () => {
+      if (selectedCategory == e) return;
+      selectedCategory.classList.remove("cate-selected");
+      e.classList.add("cate-selected");
+      selectedCategory = e;
+      updateProduct();
+    });
+  });
+  document.getElementById("search-text-id").addEventListener('input', (e) => {
+    e.preventDefault()
+    searchString = e.target.value;
+    
+    updateProduct();
+  });
 
+  function updateProduct() {
+    productListEl.innerHTML = '';
+    var pl = productListItem.filter(e => {
+      return (selectedCategory.innerHTML == "All" || e.category == selectedCategory.innerHTML) && e.product_name.toLowerCase().includes(searchString.toLocaleLowerCase())
+    })
+    addProducts(pl, productListEl);
+  }
   function currencyConvert(vnd) {
     const exchangeRate = 0.000043; // Example exchange rate (1 VND = 0.000043 USD)
     const usdAmount = vnd * exchangeRate;
     return usdAmount.toFixed(2);
   }
-  let bestSellerListEl = document.getElementById("bestSellerList");
-  let productListEl = document.getElementById("productList");
+  
 
   function addProducts(products,parentElment) {    
     var productRow = document.createElement("div");
@@ -887,7 +935,7 @@ let bestSellerProduct = [
             {"image": "https://shop.rohto.com.vn/media/catalog/product/v/n/vn-11134207-7r98o-lq8qntsisclu14.jpg?optimize=medium&fit=bounds&height=700&width=700&canvas=700:700", "text": ""},
             {"image": "https://www.pharmart.vn/images/product/430_430/sunplay-skin-aqua-clear-white-55g-kem-chong-nang-sang-min-da-645ef85bd1577.jpg", "text": ""}
         ],
-        "category": "KCN",
+        "category": "Sunplay",
         "tag": "Clear Spring"
     },
     {
@@ -898,7 +946,7 @@ let bestSellerProduct = [
             {"image": "https://mint07.com/wp-content/uploads/2021/11/madagascar-centella-air-fit-suncream-plus-spf50-50ml-1.png", "text": ""},
             {"image": "https://product.hstatic.net/200000551679/product/1-02_031bff9a2cad44d9bd8d376c21c7eccf_1024x1024.png", "text": ""}
         ],
-        "category": "KCN",
+        "category": "Sunplay",
         "tag": "Warm Autumn"
     },
     {
@@ -979,7 +1027,7 @@ let productListItem = [
             {"image": "https://shop.rohto.com.vn/media/catalog/product/v/n/vn-11134207-7r98o-lq8qntsisclu14.jpg?optimize=medium&fit=bounds&height=700&width=700&canvas=700:700", "text": ""},
             {"image": "https://www.pharmart.vn/images/product/430_430/sunplay-skin-aqua-clear-white-55g-kem-chong-nang-sang-min-da-645ef85bd1577.jpg", "text": ""}
         ],
-        "category": "KCN",
+        "category": "Sunplay",
         "tag": "Clear Spring"
     },
     {
@@ -990,7 +1038,7 @@ let productListItem = [
             {"image": "https://mint07.com/wp-content/uploads/2021/11/madagascar-centella-air-fit-suncream-plus-spf50-50ml-1.png", "text": ""},
             {"image": "https://product.hstatic.net/200000551679/product/1-02_031bff9a2cad44d9bd8d376c21c7eccf_1024x1024.png", "text": ""}
         ],
-        "category": "KCN",
+        "category": "Sunplay",
         "tag": "Warm Autumn"
     },
     {
@@ -1036,7 +1084,7 @@ let productListItem = [
             {"image": "https://klairsvietnam.vn/wp-content/uploads/2020/07/nuoc-hoa-hong-khong-mui-klairs.jpg", "text": ""},
             {"image": "https://klairsvietnam.vn/wp-content/uploads/2020/07/nuoc-hoa-hong-klairs.jpg", "text": ""}
         ],
-        "category": "MR",
+        "category": "Toner",
         "tag": "Clear Spring"
     },
     {
@@ -1047,7 +1095,7 @@ let productListItem = [
             {"image": "https://media.hcdn.vn/wysiwyg/kimhuy/toner-pyunkang-yul-cap-am-lam-diu-da-30ml-2.jpg", "text": ""},
             {"image": "https://product.hstatic.net/200000561743/product/3_38c7036d0ab5422296d34cf5aae686cb_master.jpg", "text": ""},
         ],
-        "category": "MR",
+        "category": "Toner",
         "tag": "Clear Spring"
     },
     {
