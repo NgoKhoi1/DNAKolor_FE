@@ -808,7 +808,7 @@
     var productClassName = event.currentTarget.className.split(' ').pop(); // Get the last class name
     var productData = JSON.parse(atob(productClassName));
     if (!getCookie("cart")) {
-      var cart = [{"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`, "s_price": `${productData.price}`, "colors": productData.colors, "volume": productData.volume}]
+      var cart = [{"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`, "s_price": `${productData.price}`, "colors": productData.colors}]
       setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
       window.location.href = "cart.html";
     } else {
@@ -823,7 +823,7 @@
           return;
         }
       });
-      cart.push({"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`, "s_price": `${productData.price}`});
+      cart.push({"name": `${productData.product_name}`, "quantity": "1", "price": `${productData.price}`, "image": `${productData.image_src}`, "s_price": `${productData.price}`, "colors": productData.colors});
       setCookie("cart", btoa(JSON.stringify(cart)), 30 * 24 * 60);
       window.location.href = "cart.html";
     }

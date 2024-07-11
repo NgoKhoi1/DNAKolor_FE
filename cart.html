@@ -481,7 +481,7 @@
           </div>
           <div class="order-detail">
             <span class="order-detail-field">Shipping</span>
-            <span class="order-detail-value" id="shipping-price">$0</span>
+            <span class="order-detail-value" id="shipping-price">₫0</span>
           </div>
           <div class="order-detail">
             <span class="order-detail-field">Total</span>
@@ -551,8 +551,8 @@
       var subtotal = 0.0;
       container.innerHTML = "";
       cart.forEach((element, index) => {
-        var price = parseFloat(element.price.replace("\$", "").trim()).toFixed(
-          2
+        var price = parseFloat(element.price.replace("\₫", "").trim()).toFixed(
+          3
         );
         var product = {
           name: `${element.name}`,
@@ -560,7 +560,6 @@
           image: `${element.image}`,
           quantity: `${element.quantity}`,
           colors: element.colors,
-          volume: element.volume,
         };
         container.innerHTML += `
   <div class="cart-summary-item">
@@ -577,7 +576,7 @@
       <span class="quantity-value">${element.quantity}</span>
       <div class="quantity-btn" onclick="updateQuantity('${index}', 1)">+</div>
     </span>
-    <span class="cart-summary-subtotal-value">$${price}</span>
+    <span class="cart-summary-subtotal-value">₫${price}</span>
   </div>
 `;
 
@@ -589,13 +588,13 @@
         parseFloat(
           document
             .getElementById("shipping-price")
-            .innerHTML.replace("\$", "")
+            .innerHTML.replace("\₫", "")
             .trim()
         );
       document.getElementById(
         "subtotal-price"
-      ).innerHTML = `$${subtotal.toFixed(2)}`;
-      document.getElementById("total-price").innerHTML = `$${total.toFixed(2)}`;
+      ).innerHTML = `₫${subtotal.toFixed(3)}`;
+      document.getElementById("total-price").innerHTML = `₫${total.toFixed(3)}`;
     } catch {
       console.log(atob(getCookie("cart")));
       return;
