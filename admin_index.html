@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body{
+            background-color: #ededed;
+            overflow: hidden;
+        }
+        .page-content {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            gap: 12px;
+        }
+        .side-bar {
+            display: flex;
+            flex-direction: column;
+            width: 18%;
+            border-right: 1px solid lightgrey;
+        }
+        .side-bar-element {
+            display: flex;
+            margin: 18px;
+            gap: 8px;
+        }
+        .side-bar-icon {
+            height: 32px;
+            width: auto;
+        }
+        .side-bar-value {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            font-weight: 500;
+
+        }
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .content-header {
+            height: 15%;
+            position: relative;
+            
+        }
+        .action-bar {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            width: 98%;
+            justify-content: space-between;
+            border-bottom: .5px solid lightgray;
+        }
+
+        .nav-item {
+            border-left: solid lightgray 2px;
+            
+            padding: 8px 12px;
+
+            color: blue;
+            font-family: sans-serif;
+        }
+
+        .export-btn {
+            padding: 4px 18px;
+            background-color: rgb(77, 70, 212);
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            font-weight: 600;
+            border-radius: 4px;
+        }
+        
+        .content-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            gap: 24px;
+            padding-bottom: 24px;
+        }
+        
+        .stat-section {
+            display: flex;
+            width: 98%;
+            justify-content: space-between;
+            margin-top: 12px;
+        }
+        .stat-key {
+            font-family: Arial, Helvetica, sans-serif;
+            color: grey;
+            font-size: 18px;
+        }
+
+        .stat-value {
+            margin-top: 6px;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 8px;
+            width: fit-content;
+            border: solid 1.5px rgb(189, 230, 255);
+            font-size: 24px;
+            border-radius: 15px;
+            background-color: rgb(189, 230, 255);
+            font-weight: 600;
+        }
+        .statistic-section {
+            display: flex;
+            justify-content: space-between;
+            width: 98%;
+            gap: 24px;
+            flex-grow: 1;
+        }
+
+        .chart-section {
+            background-color: white;
+            border-radius: 18px;
+            padding: 18px;
+            flex-grow: 1;
+        }
+        
+        .chart-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #select-month {
+            padding: 12px 18px;
+            background-color: #ededed;
+            border: none;
+            border-radius: 5px;
+            font-weight: 550;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .status-section {
+            background-color: white;
+            border-radius: 18px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 23%;
+            height: 75%;
+        }
+        .status-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            height: 68px;
+        }
+
+        .status-element {
+            padding: 4px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .status-key {
+            font-size: 18px;
+            color: gray;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .view-status {
+            font-size: 13px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .view-status > a {
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .status-info {
+            display: flex;
+            gap: 12px;
+        }
+        .status-value {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-content">
+        <div class="side-bar">
+            <div class="side-bar-element">
+                <img class="side-bar-icon" src="https://png.pngtree.com/png-vector/20230318/ourmid/pngtree-data-table-line-icon-vector-png-image_6656297.png" alt="icon">
+                <div class="side-bar-value">Dashboard</div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="content-header">
+                <div class="action-bar">
+                    <div class="nav-list">
+                        <div class="nav-item">
+                            Overview
+                        </div>
+                    </div>
+                    <div class="action-list">
+                        <div class="export-btn">
+                            Export
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="stat-section">
+                    <div class="total-order">
+                        <div class="stat-key">Total Order</div>
+                        <div class="stat-value">53</div>
+                    </div>
+                    <div class="total-order">
+                        <div class="stat-key">Total Customer</div>
+                        <div class="stat-value">16</div>
+                    </div>
+                    <div class="total-order">
+                        <div class="stat-key">Total Blog</div>
+                        <div class="stat-value">0</div>
+                    </div>
+                    <div class="total-order">
+                        <div class="stat-key">Total Contact</div>
+                        <div class="stat-value">0</div>
+                    </div>
+                </div>
+                <div class="statistic-section">
+                    <div class="chart-section">
+                        <div class="chart-info">
+                            <div class="chart-info-text">
+                                <h2>Market Overview</h2>
+                                <p>Summary of total order for month</p>
+                            </div>
+                            <div class="chart-info-select">
+                                <select name="" id="select-month">
+                                    <option value="6">June 2024</option>
+                                    <option value="7">July 2024</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-image">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="status-section">
+                        <div class="status-title">Order Status</div>
+                        <div class="status-element">
+                            <div class="status-info">
+                                <div class="status-key">Total Wait: </div>
+                                <div class="status-value" id="status-value-wait">0</div>
+                            </div>
+                            <div class="view-status">
+                                <a href="view_statsu.html">Click to view</a>
+                            </div>
+                        </div>
+                        <div class="status-element">
+                            <div class="status-info">
+                                <div class="status-key">Total Accept: </div>
+                                <div class="status-value" id="status-value-accept">53</div>
+                            </div>
+                            <div class="view-status">
+                                <a href="view_statsu.html">Click to view</a>
+                            </div>
+                        </div>
+                        <div class="status-element">
+                            <div class="status-info">
+                                <div class="status-key">Total Process: </div>
+                                <div class="status-value" id="status-value-process">0</div>
+                            </div>
+                            <div class="view-status">
+                                <a href="view_statsu.html">Click to view</a>
+                            </div>
+                        </div>
+                        <div class="status-element">
+                            <div class="status-info">
+                                <div class="status-key">Total Done: </div>
+                                <div class="status-value" id="status-value-done">53</div>
+                            </div>
+                            <div class="view-status">
+                                <a href="view_statsu.html">Click to view</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    // Data for June and July
+    const data = {
+        6: {
+            labels: ['24/6', '25/6', '26/6', '27/6', '28/6', '29/6', '30/6'],
+            datasets: [
+                {
+                    label: 'Quantity',
+                    data: [5, 18, 5, 10, 3, 1, 2],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Revenue',
+                    data: [2270000, 3843750, 808800, 1858650, 859500, 132600, 450500],
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    type: 'line',
+                    borderWidth: 2,
+                    fill: false,
+                    yAxisID: 'y1'
+                },
+                {
+                    label: 'Interest',
+                    data: [955000, 1717750, 339800, 814650, 379500, 54600, 185500],
+                    backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    type: 'line',
+                    borderWidth: 2,
+                    fill: false,
+                    yAxisID: 'y2'
+                }
+            ]
+        },
+        7: {
+            labels: ['1/7', '2/7', '3/7', '6/7'],
+            datasets: [
+                {
+                    label: 'Quantity',
+                    data: [1, 2, 4, 2],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Revenue',
+                    data: [144300, 452350, 1126400, 402200],
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    type: 'line',
+                    borderWidth: 2,
+                    fill: false,
+                    yAxisID: 'y1'
+                },
+                {
+                    label: 'Interest',
+                    data: [66300, 223350, 509400, 170200],
+                    backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    type: 'line',
+                    borderWidth: 2,
+                    fill: false,
+                    yAxisID: 'y2'
+                }
+            ]
+        }
+    };
+
+    // Initial chart configuration
+    let config = {
+        type: 'bar',
+        data: data[6],
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    type: 'linear',
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: 'Quantity'
+                    }
+                },
+                y1: {
+                    beginAtZero: true,
+                    type: 'linear',
+                    position: 'right',
+                    grid: {
+                        drawOnChartArea: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Revenue'
+                    }
+                },
+                y2: {
+                    beginAtZero: true,
+                    type: 'linear',
+                    position: 'right',
+                    grid: {
+                        drawOnChartArea: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Interest'
+                    },
+                    offset: true
+                }
+            }
+        }
+    };
+
+    // Create the initial chart
+    let myChart = new Chart(ctx, config);
+
+    // Function to update chart based on selected month
+    function updateChart(month) {
+        myChart.data = data[month];
+        myChart.update();
+    }
+
+    // Event listener for the dropdown
+    document.getElementById('select-month').addEventListener('change', function () {
+        const selectedMonth = this.value;
+        updateChart(selectedMonth);
+    });
+});
+
+
+</script>
+</html>
