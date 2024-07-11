@@ -254,6 +254,7 @@
       }
       .alter-image {
         display: flex;
+        max-width: 360px;
         gap: 8px;
         overflow-x: auto;
       }
@@ -298,7 +299,7 @@
         display: grid;
         width: 100%;
         grid-template-columns: 20% 80%;
-        grid-template-rows: 10% 40% 20% 20% 10%;
+        grid-template-rows: 10% 40% 40% 10%;
         gap: 5px;
         min-height: 60%;
       }
@@ -512,10 +513,9 @@
                 >
               </div>
             </div>
-            <span class="attribute-name invisible">Colors</span>
+            <span class="attribute-name invisible">Products</span>
             <div class="attribute-value" id="color-attribute"></div>
-            <span class="attribute-name" id="volume-name"></span>
-            <div class="attribute-value" id="volume-attribute"></div>
+
             <span class="attribute-name">Quantity</span>
             <div class="attribute-value">
               <span class="cart-summary-value">
@@ -627,6 +627,11 @@
 </script>
 
 <script>
+  function currencyConvert(vnd) {
+    const exchangeRate = 0.000043; // Example exchange rate (1 VND = 0.000043 USD)
+    const usdAmount = vnd * exchangeRate;
+    return usdAmount.toFixed(2);
+  }
   load();
   function getCookie(cname) {
     let name = cname + "=";
@@ -655,14 +660,12 @@
     const params = new URLSearchParams(window.location.search);
     var product = JSON.parse(params.get("product"));
     document.getElementById("product-name").innerHTML = product.name;
-    document.getElementById("product-price").innerHTML = `$${product.price}`;
+    document.getElementById("product-price").innerHTML = `₫${product.price} - $${currencyConvert(parseFloat(product.price) * 1000)}`;
     document.getElementById("product-quantity").innerHTML = product.quantity;
     document.getElementById("image-src").src = product.image;
     const altImage = document.getElementById("alter-image");
     const colorsAttribute = document.getElementById("color-attribute");
-    const volumeAttribute = document.getElementById("volume-attribute");
     if (product.colors) {
-      document.getElementById("volume-name").innerHTML = "Size";
       product.colors.forEach((element) => {
         altImage.innerHTML += `<img
             class="image-alt-src"
@@ -676,13 +679,9 @@
               </div>`;
       });
     } else {
-      document.getElementById("volume-name").innerHTML = "Volume";
+
     }
-    product.volume.forEach((element) => {
-      volumeAttribute.innerHTML += `<div class="volume-element">
-                <span style="font-family: Arial, Helvetica, sans-serif;">${element}</span>
-              </div>`;
-    });
+
 
     Array.from(document.getElementsByClassName("color-element")).forEach(
       (element) => {
@@ -691,17 +690,6 @@
         });
         element.addEventListener("click", () => {
           colorsAttribute.childNodes.forEach(e => {
-            console.log(e)
-            e.classList.remove("hightlight-border");
-          });
-          element.classList.add("hightlight-border");
-        })
-      }
-    );
-    Array.from(document.getElementsByClassName("volume-element")).forEach(
-      (element) => {
-        element.addEventListener("click", () => {
-          volumeAttribute.childNodes.forEach(e => {
             console.log(e)
             e.classList.remove("hightlight-border");
           });

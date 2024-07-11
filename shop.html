@@ -736,6 +736,12 @@
 </html>
 
 <script>
+
+  function currencyConvert(vnd) {
+    const exchangeRate = 0.000043; // Example exchange rate (1 VND = 0.000043 USD)
+    const usdAmount = vnd * exchangeRate;
+    return usdAmount.toFixed(2);
+  }
   let bestSellerListEl = document.getElementById("bestSellerList");
   let productListEl = document.getElementById("productList");
 
@@ -763,7 +769,7 @@
 
       var price = document.createElement("span");
       price.className = "product-price";
-      price.textContent = `$${product.price}`;  
+      price.textContent = `₫${product.price} - $${currencyConvert(parseFloat(product.price) * 1000)}`;  
       var addToCart = document.createElement("div");
       addToCart.className = `add-to-cart ${btoa(JSON.stringify(product))}`;
       addToCart.textContent = "Add to cart";
@@ -830,167 +836,1076 @@
 
 let bestSellerProduct = [
     {
-        product_name: "Sweater - Bel Paese White",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 91.3,
-        colors: [
-          { "image": "https://product.hstatic.net/1000344185/product/img_2260a_8a22d71d91574a5f8a009f84226fa37b_master.jpg", "text": "Black" },
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "White" }
+        "product_name": "La Roche-Posay Cleanser Purifying Foaming Gel For Oily Sensitive Skin 400ml",
+        "image_src": "https://mint07.com/wp-content/uploads/2015/09/la-roche-posay-effaclar-gel-moussant-purifiant.png",
+        "price": "510.000",
+        "colors": [
+        {"image": "https://mint07.com/wp-content/uploads/2015/09/la-roche-posay-effaclar-gel-moussant-purifiant.png", "text": ""},
+            {"image": "https://product.hstatic.net/200000346975/product/au-nhay-cam-la-roche-posay-effaclar-400ml-60d0774912c36-21062021182601_e7f45251e4b740e4b2f9ce0520233f5f.jpg", "text": ""},
+            {"image": "https://www.depmoingay.net.vn/wp-content/uploads/2020/11/ezgif-6-195a0708c4ba-1.jpg", "text": ""},
         ],
-        volume: ["S", "M", "L", "XL"]
+        "category": "Cleanser",
+        "tag": "Clear Spring"
     },
     {
-        product_name: "Beauty Cream - Reese Pieces",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 28.64,
-        colors: null,
-        volume: ["150ml", "250ml", "500ml", "750ml"]
-    },
-    {
-        product_name: "Sweater - Creme De Menth",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 95.74,
-        colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Red"},
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Green" }
+        "product_name": "Hadalabo Cleanser Pro Anti Aging alpha Lifting Cleanser 80g",
+        "image_src": "https://image.hsv-tech.io/1987x0/bbx/common/e7b60f78-5ce1-4795-95a1-965fa3d29470.webp",
+        "price": "93.000",
+        "colors": [
+            {"image": "https://image.hsv-tech.io/1987x0/bbx/common/e7b60f78-5ce1-4795-95a1-965fa3d29470.webp", "text": ""},
         ],
-        volume: ["S", "M", "L", "XL"]
+        "category": "Cleanser",
+        "tag": "Clear Spring"
     },
     {
-        product_name: "Beauty Cream - Fruit Salad Deluxe",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 20.14,
-        colors: null,
-        volume: ["100ml", "200ml", "300ml", "400ml"]
-    },
-    {
-        product_name: "Sweater - Smarties",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 86.52,
-        colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Blue" },
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Yellow" }
+        "product_name": "Some By Mi Cleanser Snail Truecica Miracle Repair Low PH Gel Cleanser 100ml",
+        "image_src": "https://file.hstatic.net/1000006063/file/some_by_mi_snail_truecica_miracle_repair_low_ph_gel_cleanser_c869c1698c1143be9ba5901878c597fd.jpg",
+        "price": "221.000",
+        "colors": [
+            {"image": "https://file.hstatic.net/1000006063/file/some_by_mi_snail_truecica_miracle_repair_low_ph_gel_cleanser_c869c1698c1143be9ba5901878c597fd.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000551679/product/vuong-03-02__6__b009b7d2086f446d897a5d7d91c781ca_1024x1024.png", "text": ""}
         ],
-        volume: ["S", "M", "L", "XL"]
+        "category": "Cleanser",
+        "tag": "Clear Spring"
     },
     {
-        product_name: "Beauty Cream - Cafe Moreno",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 96.49,
-        colors: null,
-        volume: ["100ml", "200ml", "300ml", "400ml"]
-    },
-    {
-        product_name: "Sweater - Soya Bean",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 81.29,
-        colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Brown" },
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Beige" }
+        "product_name": "SVR Cleanser Topialyse Gel Lavant 55ml",
+        "image_src": "https://edbeauty.vn/wp-content/uploads/2022/04/SVR-Topialyse-Gel-Lavant-2.jpg",
+        "price": "132.600",
+        "colors": [
+            {"image": "https://edbeauty.vn/wp-content/uploads/2022/04/SVR-Topialyse-Gel-Lavant-2.jpg", "text": ""},
+
         ],
-        volume: ["S", "M", "L", "XL"]
+        "category": "Cleanser",
+        "tag": "Clear Spring"
     },
     {
-        product_name: "Sweater - Blouse/Shirt",
-        image_src: "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        price: 97.7,
-        colors: [
-          { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Purple" },
-         { "image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Pink" }
+        "product_name": "Sunplay Skin Aqua Clear White SPF50+, PA++++ 55g",
+        "image_src": "https://shop.rohto.com.vn/media/catalog/product/v/n/vn-11134207-7r98o-lq8qntsisclu14.jpg?optimize=medium&fit=bounds&height=700&width=700&canvas=700:700",
+        "price": "170.000",
+        "colors": [
+            {"image": "https://shop.rohto.com.vn/media/catalog/product/v/n/vn-11134207-7r98o-lq8qntsisclu14.jpg?optimize=medium&fit=bounds&height=700&width=700&canvas=700:700", "text": ""},
+            {"image": "https://www.pharmart.vn/images/product/430_430/sunplay-skin-aqua-clear-white-55g-kem-chong-nang-sang-min-da-645ef85bd1577.jpg", "text": ""}
         ],
-        volume: ["S", "M", "L", "XL"]
+        "category": "KCN",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Skin1004 Sunplay Skin Madagascar Centella Air-Fit SunCream Plus 50ml",
+        "image_src": "https://mint07.com/wp-content/uploads/2021/11/madagascar-centella-air-fit-suncream-plus-spf50-50ml-1.png",
+        "price": "261.800",
+        "colors": [
+            {"image": "https://mint07.com/wp-content/uploads/2021/11/madagascar-centella-air-fit-suncream-plus-spf50-50ml-1.png", "text": ""},
+            {"image": "https://product.hstatic.net/200000551679/product/1-02_031bff9a2cad44d9bd8d376c21c7eccf_1024x1024.png", "text": ""}
+        ],
+        "category": "KCN",
+        "tag": "Warm Autumn"
+    },
+    {
+        "product_name": "Garnier Makeup Remover Micellar Cleansing Water Salicylic BHA 400ml",
+        "image_src": "https://mint07.com/wp-content/uploads/2023/03/nuoc-tay-trang-garnier-salicylic-bha-micellar-cleansing-water-2.jpg",
+        "price": "140.400",
+        "colors": [
+            {"image": "https://mint07.com/wp-content/uploads/2023/03/nuoc-tay-trang-garnier-salicylic-bha-micellar-cleansing-water-2.jpg", "text": ""},
+            {"image": "https://bizweb.dktcdn.net/thumb/1024x1024/100/412/708/products/perfume-chiet-18-1684587329980.png?v=1687424431810", "text": ""}
+        ],
+        "category": "MR",
+        "tag": "Warm Autumn"
+    },
+    {
+        "product_name": "Makeup Remover Loreal Paris Skincare Micellar 400ml",
+        "image_src": "https://bizweb.dktcdn.net/100/440/005/products/421267268-722078323353785-626638676984811292-n-1ec0cc3b-23a8-424c-93b4-0530950b4a6b.jpg?v=1706080713823",
+        "price": "170.200",
+        "colors": [
+            {"image": "https://bizweb.dktcdn.net/100/440/005/products/421267268-722078323353785-626638676984811292-n-1ec0cc3b-23a8-424c-93b4-0530950b4a6b.jpg?v=1706080713823", "text": ""},
+            {"image": "https://silethuoc.com/wp-content/uploads/2020/02/sp17-1.jpg", "text": ""}
+        ],
+        "category": "MR",
+        "tag": "Clear Spring"
     }
 ];
 
 
 let productListItem = [
     {
-        "product_name": "Sweater - Bel Paese White",
-        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        "price": 91.3,
+        "product_name": "La Roche-Posay Cleanser Purifying Foaming Gel For Oily Sensitive Skin 400ml",
+        "image_src": "https://mint07.com/wp-content/uploads/2015/09/la-roche-posay-effaclar-gel-moussant-purifiant.png",
+        "price": "510.000",
         "colors": [
-            {"image": "https://product.hstatic.net/1000344185/product/img_2260a_8a22d71d91574a5f8a009f84226fa37b_master.jpg", "text": "Black"},
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "White"}
+        {"image": "https://mint07.com/wp-content/uploads/2015/09/la-roche-posay-effaclar-gel-moussant-purifiant.png", "text": ""},
+            {"image": "https://product.hstatic.net/200000346975/product/au-nhay-cam-la-roche-posay-effaclar-400ml-60d0774912c36-21062021182601_e7f45251e4b740e4b2f9ce0520233f5f.jpg", "text": ""},
+            {"image": "https://www.depmoingay.net.vn/wp-content/uploads/2020/11/ezgif-6-195a0708c4ba-1.jpg", "text": ""},
         ],
-        "volume": ["S", "M", "L", "XL"],
-        "category": "Female",
+        "category": "Cleanser",
         "tag": "Clear Spring"
     },
     {
-        "product_name": "Beauty Cream - Reese Pieces",
-        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        "price": 28.64,
-        "colors": null,
-        "volume": ["150ml", "250ml", "500ml", "750ml"],
-        "category": "Cosmetics",
-        "tag": "Clear Spring"
-    },
-    {
-        "product_name": "Sweater - Creme De Menth",
-        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        "price": 95.74,
+        "product_name": "Hadalabo Cleanser Pro Anti Aging alpha Lifting Cleanser 80g",
+        "image_src": "https://image.hsv-tech.io/1987x0/bbx/common/e7b60f78-5ce1-4795-95a1-965fa3d29470.webp",
+        "price": "93.000",
         "colors": [
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Red"},
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Green"}
+            {"image": "https://image.hsv-tech.io/1987x0/bbx/common/e7b60f78-5ce1-4795-95a1-965fa3d29470.webp", "text": ""},
         ],
-        "volume": ["S", "M", "L", "XL"],
-        "category": "Accessories",
+        "category": "Cleanser",
         "tag": "Clear Spring"
     },
     {
-        "product_name": "Beauty Cream - Fruit Salad Deluxe",
-        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        "price": 20.14,
-        "colors": null,
-        "volume": ["100ml", "200ml", "300ml", "400ml"],
-        "category": "Female",
-        "tag": "Clear Spring"
-    },
-    {
-        "product_name": "Sweater - Smarties",
-        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        "price": 86.52,
+        "product_name": "Some By Mi Cleanser Snail Truecica Miracle Repair Low PH Gel Cleanser 100ml",
+        "image_src": "https://file.hstatic.net/1000006063/file/some_by_mi_snail_truecica_miracle_repair_low_ph_gel_cleanser_c869c1698c1143be9ba5901878c597fd.jpg",
+        "price": "221.000",
         "colors": [
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Blue"},
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Yellow"}
+            {"image": "https://file.hstatic.net/1000006063/file/some_by_mi_snail_truecica_miracle_repair_low_ph_gel_cleanser_c869c1698c1143be9ba5901878c597fd.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000551679/product/vuong-03-02__6__b009b7d2086f446d897a5d7d91c781ca_1024x1024.png", "text": ""}
         ],
-        "volume": ["S", "M", "L", "XL"],
-        "category": "Accessories",
+        "category": "Cleanser",
         "tag": "Clear Spring"
     },
     {
-        "product_name": "Beauty Cream - Cafe Moreno",
-        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        "price": 96.49,
-        "colors": null,
-        "volume": ["100ml", "200ml", "300ml", "400ml"],
-        "category": "Female",
+        "product_name": "SVR Cleanser Topialyse Gel Lavant 55ml",
+        "image_src": "https://edbeauty.vn/wp-content/uploads/2022/04/SVR-Topialyse-Gel-Lavant-2.jpg",
+        "price": "132.600",
+        "colors": [
+            {"image": "https://edbeauty.vn/wp-content/uploads/2022/04/SVR-Topialyse-Gel-Lavant-2.jpg", "text": ""},
+
+        ],
+        "category": "Cleanser",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Sunplay Skin Aqua Clear White SPF50+, PA++++ 55g",
+        "image_src": "https://shop.rohto.com.vn/media/catalog/product/v/n/vn-11134207-7r98o-lq8qntsisclu14.jpg?optimize=medium&fit=bounds&height=700&width=700&canvas=700:700",
+        "price": "170.000",
+        "colors": [
+            {"image": "https://shop.rohto.com.vn/media/catalog/product/v/n/vn-11134207-7r98o-lq8qntsisclu14.jpg?optimize=medium&fit=bounds&height=700&width=700&canvas=700:700", "text": ""},
+            {"image": "https://www.pharmart.vn/images/product/430_430/sunplay-skin-aqua-clear-white-55g-kem-chong-nang-sang-min-da-645ef85bd1577.jpg", "text": ""}
+        ],
+        "category": "KCN",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Skin1004 Sunplay Skin Madagascar Centella Air-Fit SunCream Plus 50ml",
+        "image_src": "https://mint07.com/wp-content/uploads/2021/11/madagascar-centella-air-fit-suncream-plus-spf50-50ml-1.png",
+        "price": "261.800",
+        "colors": [
+            {"image": "https://mint07.com/wp-content/uploads/2021/11/madagascar-centella-air-fit-suncream-plus-spf50-50ml-1.png", "text": ""},
+            {"image": "https://product.hstatic.net/200000551679/product/1-02_031bff9a2cad44d9bd8d376c21c7eccf_1024x1024.png", "text": ""}
+        ],
+        "category": "KCN",
         "tag": "Warm Autumn"
     },
     {
-        "product_name": "Sweater - Soya Bean",
-        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        "price": 81.29,
+        "product_name": "Garnier Makeup Remover Micellar Cleansing Water Salicylic BHA 400ml",
+        "image_src": "https://mint07.com/wp-content/uploads/2023/03/nuoc-tay-trang-garnier-salicylic-bha-micellar-cleansing-water-2.jpg",
+        "price": "140.400",
         "colors": [
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Brown"},
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Beige"}
+            {"image": "https://mint07.com/wp-content/uploads/2023/03/nuoc-tay-trang-garnier-salicylic-bha-micellar-cleansing-water-2.jpg", "text": ""},
+            {"image": "https://bizweb.dktcdn.net/thumb/1024x1024/100/412/708/products/perfume-chiet-18-1684587329980.png?v=1687424431810", "text": ""}
         ],
-        "volume": ["S", "M", "L", "XL"],
-        "category": "Male",
+        "category": "MR",
         "tag": "Warm Autumn"
     },
     {
-        "product_name": "Sweater - Blouse/Shirt",
-        "image_src": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg",
-        "price": 97.7,
+        "product_name": "Makeup Remover Loreal Paris Skincare Micellar 400ml",
+        "image_src": "https://bizweb.dktcdn.net/100/440/005/products/421267268-722078323353785-626638676984811292-n-1ec0cc3b-23a8-424c-93b4-0530950b4a6b.jpg?v=1706080713823",
+        "price": "170.200",
         "colors": [
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Purple"},
-            {"image": "https://product.hstatic.net/200000305259/product/model_sweater_2_7923938ddd224698aa74c1b03ff2f73e_master.jpg", "text": "Pink"}
+            {"image": "https://bizweb.dktcdn.net/100/440/005/products/421267268-722078323353785-626638676984811292-n-1ec0cc3b-23a8-424c-93b4-0530950b4a6b.jpg?v=1706080713823", "text": ""},
+            {"image": "https://silethuoc.com/wp-content/uploads/2020/02/sp17-1.jpg", "text": ""}
         ],
-        "volume": ["S", "M", "L", "XL"],
-        "category": "Cosmetics",
+        "category": "MR",
         "tag": "Clear Spring"
-    }
+    },
+    {
+        "product_name": "Makeup Remover Nature Republic Good Skin Cleansing Water 500ml",
+        "image_src": "https://product.hstatic.net/200000385549/product/603-good-skin-mineral-ampoule-cleansing-water-1_e539b0288d6a49ae92127a8c24e258e2_grande.jpg",
+        "price": "140.400",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000385549/product/603-good-skin-mineral-ampoule-cleansing-water-1_e539b0288d6a49ae92127a8c24e258e2_grande.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000370337/product/nr-web-product-17_cf70b25b630a42ad99755c1590269000_master.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000370337/product/nr-web-product-18_4530be90929b4df3b53eb1ee8678acc1_master.jpg", "text": ""}
+        ],
+        "category": "MR",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Toner Klairs Supple Preparation Toner",
+        "image_src": "https://skinaqua.vn/wp-content/uploads/2023/05/Nuoc-hoa-hong-Klairs-Supple-Preparation-Facial-Toner.-1-1.jpg",
+        "price": "280.500",
+        "colors": [
+            {"image": "https://skinaqua.vn/wp-content/uploads/2023/05/Nuoc-hoa-hong-Klairs-Supple-Preparation-Facial-Toner.-1-1.jpg", "text": ""},
+            {"image": "https://klairsvietnam.vn/wp-content/uploads/2020/07/nuoc-hoa-hong-khong-mui-klairs.jpg", "text": ""},
+            {"image": "https://klairsvietnam.vn/wp-content/uploads/2020/07/nuoc-hoa-hong-klairs.jpg", "text": ""}
+        ],
+        "category": "MR",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Pyunkang Yul Toner Essence Toner 30ml",
+        "image_src": "https://media.hcdn.vn/wysiwyg/kimhuy/toner-pyunkang-yul-cap-am-lam-diu-da-30ml-2.jpg",
+        "price": "85.000",
+        "colors": [
+            {"image": "https://media.hcdn.vn/wysiwyg/kimhuy/toner-pyunkang-yul-cap-am-lam-diu-da-30ml-2.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000561743/product/3_38c7036d0ab5422296d34cf5aae686cb_master.jpg", "text": ""},
+        ],
+        "category": "MR",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "TLa Roche-Posay Lotion Cicaplast Baume B5-Soothing Repairing Balm New 40ml",
+        "image_src": "https://product.hstatic.net/200000551679/product/2_abdba0bbbcdf47309f3a7cefed21fe22_1024x1024.jpg",
+        "price": "306.000",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000551679/product/2_abdba0bbbcdf47309f3a7cefed21fe22_1024x1024.jpg", "text": ""},
+            {"image": "https://cdn.nuco.vn/static/product/thumb/kem_duong_la_roche_posay_lam_diu_ho_tro_phuc_hoi_da_40ml_cicaplast_baume_b5_soothing_repairing_balm_12_631590182f97a_1500_keep_ratio_90.jpg", "text": ""},
+        ],
+        "category": "Lotion",
+        "tag": "Clear Spring"
+    },
+    
+    {
+        "product_name": "Some By Mi Lotion Snail Truecica Miracle Repair Serum 50ml",
+        "image_src": "https://product.hstatic.net/200000026740/product/tinh-chat-tri-seo-lom-some-by-mi-truecica_ba0554922aac4b73be1d15093e5af579_master.png",
+        "price": "297.500",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000026740/product/tinh-chat-tri-seo-lom-some-by-mi-truecica_ba0554922aac4b73be1d15093e5af579_master.png", "text": ""},
+            {"image": "https://product.hstatic.net/1000006063/product/some-by-mi-snail-truecica-miracle-repair-serum_68f2bee5a4724004b10b73a19ce9a3a7_1024x1024.jpg", "text": ""},
+            {"image": "https://mint07.com/wp-content/uploads/2019/07/serum-some-by-mi-snail-truecica-miracle-repair5.jpg", "text": ""}
+        ],
+        "category": "Lotion",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Cocoon Hung Yen Lotion Turmeric Serum C10 30ml",
+        "image_src": "https://cdn.happyskin.vn/media/40/tinh-chat-nghe-hung-yen-cocoon-c10-5.jpg",
+        "price": "284.900",
+        "colors": [
+            {"image": "https://cdn.happyskin.vn/media/40/tinh-chat-nghe-hung-yen-cocoon-c10-5.jpg", "text": ""},
+            {"image": "https://myphamthuanchay.com/images/product/tinh-chat-nghe-hung-yen-c10-vitamin-c-30ml-turmeric-serum-sang-da-mo-tham-thuan-chay.jpg", "text": ""},
+        ],
+        "category": "Lotion",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Cushion Maybelline Fit Me Matte+Poreless SPF22",
+        "image_src": "https://product.hstatic.net/200000551679/product/tte_poreless_spf22_110_porcelain_50005b193ba54d85a6e3bae6b7021573_1024x1024.jpg",
+        "price": "187.000",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000551679/product/tte_poreless_spf22_110_porcelain_50005b193ba54d85a6e3bae6b7021573_1024x1024.jpg", "text": ""},
+            {"image": "https://img.lazcdn.com/g/p/0de58841cc9b609e0b6a2ad36c85e95d.jpg_720x720q80.jpghttps://img.lazcdn.com/g/p/0de58841cc9b609e0b6a2ad36c85e95d.jpg_720x720q80.jpg", "text": ""},
+        ],
+        "category": "Cushion",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "FOX Shinning Cushion Foundation SPF50+++ BF001 (15g)",
+        "image_src": "https://product.hstatic.net/200000551679/product/30b10ded513f385cbaed92895b5a831a_301746f27f56487fac3930a05ff8daca_1024x1024.jpg",
+        "price": "323.000",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000551679/product/30b10ded513f385cbaed92895b5a831a_301746f27f56487fac3930a05ff8daca_1024x1024.jpg", "text": ""},
+            {"image": "https://mint07.com/wp-content/uploads/2020/02/cushion-fox-shining-foundation-spf501.jpg", "text": ""},
+        ],
+        "category": "Cushion",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Cushion Cover Flex Cushion SPF 50+ PA +++ 15g",
+        "image_src": "https://product.hstatic.net/200000617989/product/326052328_643955147733490_6161525426336577135_n_ddf0113563a34fcf9ff3546b19b98a95.jpg",
+        "price": "586.500",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000617989/product/326052328_643955147733490_6161525426336577135_n_ddf0113563a34fcf9ff3546b19b98a95.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/1000006063/product/31_ebfea447934e4a3facbfa16ac648cba2_1024x1024.jpg", "text": ""},
+        ],
+        "category": "Cushion",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "GLAMRR Q Cushion LONG WEAR DD CUSHION 13g",
+        "image_src": "https://bonita.vn/wp-content/uploads/2024/06/440419315_843270924498494_5346536919073964225_n.jpg",
+        "price": "544.000",
+        "colors": [
+            {"image": "https://bonita.vn/wp-content/uploads/2024/06/440419315_843270924498494_5346536919073964225_n.jpg", "text": ""},
+            {"image": "https://vibanxinhdep.com/wp-content/uploads/2024/04/images-upload-woo2F94b5218edcb2e36e331fe6e7eb76053e.jpg", "text": ""},
+        ],
+        "category": "Cushion",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "GLAMRR Q Cushion VEGAN SUPER COVER CUSHION 15g",
+        "image_src": "https://product.hstatic.net/200000551679/product/vn-11134207-7r98o-lqfql8qp41mf51_05417b579e974aa0bcdb96e017416402_1024x1024.jpg",
+        "price": "586.500",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000551679/product/vn-11134207-7r98o-lqfql8qp41mf51_05417b579e974aa0bcdb96e017416402_1024x1024.jpg", "text": ""},
+            {"image": "https://img.lazcdn.com/g/p/e92a3d796c1a81ac39e7d9f0674bc878.png_960x960q80.png_.webp", "text": ""},
+        ],
+        "category": "Cushion",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Kyung Lab Cushion Bio Cover Balm 15g",
+        "image_src": "https://vn-test-11.slatic.net/p/2deae9b15960558b97a7bf91f25e754f.jpg",
+        "price": "841.500",
+        "colors": [
+            {"image": "https://vn-test-11.slatic.net/p/2deae9b15960558b97a7bf91f25e754f.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000697677/product/15574c1933d24ff19e6f124e861f52de_0520a74c97bf4f728a6562074664d8b6_grande.jpeg", "text": ""},
+        ],
+        "category": "Cushion",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "HORUS Cushion Dream Cover Air Cushion 12.5g",
+        "image_src": "https://product.hstatic.net/1000328823/product/3_957a079ed9384d8781a2f9e705783ac2_master.jpg",
+        "price": "336.600",
+        "colors": [
+            {"image": "https://product.hstatic.net/1000328823/product/3_957a079ed9384d8781a2f9e705783ac2_master.jpg", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lp1qh28egfh795_tn", "text": ""},
+        ],
+        "category": "Cushion",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Ofelia Uncovered Longwear Cushion",
+        "image_src": "https://ofelia.vn/cdn/shop/files/1_8bbb8a36-fd93-4539-a6ba-80e8b48ddfa7.jpg?v=1699953044",
+        "price": "357.000",
+        "colors": [
+            {"image": "https://ofelia.vn/cdn/shop/files/1_8bbb8a36-fd93-4539-a6ba-80e8b48ddfa7.jpg?v=1699953044", "text": ""},
+            {"image": "https://bizweb.dktcdn.net/thumb/1024x1024/100/357/967/products/407268061-756709603164088-1746006509246696533-n.jpg?v=1710125311037", "text": ""},
+        ],
+        "category": "Cushion",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "BBIA Lipstick Last Velvet Lip Tint",
+        "image_src": "https://melicosmetic.com/wp-content/uploads/2024/02/son-kem-li-bbia-last-velvet-lip-tint-1.jpg",
+        "price": "132.600",
+        "colors": [
+            {"image": "https://melicosmetic.com/wp-content/uploads/2024/02/son-kem-li-bbia-last-velvet-lip-tint-1.jpg", "text": ""},
+            {"image": "https://img.lazcdn.com/g/p/33e71e6f35158d7e0539cfed44247eee.jpg_720x720q80.jpg", "text": ""},
+        ],
+        "category": "LS",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "3CE Lipstick Cloud Lip Tint",
+        "image_src": "https://product.hstatic.net/1000025647/product/3ce-kem-macaron-red_43908897630940a7b0fdfbddc3c76f6b_1024x1024_6da7af15aa23474faa2e62237ec19603_1024x1024.jpg",
+        "price": "323.000",
+        "colors": [
+            {"image": "https://product.hstatic.net/1000025647/product/3ce-kem-macaron-red_43908897630940a7b0fdfbddc3c76f6b_1024x1024_6da7af15aa23474faa2e62237ec19603_1024x1024.jpg", "text": ""},
+            {"image": "https://assets-hebela.cdn.vccloud.vn/dict/1/idsdstgrstsmomsirn202205170932333ce/iomdsdiimgstgshnoi20220519113911son-kem-li-3ce-cloud-lip-tint-active-lady-4g/orhoitasoniimshsnr20220519113922son-kem-li-3ce-cloud-lip-tint-active-lady-4g2.jpg", "text": ""},
+        ],
+        "category": "LS",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "3CE Lipstick Velvet Lip Tint",
+        "image_src": "https://bizweb.dktcdn.net/100/418/525/products/son-kem-3ce-velvet-lip-tint.jpg?v=1628741301040",
+        "price": "323.000",
+        "colors": [
+            {"image": "https://bizweb.dktcdn.net/100/418/525/products/son-kem-3ce-velvet-lip-tint.jpg?v=1628741301040", "text": ""},
+            {"image": "https://product.hstatic.net/1000270103/product/son_master.png", "text": ""},
+        ],
+        "category": "LS",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "3CE Lipstick Blur Water Tint",
+        "image_src": "https://mint07.com/wp-content/uploads/2021/12/3ce-blur-water-tint.jpeg",
+        "price": "323.000",
+        "colors": [
+            {"image": "https://mint07.com/wp-content/uploads/2021/12/3ce-blur-water-tint.jpeg", "text": ""},
+            {"image": "https://product.hstatic.net/1000006063/product/891_c0a30cbb015b479a88f761f53d3a6645_1024x1024.jpg", "text": ""},
+        ],
+        "category": "LS",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lipstick Black Rouge Air Fit Velvet Ver 2",
+        "image_src": "https://bizweb.dktcdn.net/100/465/979/products/12-1deba73f-b435-4038-ba4d-e4e01d3c4435.png?v=1703823444950",
+        "price": "261.800",
+        "colors": [
+            {"image": "https://bizweb.dktcdn.net/100/465/979/products/12-1deba73f-b435-4038-ba4d-e4e01d3c4435.png?v=1703823444950", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/b5bce0ec26191fed6d23e94a45206b3a", "text": ""},
+        ],
+        "category": "LS",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Black Rouge Lipstick Double Layer Over Velvet",
+        "image_src": "https://bizweb.dktcdn.net/100/465/979/products/17.png?v=1703823352547",
+        "price": "261.800",
+        "colors": [
+            {"image": "https://bizweb.dktcdn.net/100/465/979/products/17.png?v=1703823352547", "text": ""},
+            {"image": "https://bizweb.dktcdn.net/100/465/979/products/dl-min.png?v=1703823352547", "text": ""},
+        ],
+        "category": "LS",
+        "tag": "Clear Spring"
+    },
+    
+    {
+        "product_name": "Cathy doll Lipstick lì Air relax lip blur",
+        "image_src": "https://image.hsv-tech.io/1987x0/bbx/common/daaa7c16-9dfd-4c75-879d-b5232f072016.webp",
+        "price": "132.600",
+        "colors": [
+            {"image": "https://image.hsv-tech.io/1987x0/bbx/common/daaa7c16-9dfd-4c75-879d-b5232f072016.webp", "text": ""},
+            {"image": "https://file.hstatic.net/1000006063/file/6_bf83cd2de3f5442d95192e3fa2ba4391.jpg", "text": ""},
+        ],
+        "category": "LS",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Silky Girl Lipstick Moisture Rich Lipcolor",
+        "image_src": "https://mint07.com/wp-content/uploads/2022/11/son-duong-moi-silky-girl-moisture-rich-lipcolor-07.webp",
+        "price": "132.600",
+        "colors": [
+            {"image": "https://mint07.com/wp-content/uploads/2022/11/son-duong-moi-silky-girl-moisture-rich-lipcolor-07.webp", "text": ""},
+            {"image": "https://product.hstatic.net/1000006063/product/261_8b05af85939a4739830ba7fba349c126_1024x1024.jpg", "text": ""},
+        ],
+        "category": "LS",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Zeesea Eye Palette Dreamland Eyeshadow",
+        "image_src": "https://file.hstatic.net/200000551679/file/zeesea_dreamland_eyeshadow___6__3f5aecc2ee234022865f5880c2df7eac_1024x1024.jpg",
+        "price": "227.550",
+        "colors": [
+            {"image": "https://file.hstatic.net/200000551679/file/zeesea_dreamland_eyeshadow___6__3f5aecc2ee234022865f5880c2df7eac_1024x1024.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/1000006063/product/zeesea_dreamland_eyeshadow_2_c18c3aaa441c4681b8d7672652125762_1024x1024.jpg", "text": ""},
+        ],
+        "category": "EP",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Cezanne Eye Palette Nuance On Eye Shadow",
+        "image_src": "https://product.hstatic.net/200000551679/product/cezanne_nuance_on_eye_shadow__4__4fea99f99d614b6c9ba3a65789e7e43c.jpg",
+        "price": "264.550",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000551679/product/cezanne_nuance_on_eye_shadow__4__4fea99f99d614b6c9ba3a65789e7e43c.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000551679/product/cezanne_nuance_on_eye_shadow_04_c243e5847540417898c5f3a26b4acd6e.jpg", "text": ""},
+        ],
+        "category": "EP",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Flormar Eye Palette Eye Shadow Palette #Sunset 10g",
+        "image_src": "https://product.hstatic.net/200000551679/product/flormar_bang_phan_mat_sunset___1__-_copy_687907572a974f43b39f5f27abf4dee2_1024x1024.jpg",
+        "price": "227.550",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000551679/product/flormar_bang_phan_mat_sunset___1__-_copy_687907572a974f43b39f5f27abf4dee2_1024x1024.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000551679/product/flormar_bang_phan_mat_sunset___2__-_copy_2eda0c3e8636460eaa79172b4fcdef4d_1024x1024.jpg", "text": ""},
+        ],
+        "category": "EP",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lemonade Eye Palette Aesthetic Eyeshadow Palette 16 cell 20.8g",
+        "image_src": "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ligxg3sjs0cyed",
+        "price": "425.500",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ligxg3sjs0cyed", "text": ""},
+            {"image": "https://product.hstatic.net/200000370337/product/daily_basic_palette-rosy-2_daa8edd42ddc461587a332efe2a0fb94_master.jpg", "text": ""},
+        ],
+        "category": "EP",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Nature Republic Eye Palette Daily Basic Palette",
+        "image_src": "https://file.hstatic.net/200000551679/file/zeesea_dreamland_eyeshadow___6__3f5aecc2ee234022865f5880c2df7eac_1024x1024.jpg",
+        "price": "227.550",
+        "colors": [
+            {"image": "https://file.hstatic.net/200000551679/file/zeesea_dreamland_eyeshadow___6__3f5aecc2ee234022865f5880c2df7eac_1024x1024.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/1000006063/product/zeesea_dreamland_eyeshadow_2_c18c3aaa441c4681b8d7672652125762_1024x1024.jpg", "text": ""},
+        ],
+        "category": "EP",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Silky Girl Eye Palette Bloom Shadow Quad",
+        "image_src": "https://product.hstatic.net/200000551679/product/01_7c214eb6e23c4bcb904a05167fd2a8a3_1024x1024.jpg",
+        "price": "144.300",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000551679/product/01_7c214eb6e23c4bcb904a05167fd2a8a3_1024x1024.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/1000006063/product/3_19f5f3dc9a11454cadf1cd78bbded1f8_1024x1024.jpg", "text": ""},
+        ],
+        "category": "EP",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Vacosi Brush BR04",
+        "image_src": "https://product.hstatic.net/1000006063/product/z4898064624075_279a90ab16873b2554df95892a2c8718_copy_ad88a24b001e4666b0e3da64fc7fee07_1024x1024.jpg",
+        "price": "24.050",
+        "colors": [
+            {"image": "https://product.hstatic.net/1000006063/product/z4898064624075_279a90ab16873b2554df95892a2c8718_copy_ad88a24b001e4666b0e3da64fc7fee07_1024x1024.jpg", "text": ""},
+            {"image": "https://bizweb.dktcdn.net/thumb/grande/100/443/867/products/co-vacosi-tan-may-dau-mem-br04.png?v=1695614683237", "text": ""},
+        ],
+        "category": "Brush",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Vacosi Brush E03",
+        "image_src": "https://file.hstatic.net/200000551679/file/e10za_cd1fef3e3c7c4480af3c8dde0b776d0d_1024x1024.jpg",
+        "price": "18.500",
+        "colors": [
+            {"image": "https://file.hstatic.net/200000551679/file/e10za_cd1fef3e3c7c4480af3c8dde0b776d0d_1024x1024.jpg", "text": ""},
+            {"image": "https://www.vacosi.com/upload/images/c%E1%BB%8D%20m%E1%BA%AFt.jpg", "text": ""},
+        ],
+        "category": "Brush",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Vacosi Brush M09",
+        "image_src": "https://www.vacosi.com/images/product/2024/1/co-khoi-va-ma-hong-m09-y24-vacosi-6190-2-0.jpg",
+        "price": "18.500",
+        "colors": [
+            {"image": "https://www.vacosi.com/images/product/2024/1/co-khoi-va-ma-hong-m09-y24-vacosi-6190-2-0.jpg", "text": ""},
+            {"image": "https://cf.shopee.vn/file/7fc14f1878fcc2937d749e60c37458c5", "text": ""},
+        ],
+        "category": "Brush",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Vacosi Brush M23",
+        "image_src": "https://www.vacosi.com/images/product/2024/1/co-phu-co-lon-m23-y24-vacosi-8310-2-15.jpg",
+        "price": "144.300",
+        "colors": [
+            {"image": "https://www.vacosi.com/images/product/2024/1/co-phu-co-lon-m23-y24-vacosi-8310-2-15.jpg", "text": ""},
+            {"image": "https://media.hcdn.vn/wysiwyg/HaNguyen/co-phu-vacosi-powder-brush-1.jpg", "text": ""},
+        ],
+        "category": "Brush",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Lemonade Concealer Brush",
+        "image_src": "https://media.hcdn.vn/wysiwyg/Chau/co-che-khuyet-diem-lemonade-concealer-brush-10g-1_1.jpg",
+        "price": "42.550",
+        "colors": [
+            {"image": "https://media.hcdn.vn/wysiwyg/Chau/co-che-khuyet-diem-lemonade-concealer-brush-10g-1_1.jpg", "text": ""},
+            {"image": "https://hadibeauty.com/wp-content/uploads/2024/06/11-7.png", "text": ""},
+        ],
+        "category": "Brush",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Flormar Makeup Brush Set",
+        "image_src": "https://cdn.chiaki.vn/unsafe/0x500/left/top/smart/filters:quality(75)/https://chiaki.vn/upload/news/content/2022/09/bo-co-trang-diem-4-cay-flormar-makeup-brush-set-png-1664266715-27092022151835.png",
+        "price": "388.500",
+        "colors": [
+            {"image": "https://cdn.chiaki.vn/unsafe/0x500/left/top/smart/filters:quality(75)/https://chiaki.vn/upload/news/content/2022/09/bo-co-trang-diem-4-cay-flormar-makeup-brush-set-png-1664266715-27092022151835.png", "text": ""},
+            {"image": "https://salt.tikicdn.com/ts/product/f2/9e/db/e82390136d36e3030585fcf2c095c022.jpg", "text": ""},
+        ],
+        "category": "Brush",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Perfect Diary Powder Weightless Soft-Velvet Blurring Loose Powder",
+        "image_src": "https://product.hstatic.net/200000714339/product/z5188506845367_244a1e156de59f866edecd97083959b4_81bdde2bdf5640ea8addfc71daf3ee6f.jpg",
+        "price": "227.550",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000714339/product/z5188506845367_244a1e156de59f866edecd97083959b4_81bdde2bdf5640ea8addfc71daf3ee6f.jpg", "text": ""},
+            {"image": "https://bizweb.dktcdn.net/100/382/633/products/z3824230478714-b22d9a351eb190aad449d7569eb67cc5.jpg?v=1666578744743", "text": ""},
+        ],
+        "category": "Powder",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Powder lì Maybelline Fit Me Matte + Poreless Powder",
+        "image_src": "https://assets-hebela.cdn.vccloud.vn/dict/1/dnmhomidtdnshrnnns20220623103836phan-nen-kiem-dau-maybelline-fit-me-matteporeless-powder-spf28-pa-112-6g/shodiotoradotrioti20220623105946phan-nen-maybelline-fit-me-powder-112-hebela-5.jpg",
+        "price": "186.850",
+        "colors": [
+            {"image": "https://assets-hebela.cdn.vccloud.vn/dict/1/dnmhomidtdnshrnnns20220623103836phan-nen-kiem-dau-maybelline-fit-me-matteporeless-powder-spf28-pa-112-6g/shodiotoradotrioti20220623105946phan-nen-maybelline-fit-me-powder-112-hebela-5.jpg", "text": ""},
+            {"image": "https://bizweb.dktcdn.net/100/479/330/products/41da6e3f7720a3e67a93eae766f8446e.jpg?v=1698813295547", "text": ""},
+        ],
+        "category": "Powder",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Silky Girl No Sebum Mineral Powder",
+        "image_src": "https://medias.watsons.vn/publishing/WTCVN-200150-extra1-thumbnail.jpg",
+        "price": "183.150",
+        "colors": [
+            {"image": "https://medias.watsons.vn/publishing/WTCVN-200150-extra1-thumbnail.jpg", "text": ""},
+            {"image": "https://file.hstatic.net/200000135107/file/princess-peralta-cessang24-silkygirl-no-sebum-mineral-powder-review-02_2b8887a11bc54aa083d5cd5ddbb9d9a3_grande.jpg", "text": ""},
+        ],
+        "category": "Powder",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Silky Girl Pure Smooth Pressed Powder SPF 20",
+        "image_src": "https://media.hcdn.vn/wysiwyg/Chau/phan-phu-trang-diem-min-da-spf20-silkygirl-10g-1.jpg",
+        "price": "144.300",
+        "colors": [
+            {"image": "https://media.hcdn.vn/wysiwyg/Chau/phan-phu-trang-diem-min-da-spf20-silkygirl-10g-1.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000551679/product/sg-pure-smooth-pressed-powder-01-ivory_4763d37bb8724c97a81d64e1a92014f1_medium.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000551679/product/d372db3d55f6391c176f0087959a3dfe_d5d37921c96144d798d04360ac91f731_1024x1024.jpg", "text": ""},
+        ],
+        "category": "Powder",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Silkygirl Let it Glow Tone Up Powder 7g - 01 Radiant",
+        "image_src": "https://product.hstatic.net/200000551679/product/pp_e8eed5c417ff4bb682a75818bc2d5281_medium.jpg",
+        "price": "183.150",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000551679/product/pp_e8eed5c417ff4bb682a75818bc2d5281_medium.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/200000617989/product/phan_phu_nang_tong_silkygirl_let_it_glow_tone_up_powder__4__911ebdf519464b6ba7bdd91f34b0c447.png", "text": ""},
+        ],
+        "category": "Powder",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Silky Girl No-Sebum Blotting Pact 7g",
+        "image_src": "https://product.hstatic.net/200000551679/product/z2_c352163888c64628886f7960a9114acb_1024x1024.jpg",
+        "price": "144.300",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000551679/product/z2_c352163888c64628886f7960a9114acb_1024x1024.jpg", "text": ""},
+            {"image": "https://product.hstatic.net/1000006063/product/14_7c7321abb7854fe39bb0a4603c1e8bf6_1024x1024.jpg", "text": ""},
+        ],
+        "category": "Powder",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Lovito cat eye blue light blocking sunglasses with spring hinge fashion solid color everyday L50AD142 (Multiple colors)",
+        "image_src": "https://cf.shopee.vn/file/sg-11134201-7qveu-lg1tgas9rsow7c",
+        "price": "50.600",
+        "colors": [
+            {"image": "https://cf.shopee.vn/file/sg-11134201-7qveu-lg1tgas9rsow7c", "text": ""},
+            {"image": "https://iglas.vn/wp-content/uploads/2022/02/1-1.jpg", "text": ""},
+            {"image": "https://img.ws.mms.shopee.vn/sg-11134201-7rd4p-lwsit9doxea634", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Elegant heart-shaped Lovito magnetic pearl choker necklace for women LFA06301 (Light white)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdwp-lxi7w7hv1nxc6d",
+        "price": "19.800",
+        "colors": [
+        {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdwp-lxi7w7hv1nxc6d", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd6e-lv5hct1b9b8f4d", "text": ""},
+            {"image": "https://cf.shopee.vn/file/0d853a047f340abed8a58a1c2add9eca", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Elegant classic double-sided Lovito cashmere faux tassel scarf for women LFA06212 (Multiple colors)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rbmg-lpss3qfuo38mbc",
+        "price": "32.500",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rbmg-lpss3qfuo38mbc", "text": ""},
+            {"image": "https://cf.shopee.vn/file/sg-11134201-7rblj-lo6okci175lr12", "text": ""},
+            {"image": "https://my-live-02.slatic.net/p/1ae8148f55a164815665f87863cbde9c.jpg", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito casual simple solid color quartz watch for women L66AD056 (coffee/black)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd71-lvo7k91tq36b1e",
+        "price": "45.500",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd71-lvo7k91tq36b1e", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/sg-11134201-7rbm8-lqoapilduwkh95", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Lovito belt with metal face, basic casual style for women L60AD099 (Khaki/Brown/Black)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7qveo-lk6kprfql8ba42_tn",
+        "price": "45.500",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7qveo-lk6kprfql8ba42_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd4c-lwshxrdiencx0d", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/sg-11134201-7rblz-lomcdb5zw3mk2a_tn", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito casual solid color fabric hat for women LFA08162 (Coffee/light white/black)",
+        "image_src": "https://down-vn.img.susercontent.com/sg-11134201-7rbmj-loowo3s7lqwj3c",
+        "price": "47.075",
+        "colors": [
+        {"image": "https://down-vn.img.susercontent.com/sg-11134201-7rbmj-loowo3s7lqwj3c", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd5s-lwsisb2z48sg23", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito casual solid color wrinkled fabric sun hat for women LFA04299 (Light white/black)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rblg-lnwpor7mi9akaa_tn",
+        "price": "49.000",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rblg-lnwpor7mi9akaa_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd4v-lwsj185ba0l248", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rbmg-lnwpick81ajq7b", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito casual solid color cat eye sunglasses for women LFA08707 (Black)",
+        "image_src": "https://img.ws.mms.shopee.vn/sg-11134201-7rd4p-lwsit9doxea634",
+        "price": "17.500",
+        "colors": [
+            {"image": "https://img.ws.mms.shopee.vn/sg-11134201-7rd4p-lwsit9doxea634", "text": ""},
+            {"image": "https://matkinhlb.com.vn/wp-content/uploads/2022/09/dsc00632_a99fb52d8d54409bb65649462785c66f_master.jpg", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Lovito Women's Casual Colorblock Striped Shirt LNE43407",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7qveo-lk6kprfql8ba42_tn",
+        "price": "171.600",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7qveo-lk6kprfql8ba42_tn", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito white strapless tank top with ruffled edges and solid color jacquard fabric for women L62ED047 (Multiple colors)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd3l-lvveuftldr6vdd_tn",
+        "price": "147.400",
+        "colors": [
+        {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd3l-lvveuftldr6vdd_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd6f-lvveuhuafdgnec_tn", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Women's casual solid color Lovito fabric T-shirt with bow tie L70AD026 (Multiple colors)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd4p-lw6p01b1o91a2e_tn",
+        "price": "171.600",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd4p-lw6p01b1o91a2e_tn", "text": ""},
+            {"image": "https://img.ws.mms.shopee.vn/sg-11134201-7rd55-lwsilhvfy9sp05", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd55-lw6ozvubpjgc61_tn", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Women's plain Lovito shirt with embroidered front buttons and ruffled hem, casual style for women LNE34081 (apricot color)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd4l-lwshz5tskq225c",
+        "price": "180.400",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd4l-lwshz5tskq225c", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Lovito long flared skirt with floral patterns for women LNE17088 (white)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd5l-lv5s5k3j6ifx4d_tn",
+        "price": "407.000",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd5l-lv5s5k3j6ifx4d_tn", "text": ""},
+            {"image": "https://cf.shopee.vn/file/sg-11134201-7rbk0-ll1sf9wl5lbl4a", "text": ""},
+            {"image": "https://cf.shopee.vn/file/sg-11134201-7rbk0-ll1sf9wl5lbl4a", "text": ""},
+        ],
+        "category": "Skirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito Women's Slim Fit Casual Ruffle Button Up Dress L80ED285 (Multiple colors)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd4c-lwsiiu8dws3210",
+        "price": "123.950",
+        "colors": [
+        {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd4c-lwsiiu8dws3210", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd57-lwsiicy17i6v1e", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd47-lwsiokpxqnxcee", "text": ""},
+        ],
+        "category": "Skirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito pleated skirt with button pockets, casual style for women LNE35221 (gray/white/black)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd48-lwsi69thynf830",
+        "price": "407.000",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd48-lwsi69thynf830", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rbkg-lntjxhc88ecw4a_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rbk1-lntjxfr2k1c8bf_tn", "text": ""},
+        ],
+        "category": "Skirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito Women's casual letter pattern denim jacket LNA58358",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd5r-lwsi791seo2m6b",
+        "price": "222.000",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd5r-lwsi791seo2m6b", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd3v-luh79rzfzeyefb_tn", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "LOVITO Women's casual solid color off-the-shoulder woven shirt with ruffles LNE10189 (White)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rbnf-lqo9xlve5bb5d4_tn",
+        "price": "227.550",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rbnf-lqo9xlve5bb5d4_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd6n-lwshqmayljvwd6", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito pants with solid color tie pockets for women L68ED106 (Pink/black)",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rblt-lpu7fomtoh8a74",
+        "price": "144.300",
+        "colors": [
+        {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rblt-lpu7fomtoh8a74", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd57-lwsiicy17i6v1e", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd47-lwsiokpxqnxcee", "text": ""},
+        ],
+        "category": "Pant",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito Boho Ditsy style floral flared dress for Women L79AD068",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd41-lwsj0vcq01ro2a",
+        "price": "271.950",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd41-lwsj0vcq01ro2a", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd6o-lu4em7t95dei63", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rcdz-ltketgspcscjef", "text": ""},
+        ],
+        "category": "Skirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Lovito Simple plain button embroidered dress for women L79AD199",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd5v-lu7rs1rgopjk01",
+        "price": "407.000",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rd5v-lu7rs1rgopjk01", "text": ""},
+        ],
+        "category": "Skirt",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Korean men's plaid shirt with JBAGY brand, men's loose long-sleeved shirt with cool material - JS07",
+        "image_src": "https://cdn0918.cdn4s1.com/media/js07/lak03217.jpg",
+        "price": "425.500",
+        "colors": [
+            {"image": "https://cdn0918.cdn4s1.com/media/js07/lak03217.jpg", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ls88lhqmijese1", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "JBAGY Pastel men's long-sleeved shirt, loose white shirt, high-quality silk fabric, Korean style",
+        "image_src": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltqhkzn638qy1a_tn",
+        "price": "227.550",
+        "colors": [
+        {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltqhkzn638qy1a_tn", "text": ""},
+            {"image": "https://nexshows.com/wp-content/uploads/2024/05/vn-11134207-7r98o-lqyje5afwsrdba.jpg", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Men's polo shirt 95% Cotton Crocodile, fabric weight 280gsm stretch Brand JBagy - JP24",
+        "image_src": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lx82l3m37uu172",
+        "price": "407.000",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lx82l3m37uu172", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lv8k1e5wx3fe85_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lv8k1e5wsvq213_tn", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Men's T-shirt Basic 100% cotton 230gsm 4-way stretch Brand JBagy - JT2401",
+        "image_src": "https://cdn0918.cdn4s1.com/media/jt2401/4.png",
+        "price": "181.300",
+        "colors": [
+            {"image": "https://cdn0918.cdn4s1.com/media/jt2401/4.png", "text": ""},
+            {"image": "https://cdn0918.cdn4s1.com/media/jt2401/13-1.jpg", "text": ""},
+            {"image": "https://cdn0918.cdn4s1.com/media/jt2401/14-2.jpg", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Three-hole tanktop T-shirt is breathable, sweat-absorbent, and quick-drying",
+        "image_src": "https://img.ws.mms.shopee.vn/vn-11134207-7qukw-lgoy0rvio2eqae",
+        "price": "164.650",
+        "colors": [
+            {"image": "https://img.ws.mms.shopee.vn/vn-11134207-7qukw-lgoy0rvio2eqae", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltfijumvay3143_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltfijumv6qdpa5_tn", "text": ""},
+        ],
+        "category": "Shirt",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "JBAGY men's wide-leg pants in Cold Silk fabric, comfortable and wrinkle-resistant",
+        "image_src": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llk0r48dovquf8_tn",
+        "price": "227.550",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llk0r48dovquf8_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llk0r48dovquf8_tn", "text": ""},
+            {"image": "https://vn-test-11.slatic.net/p/cf72315315931e899a9931cf12cec4f2.jpg", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lnutjtvtabnead_tn", "text": ""},
+        ],
+        "category": "Pant",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "JBAGY men's shorts made of genuine cotton khaki fabric, 2-way stretch fabric short leg - JN2401",
+        "image_src": "https://img.ws.mms.shopee.vn/vn-11134207-7r98o-lx83aauzosm330",
+        "price": "425.500",
+        "colors": [
+        {"image": "https://img.ws.mms.shopee.vn/vn-11134207-7r98o-lx83aauzosm330", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltnl3t33c4judb_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltnl3t3353pm9a_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltnl3t339bey28_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-luuekbwwc7qdf5_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lv8k1e5wq2l682_tn", "text": ""},
+        ],
+        "category": "Pant",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "JBagy Korean men's trousers, baggy style, thick stretch fabric, wide-leg, black, cream JA0101",
+        "image_src": "https://img.lazcdn.com/g/p/f65fbbd3f19939d3cbac5c5c5e92f202.jpg_720x720q80.jpg",
+        "price": "349.650",
+        "colors": [
+            {"image": "https://img.lazcdn.com/g/p/f65fbbd3f19939d3cbac5c5c5e92f202.jpg_720x720q80.jpg", "text": ""},
+            {"image": "https://cf.shopee.vn/file/vn-11134207-7qukw-lk0s7osewbuq1f", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lx83aauzc5i349", "text": ""},
+        ],
+        "category": "Pant",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "JBAGY men's wide-leg jeans with elastic waistband - JJ0107",
+        "image_src": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lx82l3m3anyx4f",
+        "price": "412.550",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lx82l3m3anyx4f", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-loz9w62g1suz0f_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ltnl3t333p56f6_tn", "text": ""},
+        ],
+        "category": "Pant",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "William Polo high quality cowhide men's belt, men's belt with full bag and box by brand POLO20187-89",
+        "image_src": "https://down-vn.img.susercontent.com/file/sg-11134202-23020-5i01ceep80mva4",
+        "price": "412.550",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134202-23020-5i01ceep80mva4", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfapdc301is7eb", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "High-quality men's cowhide belt, genuine Williampolo men's leather belt with automatic buckle, comes with bag and box",
+        "image_src": "https://down-vn.img.susercontent.com/file/vn-11134208-7qukw-lfh80j0m46lxb5",
+        "price": "227.550",
+        "colors": [
+        {"image": "https://down-vn.img.susercontent.com/file/vn-11134208-7qukw-lfh80j0m46lxb5", "text": ""},
+            {"image": "https://bizweb.dktcdn.net/thumb/1024x1024/100/445/950/products/william-polo-goat-giaolong-2.jpg?v=1663835106953", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "JEEP SPIRIT baseball cap with hard form, sporty style, high quality polyester material with UV protection",
+        "image_src": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lscex49gvul591_tn",
+        "price": "423.650",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lscex49gvul591_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rbla-loot1wmyo9lj80_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvd1uq6qj8252e_tn", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Meowist Unisex MLB baseball cap, Khaki Nude fabric material, NY logo, Korean baseball cap",
+        "image_src": "https://product.hstatic.net/200000860887/product/cp-2024-081_1_d2956a13b15649ac9f2b3243b5e363c9_master.jpg",
+        "price": "275.650",
+        "colors": [
+            {"image": "https://product.hstatic.net/200000860887/product/cp-2024-081_1_d2956a13b15649ac9f2b3243b5e363c9_master.jpg", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134211-7r98o-lv2mha0922saac", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+
+    {
+        "product_name": "Mercury Logan men's/women's bracelet - Unisex jewelry, fashion accessories - Basic design, personality",
+        "image_src": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-luro0aiqg5k525_tn",
+        "price": "434.750",
+        "colors": [
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-luro0aiqg5k525_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-luro0aiqkd9h26_tn", "text": ""},
+            {"image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-luro0aiqn6ed45_tn", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Mercury Canarium men's ring - Fashionable jewelry and wrist accessories - Outstanding Bling design",
+        "image_src": "https://mercury-jewels.vn/wp-content/uploads/2023/03/nhan-nam-titan-k-gi-bling-5.jpg",
+        "price": "370.000",
+        "colors": [
+        {"image": "https://mercury-jewels.vn/wp-content/uploads/2023/03/nhan-nam-titan-k-gi-bling-5.jpg", "text": ""},
+            {"image": "https://mercury-jewels.vn/wp-content/uploads/2023/03/n05-7-scaled.jpg", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Mercury Polaris men's necklace - Jewelry, fashion accessories - Northern star motif design",
+        "image_src": "https://mercury-jewels.vn/wp-content/uploads/2024/05/c02-removebgvong-co-titan-khong-gi-mercury.jpg",
+        "price": "490.250",
+        "colors": [
+            {"image": "https://mercury-jewels.vn/wp-content/uploads/2024/05/c02-removebgvong-co-titan-khong-gi-mercury.jpg", "text": ""},
+            {"image": "https://mercury-jewels.vn/wp-content/uploads/2023/06/vong-co-nam-nu-titan-k-gi-mercury-3.jpg", "text": ""},
+            {"image": "https://mercury-jewels.vn/wp-content/uploads/2023/06/vong-co-nam-nu-titan-k-gi-mercury-2.jpg", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
+    {
+        "product_name": "Mercury Tennis men's/women's necklace",
+        "image_src": "https://mercury-jewels.vn/wp-content/uploads/2023/06/phu-kien-titan-khong-gi-mercury-26.jpg",
+        "price": "175.750",
+        "colors": [
+            {"image": "https://mercury-jewels.vn/wp-content/uploads/2023/06/phu-kien-titan-khong-gi-mercury-26.jpg", "text": ""},
+            {"image": "https://mercury-jewels.vn/wp-content/uploads/2023/06/ST03.jpg", "text": ""},
+        ],
+        "category": "Accessory",
+        "tag": "Clear Spring"
+    },
 ];
 
 
